@@ -1,0 +1,14 @@
+.card-container{
+    padding: 15px 20px;
+    display: flex;
+    flex-direction: column;
+    line-height: 4;
+    font-size: x-large;
+}
+.container-fluid a:hover{
+    text-decoration: none;
+}
+
+.container-fluid .col-sm-4{
+    padding: 0;
+}

@@ -1,0 +1,377 @@
+[10-Jan-2019 03:47:02 America/Chicago] PHP Warning:  include_once(../includes/header.php): failed to open stream: No such file or directory in /home2/housingbritain/public_html/admin/login.php on line 3
+[10-Jan-2019 03:47:02 America/Chicago] PHP Warning:  include_once(): Failed opening '../includes/header.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home2/housingbritain/public_html/admin/login.php on line 3
+[10-Jan-2019 07:33:08 America/Chicago] PHP Warning:  mysqli_connect(): (HY000/2005): Unknown MySQL server host 'housingb_web' (0) in /home2/housingbritain/public_html/admin/includes/admin_functions.php on line 4
+[10-Jan-2019 07:33:08 America/Chicago] PHP Warning:  mysqli_set_charset() expects parameter 1 to be mysqli, boolean given in /home2/housingbritain/public_html/admin/includes/admin_functions.php on line 5
+[10-Jan-2019 07:33:08 America/Chicago] PHP Warning:  mysqli_real_escape_string() expects parameter 1 to be mysqli, boolean given in /home2/housingbritain/public_html/admin/login.php on line 63
+[10-Jan-2019 07:33:08 America/Chicago] PHP Warning:  mysqli_real_escape_string() expects parameter 1 to be mysqli, boolean given in /home2/housingbritain/public_html/admin/login.php on line 64
+[10-Jan-2019 07:33:08 America/Chicago] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, boolean given in /home2/housingbritain/public_html/admin/login.php on line 72
+[10-Jan-2019 07:33:08 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home2/housingbritain/public_html/admin/login.php on line 74
+[10-Jan-2019 07:56:11 America/Chicago] PHP Warning:  include(includes/topmenu.php): failed to open stream: No such file or directory in /home2/housingbritain/public_html/admin/index.php on line 22
+[10-Jan-2019 07:56:11 America/Chicago] PHP Warning:  include(includes/topmenu.php): failed to open stream: No such file or directory in /home2/housingbritain/public_html/admin/index.php on line 22
+[10-Jan-2019 07:56:11 America/Chicago] PHP Warning:  include(): Failed opening 'includes/topmenu.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home2/housingbritain/public_html/admin/index.php on line 22
+[10-Jan-2019 07:56:11 America/Chicago] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home2/housingbritain/public_html/admin/index.php on line 105
+[10-Jan-2019 07:56:11 America/Chicago] PHP Warning:  mysqli_free_result() expects parameter 1 to be mysqli_result, boolean given in /home2/housingbritain/public_html/admin/index.php on line 111
+[10-Jan-2019 07:56:11 America/Chicago] PHP Warning:  include(includes/footer.php): failed to open stream: No such file or directory in /home2/housingbritain/public_html/admin/index.php on line 123
+[10-Jan-2019 07:56:11 America/Chicago] PHP Warning:  include(includes/footer.php): failed to open stream: No such file or directory in /home2/housingbritain/public_html/admin/index.php on line 123
+[10-Jan-2019 07:56:11 America/Chicago] PHP Warning:  include(): Failed opening 'includes/footer.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home2/housingbritain/public_html/admin/index.php on line 123
+[10-Jan-2019 07:56:58 America/Chicago] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home2/housingbritain/public_html/admin/index.php on line 105
+[10-Jan-2019 07:56:58 America/Chicago] PHP Warning:  mysqli_free_result() expects parameter 1 to be mysqli_result, boolean given in /home2/housingbritain/public_html/admin/index.php on line 111
+[10-Jan-2019 07:56:58 America/Chicago] PHP Warning:  include(includes/footer.php): failed to open stream: No such file or directory in /home2/housingbritain/public_html/admin/index.php on line 123
+[10-Jan-2019 07:56:58 America/Chicago] PHP Warning:  include(includes/footer.php): failed to open stream: No such file or directory in /home2/housingbritain/public_html/admin/index.php on line 123
+[10-Jan-2019 07:56:58 America/Chicago] PHP Warning:  include(): Failed opening 'includes/footer.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home2/housingbritain/public_html/admin/index.php on line 123
+[10-Jan-2019 07:57:16 America/Chicago] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home2/housingbritain/public_html/admin/index.php on line 105
+[10-Jan-2019 07:57:16 America/Chicago] PHP Warning:  mysqli_free_result() expects parameter 1 to be mysqli_result, boolean given in /home2/housingbritain/public_html/admin/index.php on line 111
+[11-Jan-2019 04:00:20 America/Chicago] PHP Warning:  include_once(../../connect_db.php): failed to open stream: No such file or directory in /home2/housingbritain/public_html/admin/userspassreset.php on line 6
+[11-Jan-2019 04:00:20 America/Chicago] PHP Warning:  include_once(): Failed opening '../../connect_db.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home2/housingbritain/public_html/admin/userspassreset.php on line 6
+[11-Jan-2019 04:00:20 America/Chicago] PHP Fatal error:  Uncaught Error: Call to undefined function check_session() in /home2/housingbritain/public_html/admin/userspassreset.php:7
+Stack trace:
+#0 {main}
+  thrown in /home2/housingbritain/public_html/admin/userspassreset.php on line 7
+[11-Jan-2019 04:01:44 America/Chicago] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home2/housingbritain/public_html/admin/userspassreset.php on line 74
+[11-Jan-2019 04:01:44 America/Chicago] PHP Warning:  mysqli_free_result() expects parameter 1 to be mysqli_result, boolean given in /home2/housingbritain/public_html/admin/userspassreset.php on line 85
+[11-Jan-2019 04:02:25 America/Chicago] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home2/housingbritain/public_html/admin/userspassreset.php on line 74
+[11-Jan-2019 04:02:25 America/Chicago] PHP Warning:  mysqli_free_result() expects parameter 1 to be mysqli_result, boolean given in /home2/housingbritain/public_html/admin/userspassreset.php on line 85
+[12-Jan-2019 08:41:51 America/Chicago] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home2/housingbritain/public_html/admin/adduser.php on line 97
+[12-Jan-2019 08:41:51 America/Chicago] PHP Warning:  mysqli_free_result() expects parameter 1 to be mysqli_result, boolean given in /home2/housingbritain/public_html/admin/adduser.php on line 100
+[12-Jan-2019 08:42:11 America/Chicago] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home2/housingbritain/public_html/admin/adduser.php on line 97
+[12-Jan-2019 08:42:12 America/Chicago] PHP Warning:  mysqli_free_result() expects parameter 1 to be mysqli_result, boolean given in /home2/housingbritain/public_html/admin/adduser.php on line 100
+[21-Jan-2019 02:13:00 America/Chicago] PHP Fatal error:  Uncaught Error: Call to undefined function check_session() in /home2/housingbritain/public_html/admin/index.php:7
+Stack trace:
+#0 {main}
+  thrown in /home2/housingbritain/public_html/admin/index.php on line 7
+[21-Jan-2019 02:14:18 America/Chicago] PHP Fatal error:  Uncaught Error: Call to undefined function check_session() in /home2/housingbritain/public_html/admin/index.php:7
+Stack trace:
+#0 {main}
+  thrown in /home2/housingbritain/public_html/admin/index.php on line 7
+[21-Jan-2019 02:14:20 America/Chicago] PHP Fatal error:  Uncaught Error: Call to undefined function check_session() in /home2/housingbritain/public_html/admin/index.php:7
+Stack trace:
+#0 {main}
+  thrown in /home2/housingbritain/public_html/admin/index.php on line 7
+[21-Jan-2019 02:14:21 America/Chicago] PHP Fatal error:  Uncaught Error: Call to undefined function check_session() in /home2/housingbritain/public_html/admin/index.php:7
+Stack trace:
+#0 {main}
+  thrown in /home2/housingbritain/public_html/admin/index.php on line 7
+[21-Jan-2019 02:14:25 America/Chicago] PHP Fatal error:  Uncaught Error: Call to undefined function check_session() in /home2/housingbritain/public_html/admin/index.php:7
+Stack trace:
+#0 {main}
+  thrown in /home2/housingbritain/public_html/admin/index.php on line 7
+[21-Jan-2019 02:16:46 America/Chicago] PHP Fatal error:  Uncaught Error: Call to undefined function check_session() in /home2/housingbritain/public_html/admin/index.php:7
+Stack trace:
+#0 {main}
+  thrown in /home2/housingbritain/public_html/admin/index.php on line 7
+[21-Jan-2019 03:50:28 America/Chicago] PHP Warning:  include_once(includes/header.php): failed to open stream: No such file or directory in /home2/housingbritain/public_html/admin/login.php on line 4
+[21-Jan-2019 03:50:28 America/Chicago] PHP Warning:  include_once(): Failed opening 'includes/header.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home2/housingbritain/public_html/admin/login.php on line 4
+[21-Jan-2019 03:50:28 America/Chicago] PHP Warning:  include_once(includes/head.php): failed to open stream: No such file or directory in /home2/housingbritain/public_html/admin/login.php on line 11
+[21-Jan-2019 03:50:28 America/Chicago] PHP Warning:  include_once(): Failed opening 'includes/head.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home2/housingbritain/public_html/admin/login.php on line 11
+[21-Jan-2019 03:51:33 America/Chicago] PHP Warning:  include_once(includes/header.php): failed to open stream: No such file or directory in /home2/housingbritain/public_html/admin/login.php on line 4
+[21-Jan-2019 03:51:33 America/Chicago] PHP Warning:  include_once(): Failed opening 'includes/header.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home2/housingbritain/public_html/admin/login.php on line 4
+[21-Jan-2019 03:51:33 America/Chicago] PHP Warning:  include_once(includes/head.php): failed to open stream: No such file or directory in /home2/housingbritain/public_html/admin/login.php on line 11
+[21-Jan-2019 03:51:33 America/Chicago] PHP Warning:  include_once(): Failed opening 'includes/head.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home2/housingbritain/public_html/admin/login.php on line 11
+[21-Jan-2019 03:51:35 America/Chicago] PHP Warning:  include_once(includes/header.php): failed to open stream: No such file or directory in /home2/housingbritain/public_html/admin/login.php on line 4
+[21-Jan-2019 03:51:35 America/Chicago] PHP Warning:  include_once(): Failed opening 'includes/header.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home2/housingbritain/public_html/admin/login.php on line 4
+[21-Jan-2019 03:51:35 America/Chicago] PHP Warning:  include_once(includes/head.php): failed to open stream: No such file or directory in /home2/housingbritain/public_html/admin/login.php on line 11
+[21-Jan-2019 03:51:35 America/Chicago] PHP Warning:  include_once(): Failed opening 'includes/head.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home2/housingbritain/public_html/admin/login.php on line 11
+[21-Jan-2019 03:51:39 America/Chicago] PHP Warning:  include_once(includes/header.php): failed to open stream: No such file or directory in /home2/housingbritain/public_html/admin/login.php on line 4
+[21-Jan-2019 03:51:39 America/Chicago] PHP Warning:  include_once(): Failed opening 'includes/header.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home2/housingbritain/public_html/admin/login.php on line 4
+[21-Jan-2019 03:51:39 America/Chicago] PHP Warning:  include_once(includes/head.php): failed to open stream: No such file or directory in /home2/housingbritain/public_html/admin/login.php on line 11
+[21-Jan-2019 03:51:39 America/Chicago] PHP Warning:  include_once(): Failed opening 'includes/head.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home2/housingbritain/public_html/admin/login.php on line 11
+[21-Jan-2019 03:52:21 America/Chicago] PHP Warning:  include_once(/home2/housingbritain/public_html/admin/includes/admin_functions.php): failed to open stream: No such file or directory in /home2/housingbritain/public_html/includes/admin/includes/header.php on line 6
+[21-Jan-2019 03:52:21 America/Chicago] PHP Warning:  include_once(): Failed opening '/home2/housingbritain/public_html/admin/includes/admin_functions.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home2/housingbritain/public_html/includes/admin/includes/header.php on line 6
+[21-Jan-2019 03:53:16 America/Chicago] PHP Warning:  include_once(/home2/housingbritain/public_htmlincludes/admin/includes/admin_functions.php): failed to open stream: No such file or directory in /home2/housingbritain/public_html/includes/admin/includes/header.php on line 6
+[21-Jan-2019 03:53:16 America/Chicago] PHP Warning:  include_once(): Failed opening '/home2/housingbritain/public_htmlincludes/admin/includes/admin_functions.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home2/housingbritain/public_html/includes/admin/includes/header.php on line 6
+[21-Jan-2019 04:19:42 America/Chicago] PHP Warning:  include_once(../includes/admin/includes/header.php): failed to open stream: No such file or directory in /home2/housingbritain/public_html/admin/login.php on line 4
+[21-Jan-2019 04:19:42 America/Chicago] PHP Warning:  include_once(): Failed opening '../includes/admin/includes/header.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home2/housingbritain/public_html/admin/login.php on line 4
+[21-Jan-2019 04:19:42 America/Chicago] PHP Warning:  include_once(../includes/admin/includes/head.php): failed to open stream: No such file or directory in /home2/housingbritain/public_html/admin/login.php on line 11
+[21-Jan-2019 04:19:42 America/Chicago] PHP Warning:  include_once(): Failed opening '../includes/admin/includes/head.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home2/housingbritain/public_html/admin/login.php on line 11
+[21-Jan-2019 04:25:46 America/Chicago] PHP Warning:  include_once(../includes/admin/includes/header.php): failed to open stream: No such file or directory in /home2/housingbritain/public_html/admin/login.php on line 4
+[21-Jan-2019 04:25:46 America/Chicago] PHP Warning:  include_once(): Failed opening '../includes/admin/includes/header.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home2/housingbritain/public_html/admin/login.php on line 4
+[21-Jan-2019 04:25:46 America/Chicago] PHP Warning:  include_once(../includes/admin/includes/head.php): failed to open stream: No such file or directory in /home2/housingbritain/public_html/admin/login.php on line 11
+[21-Jan-2019 04:25:46 America/Chicago] PHP Warning:  include_once(): Failed opening '../includes/admin/includes/head.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home2/housingbritain/public_html/admin/login.php on line 11
+[21-Jan-2019 04:25:48 America/Chicago] PHP Warning:  include_once(/home2/housingbritain/public_html/includes/admin/includes/admin_functions.php): failed to open stream: No such file or directory in /home2/housingbritain/public_html/includes/admin/header.php on line 6
+[21-Jan-2019 04:25:48 America/Chicago] PHP Warning:  include_once(): Failed opening '/home2/housingbritain/public_html/includes/admin/includes/admin_functions.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home2/housingbritain/public_html/includes/admin/header.php on line 6
+[21-Jan-2019 07:57:57 America/Chicago] PHP Warning:  include_once(includes/header.php): failed to open stream: No such file or directory in /home2/housingbritain/public_html/admin/adminusers.php on line 6
+[21-Jan-2019 07:57:57 America/Chicago] PHP Warning:  include_once(): Failed opening 'includes/header.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home2/housingbritain/public_html/admin/adminusers.php on line 6
+[21-Jan-2019 07:57:57 America/Chicago] PHP Fatal error:  Uncaught Error: Call to undefined function check_session() in /home2/housingbritain/public_html/admin/adminusers.php:7
+Stack trace:
+#0 {main}
+  thrown in /home2/housingbritain/public_html/admin/adminusers.php on line 7
+[21-Jan-2019 07:58:46 America/Chicago] PHP Warning:  include_once(includes/header.php): failed to open stream: No such file or directory in /home2/housingbritain/public_html/admin/adminusers.php on line 6
+[21-Jan-2019 07:58:46 America/Chicago] PHP Warning:  include_once(): Failed opening 'includes/header.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home2/housingbritain/public_html/admin/adminusers.php on line 6
+[21-Jan-2019 07:58:46 America/Chicago] PHP Fatal error:  Uncaught Error: Call to undefined function check_session() in /home2/housingbritain/public_html/admin/adminusers.php:7
+Stack trace:
+#0 {main}
+  thrown in /home2/housingbritain/public_html/admin/adminusers.php on line 7
+[21-Jan-2019 07:58:48 America/Chicago] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function check_session(), 0 passed in /home2/housingbritain/public_html/admin/adminusers.php on line 7 and exactly 1 expected in /home2/housingbritain/public_html/includes/functions.php:20
+Stack trace:
+#0 /home2/housingbritain/public_html/admin/adminusers.php(7): check_session()
+#1 {main}
+  thrown in /home2/housingbritain/public_html/includes/functions.php on line 20
+[21-Jan-2019 08:01:30 America/Chicago] PHP Warning:  include(../includes/topmenu.php): failed to open stream: No such file or directory in /home2/housingbritain/public_html/admin/adminusers.php on line 24
+[21-Jan-2019 08:01:30 America/Chicago] PHP Warning:  include(../includes/topmenu.php): failed to open stream: No such file or directory in /home2/housingbritain/public_html/admin/adminusers.php on line 24
+[21-Jan-2019 08:01:30 America/Chicago] PHP Warning:  include(): Failed opening '../includes/topmenu.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home2/housingbritain/public_html/admin/adminusers.php on line 24
+[21-Jan-2019 08:01:30 America/Chicago] PHP Warning:  include(includes/footer.php): failed to open stream: No such file or directory in /home2/housingbritain/public_html/admin/adminusers.php on line 70
+[21-Jan-2019 08:01:30 America/Chicago] PHP Warning:  include(includes/footer.php): failed to open stream: No such file or directory in /home2/housingbritain/public_html/admin/adminusers.php on line 70
+[21-Jan-2019 08:01:30 America/Chicago] PHP Warning:  include(): Failed opening 'includes/footer.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home2/housingbritain/public_html/admin/adminusers.php on line 70
+[21-Jan-2019 08:01:41 America/Chicago] PHP Warning:  include(includes/topmenu.php): failed to open stream: No such file or directory in /home2/housingbritain/public_html/admin/adminusers.php on line 24
+[21-Jan-2019 08:01:41 America/Chicago] PHP Warning:  include(includes/topmenu.php): failed to open stream: No such file or directory in /home2/housingbritain/public_html/admin/adminusers.php on line 24
+[21-Jan-2019 08:01:41 America/Chicago] PHP Warning:  include(): Failed opening 'includes/topmenu.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home2/housingbritain/public_html/admin/adminusers.php on line 24
+[21-Jan-2019 08:01:41 America/Chicago] PHP Warning:  include(includes/footer.php): failed to open stream: No such file or directory in /home2/housingbritain/public_html/admin/adminusers.php on line 70
+[21-Jan-2019 08:01:41 America/Chicago] PHP Warning:  include(includes/footer.php): failed to open stream: No such file or directory in /home2/housingbritain/public_html/admin/adminusers.php on line 70
+[21-Jan-2019 08:01:41 America/Chicago] PHP Warning:  include(): Failed opening 'includes/footer.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home2/housingbritain/public_html/admin/adminusers.php on line 70
+[21-Jan-2019 08:03:58 America/Chicago] PHP Warning:  include_once(includes/header.php): failed to open stream: No such file or directory in /home2/housingbritain/public_html/admin/addadminuser.php on line 6
+[21-Jan-2019 08:03:58 America/Chicago] PHP Warning:  include_once(): Failed opening 'includes/header.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home2/housingbritain/public_html/admin/addadminuser.php on line 6
+[21-Jan-2019 08:03:58 America/Chicago] PHP Fatal error:  Uncaught Error: Call to undefined function check_session() in /home2/housingbritain/public_html/admin/addadminuser.php:7
+Stack trace:
+#0 {main}
+  thrown in /home2/housingbritain/public_html/admin/addadminuser.php on line 7
+[21-Jan-2019 08:15:23 America/Chicago] PHP Warning:  include_once(includes/header.php): failed to open stream: No such file or directory in /home2/housingbritain/public_html/admin/addadminuser.php on line 6
+[21-Jan-2019 08:15:23 America/Chicago] PHP Warning:  include_once(): Failed opening 'includes/header.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home2/housingbritain/public_html/admin/addadminuser.php on line 6
+[21-Jan-2019 08:15:23 America/Chicago] PHP Fatal error:  Uncaught Error: Call to undefined function check_session() in /home2/housingbritain/public_html/admin/addadminuser.php:7
+Stack trace:
+#0 {main}
+  thrown in /home2/housingbritain/public_html/admin/addadminuser.php on line 7
+[21-Jan-2019 08:16:42 America/Chicago] PHP Warning:  include_once(includes/header.php): failed to open stream: No such file or directory in /home2/housingbritain/public_html/admin/addadminuser.php on line 6
+[21-Jan-2019 08:16:42 America/Chicago] PHP Warning:  include_once(): Failed opening 'includes/header.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home2/housingbritain/public_html/admin/addadminuser.php on line 6
+[21-Jan-2019 08:16:42 America/Chicago] PHP Fatal error:  Uncaught Error: Call to undefined function check_session() in /home2/housingbritain/public_html/admin/addadminuser.php:7
+Stack trace:
+#0 {main}
+  thrown in /home2/housingbritain/public_html/admin/addadminuser.php on line 7
+[21-Jan-2019 08:16:44 America/Chicago] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function check_session(), 0 passed in /home2/housingbritain/public_html/admin/addadminuser.php on line 7 and exactly 1 expected in /home2/housingbritain/public_html/includes/functions.php:20
+Stack trace:
+#0 /home2/housingbritain/public_html/admin/addadminuser.php(7): check_session()
+#1 {main}
+  thrown in /home2/housingbritain/public_html/includes/functions.php on line 20
+[21-Jan-2019 08:22:38 America/Chicago] PHP Warning:  include(../includes/topmenu.php): failed to open stream: No such file or directory in /home2/housingbritain/public_html/admin/adminspassreset.php on line 23
+[21-Jan-2019 08:22:38 America/Chicago] PHP Warning:  include(../includes/topmenu.php): failed to open stream: No such file or directory in /home2/housingbritain/public_html/admin/adminspassreset.php on line 23
+[21-Jan-2019 08:22:38 America/Chicago] PHP Warning:  include(): Failed opening '../includes/topmenu.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home2/housingbritain/public_html/admin/adminspassreset.php on line 23
+[21-Jan-2019 08:22:44 America/Chicago] PHP Warning:  include(../includes/topmenu.php): failed to open stream: No such file or directory in /home2/housingbritain/public_html/admin/adminspassreset.php on line 23
+[21-Jan-2019 08:22:44 America/Chicago] PHP Warning:  include(../includes/topmenu.php): failed to open stream: No such file or directory in /home2/housingbritain/public_html/admin/adminspassreset.php on line 23
+[21-Jan-2019 08:22:44 America/Chicago] PHP Warning:  include(): Failed opening '../includes/topmenu.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home2/housingbritain/public_html/admin/adminspassreset.php on line 23
+[21-Jan-2019 08:23:04 America/Chicago] PHP Warning:  include(../includes/topmenu.php): failed to open stream: No such file or directory in /home2/housingbritain/public_html/admin/adminspassreset.php on line 23
+[21-Jan-2019 08:23:04 America/Chicago] PHP Warning:  include(../includes/topmenu.php): failed to open stream: No such file or directory in /home2/housingbritain/public_html/admin/adminspassreset.php on line 23
+[21-Jan-2019 08:23:04 America/Chicago] PHP Warning:  include(): Failed opening '../includes/topmenu.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home2/housingbritain/public_html/admin/adminspassreset.php on line 23
+[21-Jan-2019 08:25:29 America/Chicago] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function check_session(), 0 passed in /home2/housingbritain/public_html/admin/delete_adminuser.php on line 6 and exactly 1 expected in /home2/housingbritain/public_html/includes/functions.php:20
+Stack trace:
+#0 /home2/housingbritain/public_html/admin/delete_adminuser.php(6): check_session()
+#1 {main}
+  thrown in /home2/housingbritain/public_html/includes/functions.php on line 20
+[21-Jan-2019 08:45:10 America/Chicago] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function check_session(), 0 passed in /home2/housingbritain/public_html/admin/userspassreset.php on line 7 and exactly 1 expected in /home2/housingbritain/public_html/includes/functions.php:20
+Stack trace:
+#0 /home2/housingbritain/public_html/admin/userspassreset.php(7): check_session()
+#1 {main}
+  thrown in /home2/housingbritain/public_html/includes/functions.php on line 20
+[21-Jan-2019 08:45:31 America/Chicago] PHP Warning:  include(../includes/topmenu.php): failed to open stream: No such file or directory in /home2/housingbritain/public_html/admin/userspassreset.php on line 27
+[21-Jan-2019 08:45:31 America/Chicago] PHP Warning:  include(../includes/topmenu.php): failed to open stream: No such file or directory in /home2/housingbritain/public_html/admin/userspassreset.php on line 27
+[21-Jan-2019 08:45:31 America/Chicago] PHP Warning:  include(): Failed opening '../includes/topmenu.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home2/housingbritain/public_html/admin/userspassreset.php on line 27
+[21-Jan-2019 08:45:31 America/Chicago] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home2/housingbritain/public_html/admin/userspassreset.php on line 81
+[21-Jan-2019 08:45:31 America/Chicago] PHP Warning:  mysqli_free_result() expects parameter 1 to be mysqli_result, boolean given in /home2/housingbritain/public_html/admin/userspassreset.php on line 92
+[21-Jan-2019 08:45:55 America/Chicago] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home2/housingbritain/public_html/admin/userspassreset.php on line 81
+[21-Jan-2019 08:45:55 America/Chicago] PHP Warning:  mysqli_free_result() expects parameter 1 to be mysqli_result, boolean given in /home2/housingbritain/public_html/admin/userspassreset.php on line 92
+[22-Jun-2019 03:30:06 America/Chicago] PHP Warning:  require(./kernel/router/Router.php): failed to open stream: No such file or directory in /home2/housingbritain/public_html/admin/index.php on line 5
+[22-Jun-2019 03:30:06 America/Chicago] PHP Warning:  require(./kernel/router/Router.php): failed to open stream: No such file or directory in /home2/housingbritain/public_html/admin/index.php on line 5
+[22-Jun-2019 03:30:06 America/Chicago] PHP Fatal error:  require(): Failed opening required './kernel/router/Router.php' (include_path='.:/opt/php71/lib/php') in /home2/housingbritain/public_html/admin/index.php on line 5
+[22-Jun-2019 03:30:31 America/Chicago] PHP Warning:  require(kernel/router/Router.php): failed to open stream: No such file or directory in /home2/housingbritain/public_html/admin/index.php on line 4
+[22-Jun-2019 03:30:31 America/Chicago] PHP Warning:  require(kernel/router/Router.php): failed to open stream: No such file or directory in /home2/housingbritain/public_html/admin/index.php on line 4
+[22-Jun-2019 03:30:31 America/Chicago] PHP Fatal error:  require(): Failed opening required 'kernel/router/Router.php' (include_path='.:/opt/php71/lib/php') in /home2/housingbritain/public_html/admin/index.php on line 4
+[22-Jun-2019 03:31:05 America/Chicago] PHP Warning:  require(kernel/router/Router.php): failed to open stream: No such file or directory in /home2/housingbritain/public_html/admin/index.php on line 5
+[22-Jun-2019 03:31:05 America/Chicago] PHP Warning:  require(kernel/router/Router.php): failed to open stream: No such file or directory in /home2/housingbritain/public_html/admin/index.php on line 5
+[22-Jun-2019 03:31:05 America/Chicago] PHP Fatal error:  require(): Failed opening required 'kernel/router/Router.php' (include_path='.:/opt/php71/lib/php') in /home2/housingbritain/public_html/admin/index.php on line 5
+[22-Jun-2019 03:31:13 America/Chicago] PHP Warning:  glob() expects at least 1 parameter, 0 given in /home2/housingbritain/public_html/admin/index.php on line 2
+[22-Jun-2019 03:31:13 America/Chicago] PHP Warning:  require(kernel/router/Router.php): failed to open stream: No such file or directory in /home2/housingbritain/public_html/admin/index.php on line 5
+[22-Jun-2019 03:31:13 America/Chicago] PHP Warning:  require(kernel/router/Router.php): failed to open stream: No such file or directory in /home2/housingbritain/public_html/admin/index.php on line 5
+[22-Jun-2019 03:31:13 America/Chicago] PHP Fatal error:  require(): Failed opening required 'kernel/router/Router.php' (include_path='.:/opt/php71/lib/php') in /home2/housingbritain/public_html/admin/index.php on line 5
+[22-Jun-2019 03:31:20 America/Chicago] PHP Warning:  require(kernel/router/Router.php): failed to open stream: No such file or directory in /home2/housingbritain/public_html/admin/index.php on line 5
+[22-Jun-2019 03:31:20 America/Chicago] PHP Warning:  require(kernel/router/Router.php): failed to open stream: No such file or directory in /home2/housingbritain/public_html/admin/index.php on line 5
+[22-Jun-2019 03:31:20 America/Chicago] PHP Fatal error:  require(): Failed opening required 'kernel/router/Router.php' (include_path='.:/opt/php71/lib/php') in /home2/housingbritain/public_html/admin/index.php on line 5
+[22-Jun-2019 03:32:05 America/Chicago] PHP Warning:  require(kernel/database/CoreDB.php): failed to open stream: No such file or directory in /home2/housingbritain/public_html/admin/index.php on line 6
+[22-Jun-2019 03:32:05 America/Chicago] PHP Warning:  require(kernel/database/CoreDB.php): failed to open stream: No such file or directory in /home2/housingbritain/public_html/admin/index.php on line 6
+[22-Jun-2019 03:32:05 America/Chicago] PHP Fatal error:  require(): Failed opening required 'kernel/database/CoreDB.php' (include_path='.:/opt/php71/lib/php') in /home2/housingbritain/public_html/admin/index.php on line 6
+[22-Jun-2019 11:37:39 Europe/Istanbul] PHP Fatal error:  Class 'SonbellekPage' not found in /home2/housingbritain/public_html/admin/pages/mainpage/mainpage.php on line 3
+[22-Jun-2019 11:43:20 Europe/Istanbul] PHP Fatal error:  Class 'AdminPage' not found in /home2/housingbritain/public_html/admin/pages/mainpage/mainpage.php on line 3
+[22-Jun-2019 12:04:45 Europe/Istanbul] PHP Fatal error:  Class 'AdminPage' not found in /home2/housingbritain/public_html/admin/pages/mainpage/mainpage.php on line 3
+[22-Jun-2019 04:06:59 America/Chicago] PHP Fatal error:  Class 'Page' not found in /home2/housingbritain/public_html/admin/Entity/AdminPage.class.php on line 3
+[22-Jun-2019 04:09:34 America/Chicago] PHP Fatal error:  Class 'Page' not found in /home2/housingbritain/public_html/admin/Entity/AdminPage.class.php on line 3
+[22-Jun-2019 04:10:30 America/Chicago] PHP Fatal error:  Cannot declare class AdminPage, because the name is already in use in /home2/housingbritain/public_html/admin/Entity/AdminPage.php on line 52
+[22-Jun-2019 04:11:58 America/Chicago] PHP Fatal error:  Cannot declare class AdminPage, because the name is already in use in /home2/housingbritain/public_html/admin/Entity/AdminPage.php on line 52
+[22-Jun-2019 04:12:50 America/Chicago] PHP Fatal error:  Cannot declare class AdminPage, because the name is already in use in /home2/housingbritain/public_html/admin/Entity/AdminPage.php on line 52
+[22-Jun-2019 12:15:39 Europe/Istanbul] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'housingb_web.access_log' doesn't exist in /home2/housingbritain/public_html/admin/kernel/database/CoreDB.php:44
+Stack trace:
+#0 /home2/housingbritain/public_html/admin/kernel/database/CoreDB.php(44): PDOStatement->execute(Array)
+#1 /home2/housingbritain/public_html/admin/kernel/database/CoreDBQueryPreparer.php(30): CoreDB->execute(Object(InsertQueryPreparer))
+#2 /home2/housingbritain/public_html/admin/kernel/database/DBObject.class.php(19): CoreDBQueryPreparer->execute()
+#3 /home2/housingbritain/public_html/admin/Entity/AccessLog.php(17): DBObject->insert()
+#4 /home2/housingbritain/public_html/admin/kernel/Page.class.php(132): AccessLog->insert()
+#5 /home2/housingbritain/public_html/admin/kernel/Page.class.php(20): Page->add_access_log()
+#6 /home2/housingbritain/public_html/admin/kernel/router/Router.php(43): Page->echoPage()
+#7 /home2/housingbritain/public_html/admin/kernel/router/Router.php(34): Router->loadPage(Object(Mainpag in /home2/housingbritain/public_html/admin/kernel/database/CoreDB.php on line 44
+[22-Jun-2019 12:16:39 Europe/Istanbul] PHP Warning:  require(views/navbar_admin.php): failed to open stream: No such file or directory in /home2/housingbritain/public_html/admin/kernel/Page.class.php on line 34
+[22-Jun-2019 12:16:39 Europe/Istanbul] PHP Warning:  require(views/navbar_admin.php): failed to open stream: No such file or directory in /home2/housingbritain/public_html/admin/kernel/Page.class.php on line 34
+[22-Jun-2019 12:16:39 Europe/Istanbul] PHP Fatal error:  require(): Failed opening required 'views/navbar_admin.php' (include_path='.:/opt/php71/lib/php') in /home2/housingbritain/public_html/admin/kernel/Page.class.php on line 34
+[22-Jun-2019 12:17:11 Europe/Istanbul] PHP Warning:  require(../views/header.php): failed to open stream: No such file or directory in /home2/housingbritain/public_html/admin/kernel/Page.class.php on line 34
+[22-Jun-2019 12:17:11 Europe/Istanbul] PHP Warning:  require(../views/header.php): failed to open stream: No such file or directory in /home2/housingbritain/public_html/admin/kernel/Page.class.php on line 34
+[22-Jun-2019 12:17:11 Europe/Istanbul] PHP Fatal error:  require(): Failed opening required '../views/header.php' (include_path='.:/opt/php71/lib/php') in /home2/housingbritain/public_html/admin/kernel/Page.class.php on line 34
+[22-Jun-2019 12:19:27 Europe/Istanbul] PHP Warning:  require(../views/header.php): failed to open stream: No such file or directory in /home2/housingbritain/public_html/admin/kernel/Page.class.php on line 34
+[22-Jun-2019 12:19:27 Europe/Istanbul] PHP Warning:  require(../views/header.php): failed to open stream: No such file or directory in /home2/housingbritain/public_html/admin/kernel/Page.class.php on line 34
+[22-Jun-2019 12:19:27 Europe/Istanbul] PHP Fatal error:  require(): Failed opening required '../views/header.php' (include_path='.:/opt/php71/lib/php') in /home2/housingbritain/public_html/admin/kernel/Page.class.php on line 34
+[22-Jun-2019 12:22:24 Europe/Istanbul] PHP Warning:  require(/home2/housingbritain/public_html/admin/kernel/../views/navbar_admin.php): failed to open stream: No such file or directory in /home2/housingbritain/public_html/admin/kernel/Page.class.php on line 34
+[22-Jun-2019 12:22:24 Europe/Istanbul] PHP Warning:  require(/home2/housingbritain/public_html/admin/kernel/../views/navbar_admin.php): failed to open stream: No such file or directory in /home2/housingbritain/public_html/admin/kernel/Page.class.php on line 34
+[22-Jun-2019 12:22:24 Europe/Istanbul] PHP Fatal error:  require(): Failed opening required '/home2/housingbritain/public_html/admin/kernel/../views/navbar_admin.php' (include_path='.:/opt/php71/lib/php') in /home2/housingbritain/public_html/admin/kernel/Page.class.php on line 34
+[22-Jun-2019 12:44:18 Europe/Istanbul] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to core_go_to() must be of the type string, null given, called in /home2/housingbritain/public_html/admin/pages/login/login.php on line 39 and defined in /home2/housingbritain/public_html/admin/core-globals.php:111
+Stack trace:
+#0 /home2/housingbritain/public_html/admin/pages/login/login.php(39): core_go_to(NULL)
+#1 /home2/housingbritain/public_html/admin/kernel/Page.class.php(20): LoginController->preprocessPage()
+#2 /home2/housingbritain/public_html/admin/kernel/router/Router.php(46): Page->echoPage()
+#3 /home2/housingbritain/public_html/admin/kernel/router/Router.php(37): Router->loadPage(Object(LoginController))
+#4 /home2/housingbritain/public_html/admin/index.php(26): Router->route()
+#5 {main}
+  thrown in /home2/housingbritain/public_html/admin/core-globals.php on line 111
+[22-Jun-2019 12:45:16 Europe/Istanbul] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to core_go_to() must be of the type string, null given, called in /home2/housingbritain/public_html/admin/pages/login/login.php on line 33 and defined in /home2/housingbritain/public_html/admin/core-globals.php:111
+Stack trace:
+#0 /home2/housingbritain/public_html/admin/pages/login/login.php(33): core_go_to(NULL)
+#1 /home2/housingbritain/public_html/admin/kernel/Page.class.php(20): LoginController->preprocessPage()
+#2 /home2/housingbritain/public_html/admin/kernel/router/Router.php(46): Page->echoPage()
+#3 /home2/housingbritain/public_html/admin/kernel/router/Router.php(37): Router->loadPage(Object(LoginController))
+#4 /home2/housingbritain/public_html/admin/index.php(26): Router->route()
+#5 {main}
+  thrown in /home2/housingbritain/public_html/admin/core-globals.php on line 111
+[22-Jun-2019 12:46:13 Europe/Istanbul] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to AjaxController::callService() must be of the type string, null given, called in /home2/housingbritain/public_html/admin/kernel/ServicePage.class.php on line 31 and defined in /home2/housingbritain/public_html/admin/pages/ajax/ajax.php:5
+Stack trace:
+#0 /home2/housingbritain/public_html/admin/kernel/ServicePage.class.php(31): AjaxController->callService(NULL)
+#1 /home2/housingbritain/public_html/admin/kernel/ServicePage.class.php(21): ServicePage->preprocessPage()
+#2 /home2/housingbritain/public_html/admin/kernel/router/Router.php(46): ServicePage->echoPage()
+#3 /home2/housingbritain/public_html/admin/kernel/router/Router.php(37): Router->loadPage(Object(AjaxController))
+#4 /home2/housingbritain/public_html/admin/index.php(26): Router->route()
+#5 {main}
+  thrown in /home2/housingbritain/public_html/admin/pages/ajax/ajax.php on line 5
+[22-Jun-2019 12:48:02 Europe/Istanbul] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to AjaxController::callService() must be of the type string, null given, called in /home2/housingbritain/public_html/admin/kernel/ServicePage.class.php on line 31 and defined in /home2/housingbritain/public_html/admin/pages/ajax/ajax.php:5
+Stack trace:
+#0 /home2/housingbritain/public_html/admin/kernel/ServicePage.class.php(31): AjaxController->callService(NULL)
+#1 /home2/housingbritain/public_html/admin/kernel/ServicePage.class.php(21): ServicePage->preprocessPage()
+#2 /home2/housingbritain/public_html/admin/kernel/router/Router.php(46): ServicePage->echoPage()
+#3 /home2/housingbritain/public_html/admin/kernel/router/Router.php(37): Router->loadPage(Object(AjaxController))
+#4 /home2/housingbritain/public_html/admin/index.php(26): Router->route()
+#5 {main}
+  thrown in /home2/housingbritain/public_html/admin/pages/ajax/ajax.php on line 5
+[22-Jun-2019 12:48:14 Europe/Istanbul] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to AjaxController::callService() must be of the type string, null given, called in /home2/housingbritain/public_html/admin/kernel/ServicePage.class.php on line 31 and defined in /home2/housingbritain/public_html/admin/pages/ajax/ajax.php:5
+Stack trace:
+#0 /home2/housingbritain/public_html/admin/kernel/ServicePage.class.php(31): AjaxController->callService(NULL)
+#1 /home2/housingbritain/public_html/admin/kernel/ServicePage.class.php(21): ServicePage->preprocessPage()
+#2 /home2/housingbritain/public_html/admin/kernel/router/Router.php(46): ServicePage->echoPage()
+#3 /home2/housingbritain/public_html/admin/kernel/router/Router.php(37): Router->loadPage(Object(AjaxController))
+#4 /home2/housingbritain/public_html/admin/index.php(26): Router->route()
+#5 {main}
+  thrown in /home2/housingbritain/public_html/admin/pages/ajax/ajax.php on line 5
+[22-Jun-2019 12:48:37 Europe/Istanbul] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to AjaxController::callService() must be of the type string, null given, called in /home2/housingbritain/public_html/admin/kernel/ServicePage.class.php on line 31 and defined in /home2/housingbritain/public_html/admin/pages/ajax/ajax.php:5
+Stack trace:
+#0 /home2/housingbritain/public_html/admin/kernel/ServicePage.class.php(31): AjaxController->callService(NULL)
+#1 /home2/housingbritain/public_html/admin/kernel/ServicePage.class.php(21): ServicePage->preprocessPage()
+#2 /home2/housingbritain/public_html/admin/kernel/router/Router.php(46): ServicePage->echoPage()
+#3 /home2/housingbritain/public_html/admin/kernel/router/Router.php(37): Router->loadPage(Object(AjaxController))
+#4 /home2/housingbritain/public_html/admin/index.php(26): Router->route()
+#5 {main}
+  thrown in /home2/housingbritain/public_html/admin/pages/ajax/ajax.php on line 5
+[22-Jun-2019 12:49:18 Europe/Istanbul] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to AjaxController::callService() must be of the type string, null given, called in /home2/housingbritain/public_html/admin/kernel/ServicePage.class.php on line 31 and defined in /home2/housingbritain/public_html/admin/pages/ajax/ajax.php:5
+Stack trace:
+#0 /home2/housingbritain/public_html/admin/kernel/ServicePage.class.php(31): AjaxController->callService(NULL)
+#1 /home2/housingbritain/public_html/admin/kernel/ServicePage.class.php(21): ServicePage->preprocessPage()
+#2 /home2/housingbritain/public_html/admin/kernel/router/Router.php(46): ServicePage->echoPage()
+#3 /home2/housingbritain/public_html/admin/kernel/router/Router.php(37): Router->loadPage(Object(AjaxController))
+#4 /home2/housingbritain/public_html/admin/index.php(26): Router->route()
+#5 {main}
+  thrown in /home2/housingbritain/public_html/admin/pages/ajax/ajax.php on line 5
+[22-Jun-2019 05:25:26 America/Chicago] PHP Parse error:  syntax error, unexpected 'if' (T_IF) in /home2/housingbritain/public_html/admin/kernel/router/Router.php on line 36
+[22-Jun-2019 13:46:36 Europe/Istanbul] PHP Fatal error:  Uncaught TypeError: Argument 2 passed to _t() must be of the type array or null, string given, called in /home2/housingbritain/public_html/admin/pages/ajax/ajax.php on line 222 and defined in /home2/housingbritain/public_html/admin/Entity/Translator.class.php:14
+Stack trace:
+#0 /home2/housingbritain/public_html/admin/pages/ajax/ajax.php(222): _t(70, 'deneme')
+#1 /home2/housingbritain/public_html/admin/pages/ajax/ajax.php(6): AjaxController->delete_user()
+#2 /home2/housingbritain/public_html/admin/kernel/ServicePage.class.php(31): AjaxController->callService('delete_user')
+#3 /home2/housingbritain/public_html/admin/kernel/ServicePage.class.php(21): ServicePage->preprocessPage()
+#4 /home2/housingbritain/public_html/admin/kernel/router/Router.php(52): ServicePage->echoPage()
+#5 /home2/housingbritain/public_html/admin/kernel/router/Router.php(43): Router->loadPage(Object(AjaxController))
+#6 /home2/housingbritain/public_html/admin/index.php(26): Router->route()
+#7 {main}
+  thrown in /home2/housingbritain/public_html/admin/Entity/Translator.class.php on line 14
+[22-Jun-2019 13:48:52 Europe/Istanbul] PHP Fatal error:  Uncaught TypeError: Argument 2 passed to _t() must be of the type array or null, string given, called in /home2/housingbritain/public_html/admin/pages/ajax/ajax.php on line 222 and defined in /home2/housingbritain/public_html/admin/Entity/Translator.class.php:14
+Stack trace:
+#0 /home2/housingbritain/public_html/admin/pages/ajax/ajax.php(222): _t(70, 'root1')
+#1 /home2/housingbritain/public_html/admin/pages/ajax/ajax.php(6): AjaxController->delete_user()
+#2 /home2/housingbritain/public_html/admin/kernel/ServicePage.class.php(31): AjaxController->callService('delete_user')
+#3 /home2/housingbritain/public_html/admin/kernel/ServicePage.class.php(21): ServicePage->preprocessPage()
+#4 /home2/housingbritain/public_html/admin/kernel/router/Router.php(52): ServicePage->echoPage()
+#5 /home2/housingbritain/public_html/admin/kernel/router/Router.php(43): Router->loadPage(Object(AjaxController))
+#6 /home2/housingbritain/public_html/admin/index.php(26): Router->route()
+#7 {main}
+  thrown in /home2/housingbritain/public_html/admin/Entity/Translator.class.php on line 14
+[22-Jun-2019 13:53:14 Europe/Istanbul] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'housingb_web.new' doesn't exist in /home2/housingbritain/public_html/admin/kernel/database/CoreDB.php:61
+Stack trace:
+#0 /home2/housingbritain/public_html/admin/kernel/database/CoreDB.php(61): PDO->query('DESCRIBE `new`')
+#1 /home2/housingbritain/public_html/admin/kernel/database/CoreDB.php(141): CoreDB->query('DESCRIBE `new`')
+#2 /home2/housingbritain/public_html/admin/kernel/database/CoreDB.php(329): db_query('DESCRIBE `new`')
+#3 /home2/housingbritain/public_html/admin/pages/table/table.php(51): get_table_description('new')
+#4 /home2/housingbritain/public_html/admin/kernel/Page.class.php(26): TableController->echoContent()
+#5 /home2/housingbritain/public_html/admin/kernel/router/Router.php(52): Page->echoPage()
+#6 /home2/housingbritain/public_html/admin/kernel/router/Router.php(43): Router->loadPage(Object(TableController))
+#7 /home2/housingbritain/public_html/admin/index.php(26): Router->route()
+#8 {main}
+  thrown in /home2/housingbritain/public_html/admin/kernel/database/CoreDB.php on line 61
+[22-Jun-2019 14:03:13 Europe/Istanbul] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to get_table_description() must be of the type string, null given, called in /home2/housingbritain/public_html/admin/pages/insert/insert_html.php on line 4 and defined in /home2/housingbritain/public_html/admin/kernel/database/CoreDB.php:328
+Stack trace:
+#0 /home2/housingbritain/public_html/admin/pages/insert/insert_html.php(4): get_table_description(NULL)
+#1 /home2/housingbritain/public_html/admin/pages/insert/insert.php(43): echo_insert_page(Object(InsertController))
+#2 /home2/housingbritain/public_html/admin/kernel/Page.class.php(26): InsertController->echoContent()
+#3 /home2/housingbritain/public_html/admin/kernel/router/Router.php(52): Page->echoPage()
+#4 /home2/housingbritain/public_html/admin/kernel/router/Router.php(43): Router->loadPage(Object(InsertController))
+#5 /home2/housingbritain/public_html/admin/index.php(26): Router->route()
+#6 {main}
+  thrown in /home2/housingbritain/public_html/admin/kernel/database/CoreDB.php on line 328
+[22-Jun-2019 15:11:37 Europe/Istanbul] PHP Warning:  include(../../includes/topbottom/navbar.php): failed to open stream: No such file or directory in /home2/housingbritain/public_html/admin/src/AdminPage.class.php on line 17
+[22-Jun-2019 15:11:37 Europe/Istanbul] PHP Warning:  include(../../includes/topbottom/navbar.php): failed to open stream: No such file or directory in /home2/housingbritain/public_html/admin/src/AdminPage.class.php on line 17
+[22-Jun-2019 15:11:37 Europe/Istanbul] PHP Warning:  include(): Failed opening '../../includes/topbottom/navbar.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home2/housingbritain/public_html/admin/src/AdminPage.class.php on line 17
+[22-Jun-2019 15:11:59 Europe/Istanbul] PHP Warning:  include(/home2/housingbritain/public_html/admin/src../../includes/topbottom/navbar.php): failed to open stream: No such file or directory in /home2/housingbritain/public_html/admin/src/AdminPage.class.php on line 17
+[22-Jun-2019 15:11:59 Europe/Istanbul] PHP Warning:  include(/home2/housingbritain/public_html/admin/src../../includes/topbottom/navbar.php): failed to open stream: No such file or directory in /home2/housingbritain/public_html/admin/src/AdminPage.class.php on line 17
+[22-Jun-2019 15:11:59 Europe/Istanbul] PHP Warning:  include(): Failed opening '/home2/housingbritain/public_html/admin/src../../includes/topbottom/navbar.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home2/housingbritain/public_html/admin/src/AdminPage.class.php on line 17
+[22-Jun-2019 15:12:15 Europe/Istanbul] PHP Warning:  include(/home2/housingbritain/public_html/admin/src/../../includes/topbottom/navbar.php): failed to open stream: No such file or directory in /home2/housingbritain/public_html/admin/src/AdminPage.class.php on line 17
+[22-Jun-2019 15:12:15 Europe/Istanbul] PHP Warning:  include(/home2/housingbritain/public_html/admin/src/../../includes/topbottom/navbar.php): failed to open stream: No such file or directory in /home2/housingbritain/public_html/admin/src/AdminPage.class.php on line 17
+[22-Jun-2019 15:12:15 Europe/Istanbul] PHP Warning:  include(): Failed opening '/home2/housingbritain/public_html/admin/src/../../includes/topbottom/navbar.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home2/housingbritain/public_html/admin/src/AdminPage.class.php on line 17
+[22-Jun-2019 16:07:40 Europe/Istanbul] PHP Warning:  filemtime(): stat failed for ../css/bootstrap.min.css in /home2/housingbritain/public_html/admin/views/header.php on line 12
+[22-Jun-2019 16:07:49 Europe/Istanbul] PHP Warning:  filemtime(): stat failed for ../css/bootstrap.min.css in /home2/housingbritain/public_html/admin/views/header.php on line 12
+[22-Jun-2019 17:37:53 Europe/Istanbul] PHP Warning:  array_push() expects parameter 1 to be array, null given in /home2/housingbritain/public_html/admin/kernel/Page.class.php on line 66
+[22-Jun-2019 17:39:34 Europe/Istanbul] PHP Warning:  array_push() expects parameter 1 to be array, null given in /home2/housingbritain/public_html/admin/kernel/Page.class.php on line 66
+[22-Jun-2019 17:41:55 Europe/Istanbul] PHP Warning:  array_push() expects parameter 1 to be array, null given in /home2/housingbritain/public_html/admin/kernel/Page.class.php on line 66
+[24-Jun-2019 17:26:22 Europe/Istanbul] PHP Warning:  include(/home2/housingbritain/public_html/admin/pages/login../../includes/topbottom/footer.php): failed to open stream: No such file or directory in /home2/housingbritain/public_html/admin/pages/login/login.php on line 47
+[24-Jun-2019 17:26:22 Europe/Istanbul] PHP Warning:  include(/home2/housingbritain/public_html/admin/pages/login../../includes/topbottom/footer.php): failed to open stream: No such file or directory in /home2/housingbritain/public_html/admin/pages/login/login.php on line 47
+[24-Jun-2019 17:26:22 Europe/Istanbul] PHP Warning:  include(): Failed opening '/home2/housingbritain/public_html/admin/pages/login../../includes/topbottom/footer.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home2/housingbritain/public_html/admin/pages/login/login.php on line 47
+[24-Jun-2019 17:26:43 Europe/Istanbul] PHP Warning:  include(/home2/housingbritain/public_html/admin/pages/login/../../includes/topbottom/footer.php): failed to open stream: No such file or directory in /home2/housingbritain/public_html/admin/pages/login/login.php on line 47
+[24-Jun-2019 17:26:43 Europe/Istanbul] PHP Warning:  include(/home2/housingbritain/public_html/admin/pages/login/../../includes/topbottom/footer.php): failed to open stream: No such file or directory in /home2/housingbritain/public_html/admin/pages/login/login.php on line 47
+[24-Jun-2019 17:26:43 Europe/Istanbul] PHP Warning:  include(): Failed opening '/home2/housingbritain/public_html/admin/pages/login/../../includes/topbottom/footer.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home2/housingbritain/public_html/admin/pages/login/login.php on line 47
+[24-Jun-2019 17:27:30 Europe/Istanbul] PHP Warning:  include(includes/modals/terms-conditions.php): failed to open stream: No such file or directory in /home2/housingbritain/public_html/includes/topbottom/footer.php on line 5
+[24-Jun-2019 17:27:30 Europe/Istanbul] PHP Warning:  include(includes/modals/terms-conditions.php): failed to open stream: No such file or directory in /home2/housingbritain/public_html/includes/topbottom/footer.php on line 5
+[24-Jun-2019 17:27:30 Europe/Istanbul] PHP Warning:  include(): Failed opening 'includes/modals/terms-conditions.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home2/housingbritain/public_html/includes/topbottom/footer.php on line 5
+[24-Jun-2019 17:27:30 Europe/Istanbul] PHP Warning:  include(includes/modals/privacy.php): failed to open stream: No such file or directory in /home2/housingbritain/public_html/includes/topbottom/footer.php on line 11
+[24-Jun-2019 17:27:30 Europe/Istanbul] PHP Warning:  include(includes/modals/privacy.php): failed to open stream: No such file or directory in /home2/housingbritain/public_html/includes/topbottom/footer.php on line 11
+[24-Jun-2019 17:27:30 Europe/Istanbul] PHP Warning:  include(): Failed opening 'includes/modals/privacy.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home2/housingbritain/public_html/includes/topbottom/footer.php on line 11
+[24-Jun-2019 17:29:25 Europe/Istanbul] PHP Warning:  include(includes/modals/terms-conditions.php): failed to open stream: No such file or directory in /home2/housingbritain/public_html/includes/topbottom/footer.php on line 5
+[24-Jun-2019 17:29:25 Europe/Istanbul] PHP Warning:  include(includes/modals/terms-conditions.php): failed to open stream: No such file or directory in /home2/housingbritain/public_html/includes/topbottom/footer.php on line 5
+[24-Jun-2019 17:29:25 Europe/Istanbul] PHP Warning:  include(): Failed opening 'includes/modals/terms-conditions.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home2/housingbritain/public_html/includes/topbottom/footer.php on line 5
+[24-Jun-2019 17:29:25 Europe/Istanbul] PHP Warning:  include(includes/modals/privacy.php): failed to open stream: No such file or directory in /home2/housingbritain/public_html/includes/topbottom/footer.php on line 11
+[24-Jun-2019 17:29:25 Europe/Istanbul] PHP Warning:  include(includes/modals/privacy.php): failed to open stream: No such file or directory in /home2/housingbritain/public_html/includes/topbottom/footer.php on line 11
+[24-Jun-2019 17:29:25 Europe/Istanbul] PHP Warning:  include(): Failed opening 'includes/modals/privacy.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home2/housingbritain/public_html/includes/topbottom/footer.php on line 11
+[24-Jun-2019 17:29:25 Europe/Istanbul] PHP Parse error:  syntax error, unexpected '<', expecting end of file in /home2/housingbritain/public_html/admin/views/footer.php on line 3
+[24-Jun-2019 17:29:36 Europe/Istanbul] PHP Parse error:  syntax error, unexpected '<', expecting end of file in /home2/housingbritain/public_html/admin/views/footer.php on line 3
+[24-Jun-2019 18:17:37 Europe/Istanbul] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'housingb_web.deneme' doesn't exist in /home2/housingbritain/public_html/admin/kernel/database/CoreDB.php:61
+Stack trace:
+#0 /home2/housingbritain/public_html/admin/kernel/database/CoreDB.php(61): PDO->query('DESCRIBE `denem...')
+#1 /home2/housingbritain/public_html/admin/kernel/database/CoreDB.php(141): CoreDB->query('DESCRIBE `denem...')
+#2 /home2/housingbritain/public_html/admin/kernel/database/CoreDB.php(329): db_query('DESCRIBE `denem...')
+#3 /home2/housingbritain/public_html/admin/pages/table/table.php(51): get_table_description('deneme')
+#4 /home2/housingbritain/public_html/admin/kernel/Page.class.php(26): TableController->echoContent()
+#5 /home2/housingbritain/public_html/admin/kernel/router/Router.php(54): Page->echoPage()
+#6 /home2/housingbritain/public_html/admin/kernel/router/Router.php(45): Router->loadPage(Object(TableController))
+#7 /home2/housingbritain/public_html/admin/index.php(26): Router->route()
+#8 {main}
+   in /home2/housingbritain/public_html/admin/kernel/database/CoreDB.php on line 61
+[24-Jun-2019 18:18:35 Europe/Istanbul] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/housingbritain/public_html/admin/kernel/Page.class.php:21) in /home2/housingbritain/public_html/admin/core-globals.php on line 112
+[24-Jun-2019 18:21:07 Europe/Istanbul] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/housingbritain/public_html/admin/kernel/Page.class.php:21) in /home2/housingbritain/public_html/admin/core-globals.php on line 112
+[24-Jun-2019 18:23:31 Europe/Istanbul] PHP Warning:  require(pages/views/field_definition.php): failed to open stream: No such file or directory in /home2/housingbritain/public_html/admin/pages/ajax/ajax.php on line 99
+[24-Jun-2019 18:23:31 Europe/Istanbul] PHP Warning:  require(pages/views/field_definition.php): failed to open stream: No such file or directory in /home2/housingbritain/public_html/admin/pages/ajax/ajax.php on line 99
+[24-Jun-2019 18:23:31 Europe/Istanbul] PHP Fatal error:  require(): Failed opening required 'pages/views/field_definition.php' (include_path='.:/opt/php71/lib/php') in /home2/housingbritain/public_html/admin/pages/ajax/ajax.php on line 99
