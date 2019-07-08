@@ -14,7 +14,18 @@ class DBObject{
             object_map($this, $result);
         }
     }
-    
+
+    public static function get(array $filter, string $table){
+        $condition_sentence = "";
+        $params = [];
+        foreach($filter as $key => $value){
+            $condition_sentence.= (!$condition_sentence ? "" : "AND")." `$key` = :$key";
+            $params[":$key"] = $value;
+        }
+        return db_select($table)->condition($condition_sentence)->params($params)->execute()
+        ->fetchObject(get_called_class(), [$table]);
+    }
+
     public function insert(){
         $statement = db_insert($this->table, convert_object_to_array($this))->execute();
         $this->ID = CoreDB::getInstance()->lastInsertId();

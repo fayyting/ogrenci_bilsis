@@ -1,0 +1,7 @@
+.form-control{
+    min-width: 50px;
+}
+td{
+    vertical-align: 0%;
+    text-align: center !important;
+}
