@@ -154,7 +154,7 @@ $data_types = [
         ];
       },
       "input_field_callback" => function($object, $desc){
-      echo "<input class='form-control' type='number' name='{$desc[0]}' value='".($object ? get_field_from_object($object, $desc[0]) : "")."'/>";
+      return "<input class='form-control' type='number' name='{$desc[0]}' value='".($object ? get_field_from_object($object, $desc[0]) : "")."'/>";
       }
       ],
   "DOUBLE" => [
@@ -165,7 +165,7 @@ $data_types = [
         ];
       },
       "input_field_callback" => function($object, $desc){
-      echo "<input class='form-control' type='number' name='{$desc[0]}' value='".($object ? get_field_from_object($object, $desc[0]) : "")."'/>";
+      return "<input class='form-control' type='number' name='{$desc[0]}' value='".($object ? get_field_from_object($object, $desc[0]) : "")."'/>";
       }
       ],
   "VARCHAR" => [
@@ -176,7 +176,7 @@ $data_types = [
         ];
       },
       "input_field_callback" => function($object, $desc){
-      echo "<input class='form-control' type='text' name='{$desc[0]}' value='".($object ? get_field_from_object($object, $desc[0]) : "")."'/>";
+      return "<input class='form-control' type='text' name='{$desc[0]}' value='".($object ? get_field_from_object($object, $desc[0]) : "")."'/>";
       }
       ],
   "TEXT" => [
@@ -187,7 +187,7 @@ $data_types = [
         ];
       },
       "input_field_callback" => function($object, $desc){
-      echo "<textarea type='text' class='form-control' name='{$desc[0]}'>".($object ? get_field_from_object($object, $desc[0]) : "")."</textarea>";
+      return "<textarea type='text' class='form-control' name='{$desc[0]}'>".($object ? get_field_from_object($object, $desc[0]) : "")."</textarea>";
       }
       ],
   "LONGTEXT" => [
@@ -198,7 +198,7 @@ $data_types = [
         ];
       },
       "input_field_callback" => function($object, $desc){
-          echo "<textarea class='summernote' name='{$desc[0]}'>".($object ? htmlspecialchars_decode(get_field_from_object($object, $desc[0])) : "")."</textarea>";
+          return "<textarea class='summernote' name='{$desc[0]}'>".($object ? htmlspecialchars_decode(get_field_from_object($object, $desc[0])) : "")."</textarea>";
       }
       ],
   "DATE" => [
@@ -220,7 +220,7 @@ $data_types = [
         ];
       },
       "input_field_callback" => function($object, $desc){
-      echo "<input type='text' value='".($object ? get_field_from_object($object, $desc[0]) : get_current_date() )."' class='form-control datetimeinput' name='{$desc[0]}'/>";
+      return "<input type='text' value='".($object ? get_field_from_object($object, $desc[0]) : get_current_date() )."' class='form-control datetimeinput' name='{$desc[0]}'/>";
       }
       ],
   "TIME" => [
@@ -231,7 +231,7 @@ $data_types = [
         ];
       },
       "input_field_callback" => function($object, $desc){
-      echo "<input type='text' value='".($object ? get_field_from_object($object, $desc[0]) : get_current_date() )."' class='form-control datetimeinput' name='{$desc[0]}'/>";
+      return "<input type='text' value='".($object ? get_field_from_object($object, $desc[0]) : get_current_date() )."' class='form-control datetimeinput' name='{$desc[0]}'/>";
       }
       ],
   "TINYTEXT" => [
@@ -243,9 +243,9 @@ $data_types = [
       },
       "input_field_callback" => function($object, $desc){
         $file_name = $object ? get_field_from_object($object, $desc[0]) : "";
-        echo $file_name ? "<a class='file' href='".BASE_URL."/files/uploaded/{$object->table}/{$desc[0]}/{$file_name}' target='_blank'>$file_name</a>"
+        $output = $file_name ? "<a class='file' href='".BASE_URL."/files/uploaded/{$object->table}/{$desc[0]}/{$file_name}' target='_blank'>$file_name</a>"
                 . "<input value='$file_name' name='$desc[0]' style='display:none;'>" : "";
-        echo_file_input($desc[0], $file_name);
+        return $output.get_file_input($desc[0], $file_name);
       }
       ],
   "MUL" => [
@@ -259,17 +259,14 @@ $data_types = [
         $description = get_foreign_key_description($table, $desc[0])->fetch(PDO::FETCH_NUM);
         $keys = db_select($description[0])->select("", [$description[1]])->orderBy("ID")->execute()->fetchAll(PDO::FETCH_NUM);
         $entry = db_select($description[0])->orderBy("ID")->execute()->fetchAll(PDO::FETCH_NUM);
-        $length = count($keys); ?>
-        <select class="form-control selectpicker" data-live-search="true" name="<?php echo $desc[0];?>">
-            <?php
+        $length = count($keys);
+        $output = '<select class="form-control selectpicker" data-live-search="true" name="<?php echo $desc[0];?>">';
             $selected_field = $object ? get_field_from_object($object, $desc[0]) : "";
             for($i = 0; $i< $length; $i++){
-                ?> <option value="<?php echo $keys[$i][0];?>" <?php echo $selected_field == $keys[$i][0] ? "selected" : ""; ?>><?php echo $entry[$i][0]." ".$entry[$i][1];?></option>
-          <?php
+                $output.='<option value="'.$keys[$i][0].'" '.($selected_field == $keys[$i][0] ? "selected" : "").'>'.$entry[$i][0]." ".$entry[$i][1].'</option>';
             }
-          ?>
-        </select>
-        <?php
+        $output.="</select>";
+        return $output;
       }
       ]
 ];
