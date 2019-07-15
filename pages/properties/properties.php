@@ -6,6 +6,11 @@ class PropertiesController extends AdminPage {
     public $table_data;
     public $operation;
 
+    public function check_access(): bool
+    {
+        return true;
+    }
+
     protected function preprocessPage()
     {
         //$lang = Property::get(["adress" => "Logout"]);
