@@ -21,7 +21,7 @@ class SelectQueryPreparer extends CoreDBQueryPreparer{
         ));
     }
 
-    public function getQuery() {
+    public function getQuery() : string {
         return "SELECT ".$this->distinct.
                 $this->get_fields()." FROM ".
                 $this->getTables()." ".
@@ -71,7 +71,7 @@ class SelectQueryPreparer extends CoreDBQueryPreparer{
         return $this;
     }
     
-    public function select_with_function($table, array $functions){
+    public function select_with_function(array $functions){
         if(!$this->fields) {
             $this->fields = array();
         }

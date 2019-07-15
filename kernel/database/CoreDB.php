@@ -40,8 +40,12 @@ class CoreDB {
      */
     public function execute(CoreDBQueryPreparer $query){
         try {
+            //$start_time = time();
             $statement = $this->connection->prepare($query->getQuery());
             $statement->execute($query->getParams());
+            /*if(! $query instanceof InsertQueryPreparer){ //Open this lines for only query logging
+                Watchdog::log($query->getQuery(), json_encode($query->getParams())." ".(time() - $start_time)."sn" );
+            }*/
             return $statement;    
         } catch (PDOException $ex) {
             if($this->transactionSet){
@@ -322,10 +326,10 @@ function get_information_scheme(){
  * @param string $table
  * @return \strıng
  */
-function get_table_description(string $table) {
+function get_table_description(string $table, bool $mul_important = true) {
     $descriptions = db_query("DESCRIBE `$table`")->fetchAll(PDO::FETCH_NUM);
     foreach ($descriptions as $index => $desc){
-        if($desc[3] == "UNI" && is_unique_foreign_key($table, $desc[0])){
+        if($mul_important && $desc[3] == "UNI" && is_unique_foreign_key($table, $desc[0])){
             $descriptions[$index][3] = "MUL-UNI";
         }
     }
