@@ -3,6 +3,7 @@
 class PropertiesController extends AdminPage {
     
     public $table_headers;
+    public $table_data;
     public $operation;
 
     protected function preprocessPage()
@@ -18,6 +19,7 @@ class PropertiesController extends AdminPage {
             }
         }
         $this->add_css_files("pages/properties/css/properties.css");
+        $this->add_js_files("pages/properties/js/properties.js");
     }
 
     protected function echoContent() {
@@ -31,11 +33,12 @@ class PropertiesController extends AdminPage {
                 "MR", 
                 "IR", 
                 "Bedrooms", 
-                "Type".get_supported_data_types()["MUL"]["input_field_callback"](null, ["type", "int(11)", "YES", "MUL", NULL, ""], Property::TABLE), 
+                "Type".prepare_select_box_from_query_result(db_select("property_type_a")->execute(), "type", "-- Type --", intval($_GET["type"]) ), 
                 "Floor", 
-                "Status".get_supported_data_types()["MUL"]["input_field_callback"](null, ["status", "int(11)", "YES", "MUL", NULL, ""], Property::TABLE), 
-                "Scheme".get_supported_data_types()["MUL"]["input_field_callback"](null, ["scheme", "int(11)", "YES", "MUL", NULL, ""], Property::TABLE), 
-                "Landlord".get_supported_data_types()["MUL"]["input_field_callback"](null, ["landlord", "int(11)", "YES", "MUL", NULL, ""], Property::TABLE),
+                "Status".prepare_select_box_from_query_result(db_select("property_statuses")->execute(), "status","-- Status --", intval($_GET["status"])), 
+                "Scheme".prepare_select_box_from_query_result(db_select("property_scheme_a")->execute(), "scheme","-- Scheme --", intval($_GET["scheme"])), 
+                "Landlord".prepare_select_box_from_query_result(db_select(USERS)->execute(), "user","-- Landlord --", intval($_GET["user"])), 
+                "Surname",
                 "Messages"];
                 break;
             case "new":
@@ -45,11 +48,12 @@ class PropertiesController extends AdminPage {
                 "PSF", 
                 "PCL", 
                 "Bedrooms", 
-                "Type".get_supported_data_types()["MUL"]["input_field_callback"](null, ["type", "int(11)", "YES", "MUL", NULL, ""], Property::TABLE), 
+                "Type".prepare_select_box_from_query_result(db_select("property_type_a")->execute(), "type", "-- Type --", intval($_GET["type"]) ), 
                 "Floor", 
-                "Status".get_supported_data_types()["MUL"]["input_field_callback"](null, ["status", "int(11)", "YES", "MUL", NULL, ""], Property::TABLE), 
-                "Scheme".get_supported_data_types()["MUL"]["input_field_callback"](null, ["scheme", "int(11)", "YES", "MUL", NULL, ""], Property::TABLE), 
-                "Landlord".get_supported_data_types()["MUL"]["input_field_callback"](null, ["landlord", "int(11)", "YES", "MUL", NULL, ""], Property::TABLE), 
+                "Status".prepare_select_box_from_query_result(db_select("property_statuses")->execute(), "status","-- Status --", intval($_GET["status"])), 
+                "Scheme".prepare_select_box_from_query_result(db_select("property_scheme_a")->execute(), "scheme","-- Scheme --", intval($_GET["scheme"])), 
+                "Landlord".prepare_select_box_from_query_result(db_select(USERS)->execute(), "user","-- Landlord --", intval($_GET["user"])), 
+                "Surname",
                 "Send Active"];
                 break;
             case "archived":
@@ -59,15 +63,17 @@ class PropertiesController extends AdminPage {
                 "MR", 
                 "IR", 
                 "Bedrooms", 
-                "Type".get_supported_data_types()["MUL"]["input_field_callback"](null, ["type", "int(11)", "YES", "MUL", NULL, ""], Property::TABLE), 
+                "Type".prepare_select_box_from_query_result(db_select("property_type_a")->execute(), "type", "-- Type --", intval($_GET["type"]) ), 
                 "Floor", 
-                "Status".get_supported_data_types()["MUL"]["input_field_callback"](null, ["status", "int(11)", "YES", "MUL", NULL, ""], Property::TABLE), 
-                "Scheme".get_supported_data_types()["MUL"]["input_field_callback"](null, ["scheme", "int(11)", "YES", "MUL", NULL, ""], Property::TABLE), 
-                "Landlord".get_supported_data_types()["MUL"]["input_field_callback"](null, ["landlord", "int(11)", "YES", "MUL", NULL, ""], Property::TABLE), 
+                "Status".prepare_select_box_from_query_result(db_select("property_statuses")->execute(), "status","-- Status --", intval($_GET["status"])), 
+                "Scheme".prepare_select_box_from_query_result(db_select("property_scheme_a")->execute(), "scheme","-- Scheme --", intval($_GET["scheme"])), 
+                "Landlord".prepare_select_box_from_query_result(db_select(USERS)->execute(), "user","-- Landlord --", intval($_GET["user"])), 
+                "Surname",
                 "Send to New"];
                 break;
         }
-        echo_properties_page($this, Property::getAll());
+        $this->table_data = Property::getTableDataByFilter($this->operation);
+        echo_properties_page($this);
     }
 
 }

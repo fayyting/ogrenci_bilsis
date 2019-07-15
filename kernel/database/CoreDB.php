@@ -264,10 +264,10 @@ $data_types = [
         $keys = db_select($description[0])->select("", [$description[1]])->orderBy("ID")->execute()->fetchAll(PDO::FETCH_NUM);
         $entry = db_select($description[0])->orderBy("ID")->execute()->fetchAll(PDO::FETCH_NUM);
         $length = count($keys);
-        $output = '<select class="form-control selectpicker" data-live-search="true" name="<?php echo $desc[0];?>">';
+        $output = '<select class="form-control selectpicker" data-live-search="true" name="'.$desc[0].'">';
             $selected_field = $object ? get_field_from_object($object, $desc[0]) : "";
             for($i = 0; $i< $length; $i++){
-                $output.='<option value="'.$keys[$i][0].'" '.($selected_field == $keys[$i][0] ? "selected" : "").'>'.$entry[$i][0]." ".$entry[$i][1].'</option>';
+                $output.='<option value="'.$keys[$i][0].'" '.($selected_field == $keys[$i][0] ? "selected" : "").'>'.$entry[$i][1].'</option>';
             }
         $output.="</select>";
         return $output;

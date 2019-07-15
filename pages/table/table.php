@@ -61,7 +61,7 @@ class TableController extends AdminPage{
             foreach ($select["skeleton"] as $column){
                 if( in_array($column[1], ["longtext", "text"]) ){
                     $function = "CONCAT( SUBSTRING(`{$column[0]}`, 1, ".self::TEXT_SIZE_LIMIT."), IF(LENGTH(`{$column[0]}`)> ".self::TEXT_SIZE_LIMIT.", ' ...', '') ) AS `{$column[0]}` ";
-                    $query->select_with_function($table, [$function]);;
+                    $query->select_with_function([$function]);
                 }else{
                     $query->select($table, [$column[0]]);
                 }

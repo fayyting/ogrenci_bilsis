@@ -157,3 +157,24 @@ function get_csrf(string $form_build_id, string $form_id) {
         return $value;
     }
 }
+
+function prepare_select_box_from_query_result(PDOStatement $result, string $name, $null_element = NULL, $selected_value = "" ,array $classes = []){
+    $result_array = $result->fetchAll(PDO::FETCH_NUM);
+    $select_array = [];
+    foreach ($result_array as $row) {
+        $select_array[$row[0]] = $row[1];
+    }
+    return prepare_select_box($select_array, $name, $null_element, $selected_value ,$classes);
+}
+
+
+function prepare_select_box(array $elements, string $name, $null_element = NULL, $selected_value ,array $classes = []){
+    $out = "<select name='$name' class='selectpicker form-control".implode("",$classes)."'>".
+    ($null_element ? "<option value='0'>$null_element</option>" : "");
+
+    foreach($elements as $key => $value){
+        $out.="<option value='$key' ".($key == $selected_value ? "selected" : "").">$value</option>";
+    }
+    $out.="</select>";
+    return $out;
+}

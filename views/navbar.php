@@ -18,6 +18,12 @@
             <a href="#"><span class="glyphicon glyphicon-home"></span> Head Office</a>
             <a href="#" id="logout"><span class="glyphicon glyphicon-qrcode"></span> HO</a>
         </li>
+        <?php if(get_current_core_user()->isRoot()) { ?>
+          <li> 
+            <a href="<?php echo BASE_URL."/table"; ?>"><span class="glyphicon glyphicon-list"></span> <?php echo _t(1); ?></a>
+            <a href="<?php echo BASE_URL."/manage"; ?>" id="logout"><span class="glyphicon glyphicon-cog"></span> <?php echo _t(2); ?></a>
+          </li>
+        <?php } ?>
       </ul>
       <ul class="nav navbar-nav navbar-right">
           <li>
