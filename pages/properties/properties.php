@@ -8,7 +8,7 @@ class PropertiesController extends AdminPage {
 
     public function check_access(): bool
     {
-        return true;
+        return get_current_core_user()->isLoggedIn();
     }
 
     protected function preprocessPage()

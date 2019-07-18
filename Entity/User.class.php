@@ -74,6 +74,10 @@ class User extends DBObject{
         return !$user ? TRUE : self::getUserByEmail($this->EMAIL)->ID === $this->ID;
     }
 
+
+    public function validatePassword(string $password){
+        return $this->PASSWORD == hash( "SHA256", $password);
+    }
     /**
      * Validates password for strength
      * Uppercase, lowercase, number and punctiation charachters must included.
@@ -148,6 +152,9 @@ class User extends DBObject{
             $jwt = new JWT();
             $jwt->setPayload($current_user);
             setcookie("session-token", $jwt->createToken(), strtotime("tomorrow"));
+            setcookie("remember-me", true, strtotime("1 year later"));
+        }else{
+            setcookie("remember-me", false, strtotime("1 year later"));
         }
         Watchdog::log("login", $user->USERNAME);
         

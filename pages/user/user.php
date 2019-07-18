@@ -6,6 +6,7 @@ class UserController extends AdminPage{
     public $excluded_user_roles;
     public $operation;
     public $form_build_id;
+    public $original_password_check;
     
     public function check_access() : bool {
         return get_current_core_user()->isLoggedIn();
@@ -25,6 +26,7 @@ class UserController extends AdminPage{
         } else {
             $this->user = new User();
         }
+        $this->original_password_check = get_current_core_user()->isRoot() ? (get_current_core_user()->ID == $this->user->ID ? true : false ) : true;
         if(isset($_POST["save"]) || isset($_POST["change_password"])){
             try {
                 $username = get_csrf($_POST["form_build_id"], "user_edit_form");
@@ -64,7 +66,7 @@ class UserController extends AdminPage{
                     $password = $_POST["password"];
                     if ($password["PASSWORD"] != $password["PASSWORD2"] || 
                         !User::validatePasswordStrength($password["PASSWORD"]) || 
-                        $this->user->PASSWORD != hash( "SHA256", $password["ORIGINAL_PASSWORD"]) ) {
+                        $this->original_password_check) {
 
                         create_warning_message(_t(46));
                         create_warning_message(_t(47), "alert-warning" );

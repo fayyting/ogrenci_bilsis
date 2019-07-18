@@ -13,7 +13,7 @@ function echo_login_page(LoginController $controller) { ?>
                 <input type="submit" class="btn btn-lg btn-default btn-block" value="<?php echo _t(21); ?>" name="login">
                 <div class="row login-actions">
                     <label class="pull-left">
-                        <input type="checkbox" value="remember-me" name="remember-me">
+                        <input type="checkbox" value="remember-me" name="remember-me" <?php if(isset($_COOKIE["remember-me"]) && $_COOKIE["remember-me"]==true ) echo "checked"; ?>>
                         <?php echo _t(113); ?>
                     </label>
                     <label class="pull-right">

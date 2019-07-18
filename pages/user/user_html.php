@@ -79,15 +79,16 @@
                         <h4><?php echo _t(38); ?></h4>
                     </div>
                 </div>
-                <div class="row content">
-                    <div class="col-sm-6 text-left">
-                        <?php echo _t(39); ?>
+                <?php if($controller->original_password_check) { ?>
+                    <div class="row content">
+                        <div class="col-sm-6 text-left">
+                            <?php echo _t(39); ?>
+                        </div>
+                        <div class="col-sm-6 text-left">
+                            <input class="form-control" type="password" name="password[ORIGINAL_PASSWORD]"/>
+                        </div>
                     </div>
-
-                    <div class="col-sm-6 text-left">
-                        <input class="form-control" type="password" name="password[ORIGINAL_PASSWORD]"/>
-                    </div>
-                </div>
+                <?php } ?>
                 <div class="row content">
                     <div class="col-sm-6 text-left">
                         <?php echo _t(22); ?>

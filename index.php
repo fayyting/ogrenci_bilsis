@@ -28,7 +28,7 @@ if(isset($_SESSION[BASE_URL."-UID"])){
     $current_user = User::getUserByUsername("guest");
 }
 
-$uri = trim(str_replace(SITE_ROOT, "", $_SERVER["REQUEST_URI"]),"/");
+$uri = trim(str_replace(BASE_URL, "", HTTP."://".$_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"]),"/");
 $uri = explode("/", preg_replace("/\?.*/", "", $uri));
 
 $router = new Router($uri);
