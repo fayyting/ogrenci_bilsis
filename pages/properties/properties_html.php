@@ -7,10 +7,18 @@ function echo_properties_page(PropertiesController $controller){ ?>
             <li class="<?php echo $controller->operation == "new" ? "active" : ""; ?>"><a href="<?php echo BASE_URL."/properties/new"; ?>">New</a></li>
             <li class="<?php echo $controller->operation == "archived" ? "active" : ""; ?>"><a href="<?php echo BASE_URL."/properties/archived"; ?>">Archived</a></li>
         </ul>
-        <form method='GET' id="filter_form">
-            <?php $controller->printMessages();
-            echo_table($controller->table_headers, $controller->table_data); ?>
-        </form>
+        <div class="row" id="main_content">
+            <form method='GET' id="filter_form">
+                <?php $controller->printMessages();
+                echo_table($controller->table_headers, $controller->table_data, "", "", true); ?>
+            </form>
+        </div>
+        <div class="row">
+        <?php $controller->import_view("pagination");
+            unset($_GET["page"]);
+            echo_pagination_view("?".http_build_query($_GET), 1, $controller->total_count);
+            ?>
+        </div>
     </div>
 
 <?php }

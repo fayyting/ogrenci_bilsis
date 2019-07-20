@@ -5,6 +5,8 @@ class PropertiesController extends AdminPage {
     public $table_headers;
     public $table_data;
     public $operation;
+    public $total_count;
+    public $active_page;
 
     public function check_access(): bool
     {
@@ -13,7 +15,6 @@ class PropertiesController extends AdminPage {
 
     protected function preprocessPage()
     {
-        //$lang = Property::get(["adress" => "Logout"]);
         if(count($this->arguments) == 0){
             $this->operation = "active";
         }else{
@@ -37,14 +38,14 @@ class PropertiesController extends AdminPage {
                 "Address", 
                 "MR", 
                 "IR", 
-                "Bedrooms", 
+                "<img src='".(BASE_URL."/assets/bed.jpg")."' />", 
                 "Type".prepare_select_box_from_query_result(db_select("property_type_a")->execute(), "type", "-- Type --", intval($_GET["type"]) ), 
                 "Floor", 
                 "Status".prepare_select_box_from_query_result(db_select("property_statuses")->execute(), "status","-- Status --", intval($_GET["status"])), 
                 "Scheme".prepare_select_box_from_query_result(db_select("property_scheme_a")->execute(), "scheme","-- Scheme --", intval($_GET["scheme"])), 
-                "Landlord".prepare_select_box_from_query_result(db_select(USERS)->execute(), "user","-- Landlord --", intval($_GET["user"])), 
+                "<span class='glyphicon glyphicon-user'></span> Landlord".prepare_select_box_from_query_result(db_select(USERS)->execute(), "user","-- Landlord --", intval($_GET["user"])), 
                 "Surname",
-                "Messages"];
+                "<img src='".(BASE_URL."/assets/message.png")."' />" ];
                 break;
             case "new":
             $this->table_headers =  [
@@ -52,14 +53,14 @@ class PropertiesController extends AdminPage {
                 "Address", 
                 "PSF", 
                 "PCL", 
-                "Bedrooms", 
+                "<img src='".(BASE_URL."/assets/bed.jpg")."' />", 
                 "Type".prepare_select_box_from_query_result(db_select("property_type_a")->execute(), "type", "-- Type --", intval($_GET["type"]) ), 
                 "Floor", 
                 "Status".prepare_select_box_from_query_result(db_select("property_statuses")->execute(), "status","-- Status --", intval($_GET["status"])), 
                 "Scheme".prepare_select_box_from_query_result(db_select("property_scheme_a")->execute(), "scheme","-- Scheme --", intval($_GET["scheme"])), 
-                "Landlord".prepare_select_box_from_query_result(db_select(USERS)->execute(), "user","-- Landlord --", intval($_GET["user"])), 
+                "<span class='glyphicon glyphicon-user'></span> Landlord".prepare_select_box_from_query_result(db_select(USERS)->execute(), "user","-- Landlord --", intval($_GET["user"])), 
                 "Surname",
-                "Send Active"];
+                "<img src='".(BASE_URL."/assets/send_to_active.png")."' />"];
                 break;
             case "archived":
             $this->table_headers =  [
@@ -67,17 +68,18 @@ class PropertiesController extends AdminPage {
                 "Address", 
                 "MR", 
                 "IR", 
-                "Bedrooms", 
+                "<img src='".(BASE_URL."/assets/bed.jpg")."' />", 
                 "Type".prepare_select_box_from_query_result(db_select("property_type_a")->execute(), "type", "-- Type --", intval($_GET["type"]) ), 
                 "Floor", 
                 "Status".prepare_select_box_from_query_result(db_select("property_statuses")->execute(), "status","-- Status --", intval($_GET["status"])), 
                 "Scheme".prepare_select_box_from_query_result(db_select("property_scheme_a")->execute(), "scheme","-- Scheme --", intval($_GET["scheme"])), 
-                "Landlord".prepare_select_box_from_query_result(db_select(USERS)->execute(), "user","-- Landlord --", intval($_GET["user"])), 
+                "<span class='glyphicon glyphicon-user'></span> Landlord".prepare_select_box_from_query_result(db_select(USERS)->execute(), "user","-- Landlord --", intval($_GET["user"])), 
                 "Surname",
                 "Send to New"];
                 break;
         }
-        $this->table_data = Property::getTableDataByFilter($this->operation);
+        $this->active_page = isset($_GET["page"]) && $_GET["page"] > 0 ? intval($_GET["page"]) : 1;
+        list($this->table_data, $this->total_count) = Property::getTableDataByFilter($this->operation, $this->active_page);
         echo_properties_page($this);
     }
 

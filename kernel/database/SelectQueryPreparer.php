@@ -80,6 +80,11 @@ class SelectQueryPreparer extends CoreDBQueryPreparer{
         }
         return $this;
     }
+
+    public function unset_fields(){
+        unset($this->fields);
+        $this->fields = array();
+    }
     
     private function get_fields(){
         if(!$this->fields){
@@ -115,7 +120,7 @@ class SelectQueryPreparer extends CoreDBQueryPreparer{
         return $this->condition ? "WHERE ".$this->condition: "";
     }
     
-    public function limit($limit, $offset = ""){
+    public function limit(int $limit, int $offset = 0){
         $this->limit = $limit;
         $this->offset = $offset;
         return $this;

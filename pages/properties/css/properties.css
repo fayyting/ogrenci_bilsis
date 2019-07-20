@@ -1,7 +1,19 @@
 .form-control{
-    min-width: 50px;
+    min-width: 10px;
 }
 td{
     vertical-align: 0%;
     text-align: center !important;
+}
+td{
+    min-width: 10px !important;
+}
+
+thead img{
+    min-width: 30px;
+    width: 30px;
+}
+
+#main_content{
+    min-height: 70vh;
 }

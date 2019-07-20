@@ -2,7 +2,7 @@
 
 class Property extends DBObject{
     const TABLE = "properties";
-    public $ID, $adress, $bedrooms, $type, $floor, $status, $scheme, $landlord, $list;
+    public $ID, $adress, $bedrooms, $type, $floor, $status, $scheme, $landlord;
 
     public function __construct()
     {
@@ -20,9 +20,15 @@ class Property extends DBObject{
         return parent::getAll($filter, $table);
     }
 
-    public static function getTableDataByFilter(string $list){
-        $condition_sentence = "p.type = pta.ID AND p.scheme = psa.ID AND p.status = ps.ID AND p.landlord = u.ID AND p.list = :list";
-        $condition_params = [":list" => $list];
+    public static function getTableDataByFilter(string $list, int $page){
+        $condition_sentence = "p.type = pta.ID AND p.scheme = psa.ID AND p.status = ps.ID AND p.landlord = u.ID";
+        if ($list == "active"){
+            $condition_sentence .= " AND ps.shortcode NOT IN ('A', 'CS')";
+        }elseif($list == "new"){
+            $condition_sentence .= " AND ps.shortcode = 'CS'"; //Coming Soon
+        }elseif ($list == "archived") {
+            $condition_sentence .= " AND ps.shortcode = 'A'"; //Archived
+        }
         if(intval($_GET["type"])){
             $condition_sentence .= " AND p.type = :type";
             $condition_params[":type"] = intval($_GET["type"]);
@@ -46,18 +52,22 @@ class Property extends DBObject{
         ->join(USERS, "u")
         ->condition($condition_sentence,
                 $condition_params
-            )
-        ->select("p", ["ID", "adress"])
-        ->select_with_function(["1 AS 'MR'", "1 AS 'IR'"]) //First for MR, Second for IR : Dummy data
+        );
+        $count = $query->select_with_function(["Count(*) as count"])->execute()->fetchObject()->count;
+        $query->unset_fields();
+        $query->select("p", ["ID", "adress"])
+        ->select_with_function([" (select count(*) from maintenance_reports mr where mr.property = p.ID ) AS MR ", 
+        "(select count(*) from incident_reports ir where ir.property = p.ID ) AS 'IR'"])
         ->select("p", ["bedrooms"])
         ->select("pta",["shortcode AS 'Type' "])
         ->select("p", ["floor"])
         ->select("ps", ["shortcode AS 'Status' "])
         ->select("psa", ["shortcode AS 'Scheme' "])
         ->select("u",["NAME", "SURNAME"])
-        ->select_with_function(["1 AS 'messages'"]); //For messages : Dummy data
-        //die($query->getQuery());
-        return $query->execute()->fetchAll(PDO::FETCH_ASSOC); 
+        ->select_with_function(["(select count(*) from messages where messages.property = p.ID ) AS 'messages'"])
+        ->orderBy("ID")
+        ->limit(PAGE_SIZE_LIMIT, PAGE_SIZE_LIMIT * ($page -1));
+        return [$query->execute()->fetchAll(PDO::FETCH_ASSOC), $count]; 
     }
 
 }
