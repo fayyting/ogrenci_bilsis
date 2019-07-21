@@ -65,6 +65,8 @@ class Property extends DBObject{
         ->select("psa", ["shortcode AS 'Scheme' "])
         ->select("u",["NAME", "SURNAME"])
         ->select_with_function(["(select count(*) from messages where messages.property = p.ID ) AS 'messages'"])
+        ->select_with_function([" CONCAT('<a href=\"#\" class=\"edit_button\" data-id=\"',p.ID, '\" >"._t(115)."</a> ') AS 'edit' "])
+        ->select_with_function([" CONCAT('<a href=\"#\" class=\"remove_button\" data-id=\"',p.ID, '\" >"._t(82)."</a> ') AS 'remove' "])
         ->orderBy("ID")
         ->limit(PAGE_SIZE_LIMIT, PAGE_SIZE_LIMIT * ($page -1));
         return [$query->execute()->fetchAll(PDO::FETCH_ASSOC), $count]; 

@@ -34,47 +34,92 @@ class PropertiesController extends AdminPage {
         switch($this->operation){
             case "active":
             $this->table_headers =  [
-                "Reference", 
-                "Address", 
+                _t(118), 
+                _t(119), 
                 "MR", 
                 "IR", 
-                "<img src='".(BASE_URL."/assets/bed.jpg")."' />", 
-                "Type".prepare_select_box_from_query_result(db_select("property_type_a")->execute(), "type", "-- Type --", intval($_GET["type"]) ), 
-                "Floor", 
-                "Status".prepare_select_box_from_query_result(db_select("property_statuses")->execute(), "status","-- Status --", intval($_GET["status"])), 
-                "Scheme".prepare_select_box_from_query_result(db_select("property_scheme_a")->execute(), "scheme","-- Scheme --", intval($_GET["scheme"])), 
+                "<img src='".(BASE_URL."/assets/bed.jpg")."' title='"._t(120)."' />", 
+                _t(116).prepare_select_box_from_query_result(
+                    db_select("property_type_a")->execute(), 
+                    "type", 
+                    "-- "._t(116)." --", 
+                    intval($_GET["type"]) 
+                ), 
+                _t(121), 
+                _t(117).prepare_select_box_from_query_result(
+                    db_select("property_statuses")->execute(), 
+                    "status",
+                    "-- "._t(117)." --", 
+                    intval($_GET["status"])
+                ), 
+                _t(122).prepare_select_box_from_query_result(
+                    db_select("property_scheme_a")->execute(), 
+                    "scheme",
+                    "-- "._t(122)." --", 
+                    intval($_GET["scheme"])
+                ), 
                 "<span class='glyphicon glyphicon-user'></span> Landlord".prepare_select_box_from_query_result(db_select(USERS)->execute(), "user","-- Landlord --", intval($_GET["user"])), 
-                "Surname",
-                "<img src='".(BASE_URL."/assets/message.png")."' />" ];
+                mb_convert_case(_t(28), MB_CASE_TITLE),
+                "<img src='".(BASE_URL."/assets/message.png")."' title='"._t(123)."' />" ];
                 break;
             case "new":
             $this->table_headers =  [
-                "Reference", 
-                "Address", 
+                _t(118), 
+                _t(119), 
                 "PSF", 
                 "PCL", 
-                "<img src='".(BASE_URL."/assets/bed.jpg")."' />", 
-                "Type".prepare_select_box_from_query_result(db_select("property_type_a")->execute(), "type", "-- Type --", intval($_GET["type"]) ), 
+                "<img src='".(BASE_URL."/assets/bed.jpg")."' title='"._t(120)."' />", 
+                _t(116).prepare_select_box_from_query_result(
+                    db_select("property_type_a")->execute(), 
+                    "type", 
+                    "-- "._t(116)." --", 
+                    intval($_GET["type"]) 
+                ), 
                 "Floor", 
-                "Status".prepare_select_box_from_query_result(db_select("property_statuses")->execute(), "status","-- Status --", intval($_GET["status"])), 
-                "Scheme".prepare_select_box_from_query_result(db_select("property_scheme_a")->execute(), "scheme","-- Scheme --", intval($_GET["scheme"])), 
+                _t(117).prepare_select_box_from_query_result(
+                    db_select("property_statuses")->execute(), 
+                    "status",
+                    "-- "._t(117)." --", 
+                    intval($_GET["status"])
+                ), 
+                _t(122).prepare_select_box_from_query_result(
+                    db_select("property_scheme_a")->execute(), 
+                    "scheme",
+                    "-- "._t(122)." --", 
+                    intval($_GET["scheme"])
+                ), 
                 "<span class='glyphicon glyphicon-user'></span> Landlord".prepare_select_box_from_query_result(db_select(USERS)->execute(), "user","-- Landlord --", intval($_GET["user"])), 
-                "Surname",
+                mb_convert_case(_t(28), MB_CASE_TITLE),
                 "<img src='".(BASE_URL."/assets/send_to_active.png")."' />"];
                 break;
             case "archived":
             $this->table_headers =  [
-                "Reference", 
-                "Address", 
+                _t(118), 
+                _t(119), 
                 "MR", 
                 "IR", 
-                "<img src='".(BASE_URL."/assets/bed.jpg")."' />", 
-                "Type".prepare_select_box_from_query_result(db_select("property_type_a")->execute(), "type", "-- Type --", intval($_GET["type"]) ), 
-                "Floor", 
-                "Status".prepare_select_box_from_query_result(db_select("property_statuses")->execute(), "status","-- Status --", intval($_GET["status"])), 
-                "Scheme".prepare_select_box_from_query_result(db_select("property_scheme_a")->execute(), "scheme","-- Scheme --", intval($_GET["scheme"])), 
+                "<img src='".(BASE_URL."/assets/bed.jpg")."' title='"._t(120)."' />", 
+                _t(116).prepare_select_box_from_query_result(
+                    db_select("property_type_a")->execute(), 
+                    "type", 
+                    "-- "._t(116)." --", 
+                    intval($_GET["type"]) 
+                ), 
+                _t(121), 
+                _t(117).prepare_select_box_from_query_result(
+                    db_select("property_statuses")->execute(), 
+                    "status",
+                    "-- "._t(117)." --", 
+                    intval($_GET["status"])
+                ), 
+                _t(122).prepare_select_box_from_query_result(
+                    db_select("property_scheme_a")->execute(), 
+                    "scheme",
+                    "-- "._t(122)." --", 
+                    intval($_GET["scheme"])
+                ), 
                 "<span class='glyphicon glyphicon-user'></span> Landlord".prepare_select_box_from_query_result(db_select(USERS)->execute(), "user","-- Landlord --", intval($_GET["user"])), 
-                "Surname",
+                mb_convert_case(_t(28), MB_CASE_TITLE),
                 "Send to New"];
                 break;
         }

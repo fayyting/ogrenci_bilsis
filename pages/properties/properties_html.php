@@ -3,9 +3,9 @@ function echo_properties_page(PropertiesController $controller){ ?>
 
     <div class="container-fluid text-center content">
         <ul class="nav nav-tabs nav-justified">
-            <li class="<?php echo $controller->operation == "active" ? "active" : ""; ?>"><a href="<?php echo BASE_URL."/properties/active"; ?>">Active</a></li>
-            <li class="<?php echo $controller->operation == "new" ? "active" : ""; ?>"><a href="<?php echo BASE_URL."/properties/new"; ?>">New</a></li>
-            <li class="<?php echo $controller->operation == "archived" ? "active" : ""; ?>"><a href="<?php echo BASE_URL."/properties/archived"; ?>">Archived</a></li>
+            <li class="<?php echo $controller->operation == "active" ? "active" : ""; ?>"><a href="<?php echo BASE_URL."/properties/active"; ?>"><?php echo _t(124); ?></a></li>
+            <li class="<?php echo $controller->operation == "new" ? "active" : ""; ?>"><a href="<?php echo BASE_URL."/properties/new"; ?>"><?php echo _t(125); ?></a></li>
+            <li class="<?php echo $controller->operation == "archived" ? "active" : ""; ?>"><a href="<?php echo BASE_URL."/properties/archived"; ?>"><?php echo _t(126); ?></a></li>
         </ul>
         <div class="row" id="main_content">
             <form method='GET' id="filter_form">

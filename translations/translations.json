@@ -111,7 +111,7 @@
     },
     {
         "ID": "23",
-        "EN": "Forget Password",
+        "EN": "Forgot Password",
         "TR": "\u015eifremi Unuttum"
     },
     {
@@ -558,5 +558,100 @@
         "ID": "112",
         "EN": "Upload File",
         "TR": "Dosya Y\u00fckleyin"
+    },
+    {
+        "ID": "113",
+        "EN": "Remember me",
+        "TR": "Beni Hat\u0131rla"
+    },
+    {
+        "ID": "114",
+        "EN": "Unauthorized Access",
+        "TR": "Yetkisiz Eri\u015fim"
+    },
+    {
+        "ID": "115",
+        "EN": "Edit",
+        "TR": "D\u00fczenle"
+    },
+    {
+        "ID": "116",
+        "EN": "Type",
+        "TR": "Tip"
+    },
+    {
+        "ID": "117",
+        "EN": "Status",
+        "TR": "Durum"
+    },
+    {
+        "ID": "118",
+        "EN": "Reference",
+        "TR": "Referans"
+    },
+    {
+        "ID": "119",
+        "EN": "Address",
+        "TR": "Adres"
+    },
+    {
+        "ID": "120",
+        "EN": "Bedrooms",
+        "TR": "Oda say\u0131s\u0131"
+    },
+    {
+        "ID": "121",
+        "EN": "Floor",
+        "TR": "Kat"
+    },
+    {
+        "ID": "122",
+        "EN": "Scheme",
+        "TR": "T\u00fcr"
+    },
+    {
+        "ID": "123",
+        "EN": "Messages",
+        "TR": "Mesajlar"
+    },
+    {
+        "ID": "124",
+        "EN": "Active",
+        "TR": "Etkin"
+    },
+    {
+        "ID": "125",
+        "EN": "New",
+        "TR": "Yeni"
+    },
+    {
+        "ID": "126",
+        "EN": "Archived",
+        "TR": "Ar\u015fiv"
+    },
+    {
+        "ID": "127",
+        "EN": "Properties",
+        "TR": "Varl\u0131klar"
+    },
+    {
+        "ID": "128",
+        "EN": "Tasks",
+        "TR": "G\u00f6revler"
+    },
+    {
+        "ID": "129",
+        "EN": "Department",
+        "TR": "B\u00f6l\u00fcm"
+    },
+    {
+        "ID": "130",
+        "EN": "E-mails",
+        "TR": "E-postalar"
+    },
+    {
+        "ID": "131",
+        "EN": "Contacts",
+        "TR": "Ba\u011flant\u0131lar"
     }
 ]

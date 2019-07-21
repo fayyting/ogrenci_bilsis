@@ -37,7 +37,7 @@
             <div class="card">
                 <a href="<?php echo BASE_URL."/properties"; ?>">
                     <div class="card-container">
-                        <span class="glyphicon glyphicon-home"></span>Properties
+                        <span class="glyphicon glyphicon-home"></span><?php echo _t(127); ?>
                     </div>
                 </a>   
             </div>            
@@ -46,7 +46,7 @@
             <div class="card">
                 <a href="#">
                     <div class="card-container">
-                        <span class="glyphicon glyphicon-tasks"></span>Tasks
+                        <span class="glyphicon glyphicon-tasks"></span><?php echo _t(128); ?>
                     </div>
                 </a>   
             </div>            
@@ -55,7 +55,7 @@
             <div class="card">
                 <a href="#">
                     <div class="card-container">
-                        <span class="glyphicon glyphicon-tree-conifer"></span>Department
+                        <span class="glyphicon glyphicon-tree-conifer"></span><?php echo _t(129); ?>
                     </div>
                 </a>   
             </div>            
@@ -64,7 +64,7 @@
             <div class="card">
                 <a href="#">
                     <div class="card-container">
-                        <span class="glyphicon glyphicon-envelope"></span>Messages
+                        <span class="glyphicon glyphicon-envelope"></span><?php echo _t(123); ?>
                     </div>
                 </a>   
             </div>            
@@ -73,7 +73,7 @@
             <div class="card">
                 <a href="#">
                     <div class="card-container">
-                        <span class="glyphicon glyphicon-envelope"></span>E-mails
+                        <span class="glyphicon glyphicon-envelope"></span><?php echo _t(130); ?>
                     </div>
                 </a>   
             </div>            
@@ -82,7 +82,7 @@
             <div class="card">
                 <a href="#">
                     <div class="card-container">
-                        <span class="glyphicon glyphicon-phone-alt"></span>Contacts
+                        <span class="glyphicon glyphicon-phone-alt"></span><?php echo _t(131); ?>
                     </div>
                 </a>   
             </div>            
