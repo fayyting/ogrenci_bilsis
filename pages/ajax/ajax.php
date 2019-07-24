@@ -6,12 +6,6 @@ class AjaxController extends ServicePage{
         $this->$service_name();
     }
     
-    /**
-     * Logging out user
-     */
-    private function logout(){
-        unset($_SESSION[BASE_URL."-UID"]);
-    }
     
     /**
      * Select from table

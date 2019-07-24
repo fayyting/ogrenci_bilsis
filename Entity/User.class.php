@@ -56,7 +56,6 @@ class User extends DBObject{
     
     public function delete():bool {
         return db_delete(USERS_ROLES)->condition("USER_ID = :user_id", ["user_id" => $this->ID])->execute() &&
-        db_delete(LOGINS)->condition("USER_ID = :user_id", ["user_id" => $this->ID])->execute() &&
         db_delete(RESET_PASSWORD_QUEUE)->condition("USER = :user_id", ["user_id" => $this->ID])->execute()
                 && parent::delete();
     }

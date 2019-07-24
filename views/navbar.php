@@ -15,8 +15,8 @@
             <a href="<?php echo BASE_URL."/logout"; ?>" id="logout"><span class="glyphicon glyphicon-log-out"></span> <?php echo _t(4); ?></a>
         </li>
         <li> 
-            <a href="#"><span class="glyphicon glyphicon-home"></span> Head Office</a>
-            <a href="#" id="logout"><span class="glyphicon glyphicon-qrcode"></span> HO</a>
+            <a href="<?php echo BASE_URL; ?>"><span class="glyphicon glyphicon-home"></span> Head Office</a>
+            <a href="<?php echo BASE_URL; ?>"><span class="glyphicon glyphicon-qrcode"></span> HO</a>
         </li>
         <?php if(get_current_core_user()->isRoot()) { ?>
           <li> 

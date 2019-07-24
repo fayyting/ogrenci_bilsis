@@ -2,6 +2,14 @@
 function echo_properties_page(PropertiesController $controller){ ?>
 
     <div class="container-fluid text-center content">
+        <div class="row">
+            <div class="col-sm-3">
+                    <a href="<?php echo BASE_URL."/properties/edit/0"; ?>" class="btn btn-info pull-left form-control" >
+                        <?php echo _t(125); ?>
+                    </a>
+            </div>
+        </div>
+
         <ul class="nav nav-tabs nav-justified">
             <li class="<?php echo $controller->operation == "active" ? "active" : ""; ?>"><a href="<?php echo BASE_URL."/properties/active"; ?>"><?php echo _t(124); ?></a></li>
             <li class="<?php echo $controller->operation == "new" ? "active" : ""; ?>"><a href="<?php echo BASE_URL."/properties/new"; ?>"><?php echo _t(125); ?></a></li>

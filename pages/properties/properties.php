@@ -8,6 +8,19 @@ class PropertiesController extends AdminPage {
     public $total_count;
     public $active_page;
 
+    public $edit_controller;
+
+    public function __construct($arguments)
+    {
+        parent::__construct($arguments);
+        if($arguments[0] == "edit"){
+            include __DIR__."/editController.php";
+            $this->edit_controller = new EditPropertiesController($this->arguments);
+            $this->edit_controller->echoPage();
+            die();
+        }
+    }
+
     public function check_access(): bool
     {
         return get_current_core_user()->isLoggedIn();
@@ -26,6 +39,7 @@ class PropertiesController extends AdminPage {
         }
         $this->add_css_files("pages/properties/css/properties.css");
         $this->add_js_files("pages/properties/js/properties.js");
+        $this->add_frontend_translation(115);
     }
 
     protected function echoContent() {
