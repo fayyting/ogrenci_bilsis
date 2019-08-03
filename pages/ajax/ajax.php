@@ -223,7 +223,7 @@ class AjaxController extends ServicePage{
     private function remove_role(){
         $role = new DBObject(ROLES);
         $role->getById( User::getIdOfRole($_POST["ROLE"]));
-        $role->ROLE != $_POST["ROLE"] ? throw_exception_as_json(throw_exception_as_json(_t(67))) : NOEXPR;
+        $role->ROLE != $_POST["ROLE"] ? throw_exception_as_json(_t(67)) : NOEXPR;
         $user = db_select(USERS_ROLES)->condition("ROLE_ID = :role_id", ["role_id" => $role->ID])->limit(1)->execute()->fetchAll(PDO::FETCH_NUM);
         if(count($user) > 0){
             throw_exception_as_json(_t(71));
@@ -257,6 +257,21 @@ class AjaxController extends ServicePage{
             send_result(_t(106));
         } catch (Exception $ex) {
             throw_exception_as_json($ex->getMessage());
+        }
+    }
+
+    private function AutoCompleteSelectBoxFilter(){
+        $table = $_POST["table"];
+        
+        if(in_array($table, get_information_scheme()) ){
+            $column = preg_replace('/[^a-zA-Z1-9_]*/', '', $_POST["column"]); ;
+            $data = "%".$_POST["data"]."%";
+            $filtered_result = db_select($table)
+            ->select($table, ["ID", $column])
+            ->condition(" $column LIKE :data", [
+                ":data" => $data
+            ])->limit(AUTOCOMPLETE_SELECT_BOX_LIMIT)->execute()->fetchAll(PDO::FETCH_NUM);
+            echo json_encode($filtered_result);
         }
     }
 }

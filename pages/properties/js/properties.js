@@ -1,6 +1,6 @@
 var object_id;
 $(document).ready(function(){
-    $("#filter_form select").on("change", function(){ $("#filter_form").submit(); })
+    $(document).on("change", "#filter_form select", function(){ $("#filter_form").submit(); });
     $(".remove_button").click(function(e){
         e.preventDefault();
         object_id = $(e.target).attr("data-id");

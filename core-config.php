@@ -17,6 +17,7 @@ define("SMTP_SECURE", "ssl");
 define("EMAIL_USERNAME", "HousingBritain");
 
 define("PAGE_SIZE_LIMIT", 100);
+define("AUTOCOMPLETE_SELECT_BOX_LIMIT", 20);
 
 define("TIMEZONE", "Europe/Istanbul");
 

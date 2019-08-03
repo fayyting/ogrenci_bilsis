@@ -43,19 +43,17 @@ $(document).ready(function () {
         window.location = "?"+link;
     });
     
-    $(document).ready( function() {
-        $(".file-field").click(function() {
-            var file_input = $(this).next("input");
-            var file_path = $(this).next().next().children("input");
-            file_input.change(function (){
-                if(file_input.get(0).files){
-                    var file = file_input.get(0).files[0];
-                    file_path.val(file.name);
-                }
-            });
-            file_input.click();
+    $(".file-field").click(function() {
+        var file_input = $(this).next("input");
+        var file_path = $(this).next().next().children("input");
+        file_input.change(function (){
+            if(file_input.get(0).files){
+                var file = file_input.get(0).files[0];
+                file_path.val(file.name);
+            }
         });
-    })
+        file_input.click();
+    });
 
     $(document).submit(function () {
         $(".loader").removeClass("hidden");
@@ -98,6 +96,7 @@ $(document).ready(function () {
             }
         }   
     });
+    $(document).on("keyup", ".bootstrap-select.autocomplete .bs-searchbox input", autocompleteFilter);
     
 });
 
@@ -158,3 +157,45 @@ String.prototype.format = function () {
     }
     return a; // Make chainable
 };
+
+var filter_caller = null;
+function autocompleteFilter(){
+    if(filter_caller){
+        clearInterval(filter_caller);
+    }
+    text_field = $(this);
+    select_field = text_field.parents(".bootstrap-select").find("select");
+    filter_caller = setTimeout(
+        function(){
+            $.ajax({
+                url: root+"/ajax/AutoCompleteSelectBoxFilter",
+                method: "post",
+                data: {
+                    table : $(select_field).attr("data-reference-table"),
+                    column : $(select_field).attr("data-reference-column"),
+                    data : text_field.val()
+                },
+                success: function(response){
+                    response_data = $.parseJSON(response);
+                    let options = "";
+                    let null_option = select_field.find("option[value='0']");
+                    options += null_option.length > 0 ? null_option[0].outerHTML : "";
+                    let selected_value = select_field.val();
+                    let selected_option = select_field.find("option[value='"+selected_value+"']")[0].outerHTML;
+                    let selected = false;
+                    for(data of response_data){
+                        if(data[0] == selected_value){
+                            selected = true;
+                        }
+                        options += "<option value='"+data[0]+"' "+(selected ? "selected" : "")+">"+data[1]+"</option>";
+                    }
+                    if(!selected && selected_value != 0){
+                        options +=selected_option;
+                    }
+                    select_field.html(options);
+                    select_field.selectpicker("refresh");
+                }
+            });
+        }
+    , 500);
+}

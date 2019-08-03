@@ -158,22 +158,33 @@ function get_csrf(string $form_build_id, string $form_id) {
     }
 }
 
-function prepare_select_box_from_query_result(PDOStatement $result, string $name, $null_element = NULL, $selected_value = "" ,array $classes = [], string $id = ""){
+function prepare_select_box_from_query_result(PDOStatement $result, array $options){
     $result_array = $result->fetchAll(PDO::FETCH_NUM);
     $select_array = [];
-    foreach ($result_array as $row) {
+    foreach ($result_array as $count => $row) {
         $select_array[$row[0]] = $row[1];
     }
-    return prepare_select_box($select_array, $name, $null_element, $selected_value ,$classes, $id);
+    return prepare_select_box($select_array, $options);
 }
 
 
-function prepare_select_box(array $elements, string $name, $null_element = NULL, $selected_value ,array $classes = [], string $id = ""){
-    $out = "<select name='$name' class='selectpicker form-control ".implode("",$classes)."' ".($id ? "id='$id'" : "").">".
+function prepare_select_box(array $elements, array $options){
+    $name = isset($options["name"]) ? $options["name"] : "";
+    $null_element = isset($options["null_element"]) ? $options["null_element"] : "";
+    $classes = isset($options["classes"]) ? $options["classes"] : [];
+    $default_value = isset($options["default_value"]) ? $options["default_value"] : "";
+    $attributes = isset($options["attributes"]) ? $options["attributes"] : [];
+    $attributes["data-live-search"] = isset($attributes["data-live-search"]) ? $attributes["data-live-search"] : true;
+    $attributes_out = "";
+    foreach($attributes as $attribute => $value){
+        $attributes_out.= " $attribute='$value' ";
+    }
+    $out = "<select name='$name' class='selectpicker form-control "
+    .implode("",$classes)."' $attributes_out >".
     ($null_element ? "<option value='0'>$null_element</option>" : "");
 
     foreach($elements as $key => $value){
-        $out.="<option value='$key' ".($key == $selected_value ? "selected" : "").">$value</option>";
+        $out.="<option value='$key' ".($key == $default_value ? "selected" : "").">$value</option>";
     }
     $out.="</select>";
     return $out;

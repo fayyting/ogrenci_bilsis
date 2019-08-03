@@ -54,25 +54,35 @@ class PropertiesController extends AdminPage {
                 "IR", 
                 "<img src='".(BASE_URL."/assets/bed.jpg")."' title='"._t(120)."' />", 
                 _t(116).prepare_select_box_from_query_result(
-                    db_select("property_type_a")->execute(), 
-                    "type", 
-                    "-- "._t(116)." --", 
-                    intval($_GET["type"]) 
+                    db_select("property_type_a")->limit(AUTOCOMPLETE_SELECT_BOX_LIMIT)->execute(), 
+                    ["name" => "type",
+                    "null_element" => "-- "._t(132)." --",
+                    "default_value" => intval($_GET["type"]) ]
                 ), 
                 _t(121), 
                 _t(117).prepare_select_box_from_query_result(
-                    db_select("property_statuses")->execute(), 
-                    "status",
-                    "-- "._t(117)." --", 
-                    intval($_GET["status"])
+                    db_select("property_statuses")->limit(AUTOCOMPLETE_SELECT_BOX_LIMIT)->execute(), 
+                    ["name" => "status",
+                    "null_element" => "-- "._t(132)." --",
+                    "default_value" => intval($_GET["status"]) ]
                 ), 
                 _t(122).prepare_select_box_from_query_result(
-                    db_select("property_scheme_a")->execute(), 
-                    "scheme",
-                    "-- "._t(122)." --", 
-                    intval($_GET["scheme"])
+                    db_select("property_scheme_a")->limit(AUTOCOMPLETE_SELECT_BOX_LIMIT)->execute(), 
+                    ["name" => "scheme",
+                    "null_element" => "-- "._t(132)." --",
+                    "default_value" => intval($_GET["scheme"]) ]
                 ), 
-                "<span class='glyphicon glyphicon-user'></span> Landlord".prepare_select_box_from_query_result(db_select(USERS)->execute(), "user","-- Landlord --", intval($_GET["user"])), 
+                "<span class='glyphicon glyphicon-user'></span> Landlord".
+                prepare_select_box_from_query_result(
+                    db_select(USERS)->limit(AUTOCOMPLETE_SELECT_BOX_LIMIT)->execute(), 
+                    ["name" => "user",
+                    "null_element" => "-- "._t(132)." --",
+                    "default_value" => intval($_GET["user"]),
+                    "classes" => ["autocomplete"],
+                    "attributes" => ["data-reference-table" => USERS, 
+                                    "data-reference-column" => "USERNAME"
+                                    ]]
+                ), 
                 mb_convert_case(_t(28), MB_CASE_TITLE),
                 "<img src='".(BASE_URL."/assets/message.png")."' title='"._t(123)."' />" ];
                 break;
@@ -84,25 +94,36 @@ class PropertiesController extends AdminPage {
                 "PCL", 
                 "<img src='".(BASE_URL."/assets/bed.jpg")."' title='"._t(120)."' />", 
                 _t(116).prepare_select_box_from_query_result(
-                    db_select("property_type_a")->execute(), 
-                    "type", 
-                    "-- "._t(116)." --", 
-                    intval($_GET["type"]) 
+                    db_select("property_type_a")->limit(AUTOCOMPLETE_SELECT_BOX_LIMIT)->execute(), 
+                    ["name" => "type",
+                    "null_element" => "-- "._t(132)." --",
+                    "default_value" => intval($_GET["type"])
+                    ]
                 ), 
                 "Floor", 
                 _t(117).prepare_select_box_from_query_result(
-                    db_select("property_statuses")->execute(), 
-                    "status",
-                    "-- "._t(117)." --", 
-                    intval($_GET["status"])
+                    db_select("property_statuses")->limit(AUTOCOMPLETE_SELECT_BOX_LIMIT)->execute(), 
+                    ["name" => "status",
+                    "null_element" => "-- "._t(132)." --",
+                    "default_value" => intval($_GET["status"]) ]
                 ), 
                 _t(122).prepare_select_box_from_query_result(
                     db_select("property_scheme_a")->execute(), 
-                    "scheme",
-                    "-- "._t(122)." --", 
-                    intval($_GET["scheme"])
+                    ["name" => "scheme",
+                    "null_element" => "-- "._t(132)." --",
+                    "default_value" => intval($_GET["scheme"]) ]
                 ), 
-                "<span class='glyphicon glyphicon-user'></span> Landlord".prepare_select_box_from_query_result(db_select(USERS)->execute(), "user","-- Landlord --", intval($_GET["user"])), 
+                "<span class='glyphicon glyphicon-user'></span> Landlord".
+                prepare_select_box_from_query_result(
+                    db_select(USERS)->limit(AUTOCOMPLETE_SELECT_BOX_LIMIT)->execute(), 
+                    ["name" => "user",
+                    "null_element" => "-- "._t(132)." --",
+                    "default_value" => intval($_GET["user"]),
+                    "classes" => ["autocomplete"],
+                    "attributes" => ["data-reference-table" => USERS, 
+                                    "data-reference-column" => "USERNAME"
+                                    ]  ]
+                ), 
                 mb_convert_case(_t(28), MB_CASE_TITLE),
                 "<img src='".(BASE_URL."/assets/send_to_active.png")."' />"];
                 break;
@@ -114,25 +135,35 @@ class PropertiesController extends AdminPage {
                 "IR", 
                 "<img src='".(BASE_URL."/assets/bed.jpg")."' title='"._t(120)."' />", 
                 _t(116).prepare_select_box_from_query_result(
-                    db_select("property_type_a")->execute(), 
-                    "type", 
-                    "-- "._t(116)." --", 
-                    intval($_GET["type"]) 
+                    db_select("property_type_a")->limit(AUTOCOMPLETE_SELECT_BOX_LIMIT)->execute(), 
+                    ["name" => "type",
+                    "null_element" => "-- "._t(132)." --",
+                    "default_value" => intval($_GET["type"]) ]
                 ), 
                 _t(121), 
                 _t(117).prepare_select_box_from_query_result(
-                    db_select("property_statuses")->execute(), 
-                    "status",
-                    "-- "._t(117)." --", 
-                    intval($_GET["status"])
+                    db_select("property_statuses")->limit(AUTOCOMPLETE_SELECT_BOX_LIMIT)->execute(), 
+                    ["name" => "status",
+                    "null_element" => "-- "._t(132)." --",
+                    "default_value" => intval($_GET["status"]) ]
                 ), 
                 _t(122).prepare_select_box_from_query_result(
-                    db_select("property_scheme_a")->execute(), 
-                    "scheme",
-                    "-- "._t(122)." --", 
-                    intval($_GET["scheme"])
+                    db_select("property_scheme_a")->limit(AUTOCOMPLETE_SELECT_BOX_LIMIT)->execute(), 
+                    ["name" => "scheme",
+                    "null_element" => "-- "._t(132)." --",
+                    "default_value" => intval($_GET["scheme"]) ]
                 ), 
-                "<span class='glyphicon glyphicon-user'></span> Landlord".prepare_select_box_from_query_result(db_select(USERS)->execute(), "user","-- Landlord --", intval($_GET["user"])), 
+                "<span class='glyphicon glyphicon-user'></span> Landlord".
+                prepare_select_box_from_query_result(
+                    db_select(USERS)->limit(AUTOCOMPLETE_SELECT_BOX_LIMIT)->execute(), 
+                    ["name" => "user",
+                    "null_element" => "-- "._t(132)." --",
+                    "default_value" => intval($_GET["user"]),
+                    "classes" => ["autocomplete"],
+                    "attributes" => ["data-reference-table" => USERS, 
+                                    "data-reference-column" => "USERNAME"
+                                    ] ]
+                ), 
                 mb_convert_case(_t(28), MB_CASE_TITLE),
                 "Send to New"];
                 break;

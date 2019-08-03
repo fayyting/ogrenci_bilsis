@@ -1,5 +1,8 @@
 <?php
-
+$language = isset($_SERVER['HTTP_ACCEPT_LANGUAGE']) ? Locale::acceptFromHttp($_SERVER['HTTP_ACCEPT_LANGUAGE']) : "";
+$language = strtoupper(preg_replace("/_.*/", "", $language));
+Translator::$language = $language && in_array($language, Translator::get_available_language_list()) ? $language : strtoupper(LANGUAGE);
+Translator::$cache = [];
 /**
  * 
  * @param int $id
@@ -7,12 +10,6 @@
  * @return string
  */
 function _t(int $id, array $arguments = NULL) {
-    if(!Translator::$language){
-        $language = isset($_SERVER['HTTP_ACCEPT_LANGUAGE']) ? Locale::acceptFromHttp($_SERVER['HTTP_ACCEPT_LANGUAGE']) : "";
-        $language = strtoupper(preg_replace("/_.*/", "", $language));
-        Translator::$language = $language && in_array($language, Translator::get_available_language_list()) ? $language : strtoupper(LANGUAGE);
-        Translator::$cache = [];
-    }
     $translation = Translator::getTranslation($id);
     if($arguments){
         $translation = vsprintf($translation, $arguments);

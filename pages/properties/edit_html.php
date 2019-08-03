@@ -20,11 +20,10 @@ function echo_properties_edit_page(EditPropertiesController $controller){ ?>
                     <?php 
                         echo prepare_select_box_from_query_result(
                             db_select("property_type_a")->execute(),
-                            "property[type]",
-                            NULL,
-                            $controller->property->type ? $controller->property->type : "",
-                            [],
-                            "type"
+                            [ "name" => "property[type]",
+                              "default-value" => $controller->property->type ? $controller->property->type : "",
+                              "attributes" => ["id" => "type"]
+                            ]
                         )
                     ?>
                 </div>
@@ -38,11 +37,10 @@ function echo_properties_edit_page(EditPropertiesController $controller){ ?>
                     <?php 
                         echo prepare_select_box_from_query_result(
                             db_select("property_statuses")->execute(),
-                            "property[status]",
-                            NULL,
-                            $controller->property->status ? $controller->property->status : "",
-                            [],
-                            "status"
+                            [ "name" => "property[status]",
+                              "default-value" => $controller->property->status ? $controller->property->status : "",
+                              "attributes" => ["id" => "status"]
+                            ]
                         )
                     ?>
                 </div>
@@ -51,11 +49,10 @@ function echo_properties_edit_page(EditPropertiesController $controller){ ?>
                     <?php 
                         echo prepare_select_box_from_query_result(
                             db_select("property_scheme_a")->execute(),
-                            "property[scheme]",
-                            NULL,
-                            $controller->property->scheme ? $controller->property->scheme : "",
-                            [],
-                            "scheme"
+                            [ "name" => "property[scheme]",
+                              "default-value" => $controller->property->scheme ? $controller->property->scheme : "",
+                              "attributes" => ["id" => "scheme"]
+                            ]
                         )
                     ?>
                 </div>
@@ -64,11 +61,14 @@ function echo_properties_edit_page(EditPropertiesController $controller){ ?>
                     <?php 
                         echo prepare_select_box_from_query_result(
                             db_select(USERS)->execute(),
-                            "property[landlord]",
-                            NULL,
-                            $controller->property->landlord ? $controller->property->landlord : "",
-                            [],
-                            "landlord"
+                            [ "name" => "property[landlord]",
+                              "default-value" => $controller->property->landlord ? $controller->property->landlord : "",
+                              "attributes" => ["id" => "landlord",
+                                    "data-reference-table" => USERS, 
+                                    "data-reference-column" => "USERNAME"
+                                ],
+                              "classes" => ["autocomplete"]  
+                            ]
                         )
                     ?>
                 </div>
