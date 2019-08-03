@@ -653,5 +653,10 @@
         "ID": "131",
         "EN": "Contacts",
         "TR": "Ba\u011flant\u0131lar"
+    },
+    {
+        "ID": "132",
+        "EN": "All",
+        "TR": "T\u00fcm\u00fc"
     }
 ]
