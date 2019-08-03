@@ -54,23 +54,29 @@ class PropertiesController extends AdminPage {
                 "IR", 
                 "<img src='".(BASE_URL."/assets/bed.jpg")."' title='"._t(120)."' />", 
                 _t(116).prepare_select_box_from_query_result(
-                    db_select("property_type_a")->limit(AUTOCOMPLETE_SELECT_BOX_LIMIT)->execute(), 
+                    db_select("property_type_a")->execute(), 
                     ["name" => "type",
                     "null_element" => "-- "._t(132)." --",
                     "default_value" => intval($_GET["type"]) ]
                 ), 
                 _t(121), 
                 _t(117).prepare_select_box_from_query_result(
-                    db_select("property_statuses")->limit(AUTOCOMPLETE_SELECT_BOX_LIMIT)->execute(), 
+                    db_select("property_statuses")->execute(), 
                     ["name" => "status",
                     "null_element" => "-- "._t(132)." --",
                     "default_value" => intval($_GET["status"]) ]
                 ), 
-                _t(122).prepare_select_box_from_query_result(
-                    db_select("property_scheme_a")->limit(AUTOCOMPLETE_SELECT_BOX_LIMIT)->execute(), 
-                    ["name" => "scheme",
+                _t(122)." A".prepare_select_box_from_query_result(
+                    db_select("property_scheme_a")->execute(), 
+                    ["name" => "scheme_a",
                     "null_element" => "-- "._t(132)." --",
-                    "default_value" => intval($_GET["scheme"]) ]
+                    "default_value" => intval($_GET["scheme_a"]) ]
+                ), 
+                _t(122)." B".prepare_select_box_from_query_result(
+                    db_select("property_scheme_b")->execute(), 
+                    ["name" => "scheme_b",
+                    "null_element" => "-- "._t(132)." --",
+                    "default_value" => intval($_GET["scheme_b"]) ]
                 ), 
                 "<span class='glyphicon glyphicon-user'></span> Landlord".
                 prepare_select_box_from_query_result(
@@ -94,7 +100,7 @@ class PropertiesController extends AdminPage {
                 "PCL", 
                 "<img src='".(BASE_URL."/assets/bed.jpg")."' title='"._t(120)."' />", 
                 _t(116).prepare_select_box_from_query_result(
-                    db_select("property_type_a")->limit(AUTOCOMPLETE_SELECT_BOX_LIMIT)->execute(), 
+                    db_select("property_type_a")->execute(), 
                     ["name" => "type",
                     "null_element" => "-- "._t(132)." --",
                     "default_value" => intval($_GET["type"])
@@ -102,17 +108,23 @@ class PropertiesController extends AdminPage {
                 ), 
                 "Floor", 
                 _t(117).prepare_select_box_from_query_result(
-                    db_select("property_statuses")->limit(AUTOCOMPLETE_SELECT_BOX_LIMIT)->execute(), 
+                    db_select("property_statuses")->execute(), 
                     ["name" => "status",
                     "null_element" => "-- "._t(132)." --",
                     "default_value" => intval($_GET["status"]) ]
                 ), 
-                _t(122).prepare_select_box_from_query_result(
+                _t(122)." A".prepare_select_box_from_query_result(
                     db_select("property_scheme_a")->execute(), 
-                    ["name" => "scheme",
+                    ["name" => "scheme_a",
                     "null_element" => "-- "._t(132)." --",
-                    "default_value" => intval($_GET["scheme"]) ]
+                    "default_value" => intval($_GET["scheme_a"]) ]
                 ), 
+                _t(122)." B".prepare_select_box_from_query_result(
+                    db_select("property_scheme_b")->execute(), 
+                    ["name" => "scheme_b",
+                    "null_element" => "-- "._t(132)." --",
+                    "default_value" => intval($_GET["scheme_b"]) ]
+                ),
                 "<span class='glyphicon glyphicon-user'></span> Landlord".
                 prepare_select_box_from_query_result(
                     db_select(USERS)->limit(AUTOCOMPLETE_SELECT_BOX_LIMIT)->execute(), 
@@ -125,7 +137,8 @@ class PropertiesController extends AdminPage {
                                     ]  ]
                 ), 
                 mb_convert_case(_t(28), MB_CASE_TITLE),
-                "<img src='".(BASE_URL."/assets/send_to_active.png")."' />"];
+                //"<img src='".(BASE_URL."/assets/send_to_active.png")."' />"
+            ];
                 break;
             case "archived":
             $this->table_headers =  [
@@ -135,23 +148,29 @@ class PropertiesController extends AdminPage {
                 "IR", 
                 "<img src='".(BASE_URL."/assets/bed.jpg")."' title='"._t(120)."' />", 
                 _t(116).prepare_select_box_from_query_result(
-                    db_select("property_type_a")->limit(AUTOCOMPLETE_SELECT_BOX_LIMIT)->execute(), 
+                    db_select("property_type_a")->execute(), 
                     ["name" => "type",
                     "null_element" => "-- "._t(132)." --",
                     "default_value" => intval($_GET["type"]) ]
                 ), 
                 _t(121), 
                 _t(117).prepare_select_box_from_query_result(
-                    db_select("property_statuses")->limit(AUTOCOMPLETE_SELECT_BOX_LIMIT)->execute(), 
+                    db_select("property_statuses")->execute(), 
                     ["name" => "status",
                     "null_element" => "-- "._t(132)." --",
                     "default_value" => intval($_GET["status"]) ]
                 ), 
-                _t(122).prepare_select_box_from_query_result(
-                    db_select("property_scheme_a")->limit(AUTOCOMPLETE_SELECT_BOX_LIMIT)->execute(), 
-                    ["name" => "scheme",
+                _t(122)." A".prepare_select_box_from_query_result(
+                    db_select("property_scheme_a")->execute(), 
+                    ["name" => "scheme_a",
                     "null_element" => "-- "._t(132)." --",
-                    "default_value" => intval($_GET["scheme"]) ]
+                    "default_value" => intval($_GET["scheme_a"]) ]
+                ),
+                _t(122)." B".prepare_select_box_from_query_result(
+                    db_select("property_scheme_b")->execute(), 
+                    ["name" => "scheme_b",
+                    "null_element" => "-- "._t(132)." --",
+                    "default_value" => intval($_GET["scheme_b"]) ]
                 ), 
                 "<span class='glyphicon glyphicon-user'></span> Landlord".
                 prepare_select_box_from_query_result(
@@ -164,8 +183,8 @@ class PropertiesController extends AdminPage {
                                     "data-reference-column" => "USERNAME"
                                     ] ]
                 ), 
-                mb_convert_case(_t(28), MB_CASE_TITLE),
-                "Send to New"];
+                mb_convert_case(_t(28), MB_CASE_TITLE)
+            ];
                 break;
         }
         $this->active_page = isset($_GET["page"]) && $_GET["page"] > 0 ? intval($_GET["page"]) : 1;

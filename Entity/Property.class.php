@@ -2,7 +2,7 @@
 
 class Property extends DBObject{
     const TABLE = "properties";
-    public $ID, $adress, $bedrooms, $type, $floor, $status, $scheme, $landlord;
+    public $ID, $adress, $bedrooms, $type, $floor, $status, $scheme_a, $scheme_b, $landlord;
 
     public function __construct()
     {
@@ -22,7 +22,7 @@ class Property extends DBObject{
     }
 
     public static function getTableDataByFilter(string $list, int $page){
-        $condition_sentence = "p.type = pta.ID AND p.scheme = psa.ID AND p.status = ps.ID AND p.landlord = u.ID";
+        $condition_sentence = "p.type = pta.ID AND p.scheme_a = psa.ID AND p.scheme_b = psb.ID AND p.status = ps.ID AND p.landlord = u.ID";
         if ($list == "active"){
             $condition_sentence .= " AND ps.shortcode NOT IN ('A', 'CS')";
         }elseif($list == "new"){
@@ -38,9 +38,13 @@ class Property extends DBObject{
             $condition_sentence .= " AND p.status = :status";
             $condition_params[":status"] = intval($_GET["status"]);
         }
-        if(intval($_GET["scheme"])){
-            $condition_sentence .= " AND p.scheme = :scheme";
-            $condition_params[":scheme"] = intval($_GET["scheme"]);
+        if(intval($_GET["scheme_a"])){
+            $condition_sentence .= " AND p.scheme_a = :scheme";
+            $condition_params[":scheme"] = intval($_GET["scheme_a"]);
+        }
+        if(intval($_GET["scheme_b"])){
+            $condition_sentence .= " AND p.scheme_b = :scheme";
+            $condition_params[":scheme"] = intval($_GET["scheme_b"]);
         }
         if(intval($_GET["user"])){
             $condition_sentence .= " AND p.landlord = :user";
@@ -49,6 +53,7 @@ class Property extends DBObject{
         $query = db_select(self::TABLE, "p")
         ->join("property_type_a", "pta")
         ->join("property_scheme_a", "psa")
+        ->join("property_scheme_b", "psb")
         ->join("property_statuses", "ps")
         ->join(USERS, "u")
         ->condition($condition_sentence,
@@ -63,10 +68,13 @@ class Property extends DBObject{
         ->select("pta",["shortcode AS 'Type' "])
         ->select("p", ["floor"])
         ->select("ps", ["shortcode AS 'Status' "])
-        ->select("psa", ["shortcode AS 'Scheme' "])
-        ->select("u",["NAME", "SURNAME"])
-        ->select_with_function(["(select count(*) from messages where messages.property = p.ID ) AS 'messages'"])
-        ->select_with_function([" CONCAT('<a href=\"".BASE_URL."/properties/edit/',p.ID, '\" >"._t(115)."</a> ') AS 'edit' "])
+        ->select("psa", ["shortcode AS 'Scheme A' "])
+        ->select("psb", ["shortcode AS 'Scheme B' "])
+        ->select("u",["NAME", "SURNAME"]);
+        if($list == "active"){
+            $query->select_with_function(["(select count(*) from messages where messages.property = p.ID ) AS 'messages'"]);
+        }
+        $query->select_with_function([" CONCAT('<a href=\"".BASE_URL."/properties/edit/',p.ID, '\" >"._t(115)."</a> ') AS 'edit' "])
         ->select_with_function([" CONCAT('<a href=\"#\" class=\"remove_button\" data-id=\"',p.ID, '\" >"._t(82)."</a> ') AS 'remove' "])
         ->orderBy("ID")
         ->limit(PAGE_SIZE_LIMIT, PAGE_SIZE_LIMIT * ($page -1));

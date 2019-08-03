@@ -21,7 +21,7 @@ function echo_properties_edit_page(EditPropertiesController $controller){ ?>
                         echo prepare_select_box_from_query_result(
                             db_select("property_type_a")->execute(),
                             [ "name" => "property[type]",
-                              "default-value" => $controller->property->type ? $controller->property->type : "",
+                              "default_value" => $controller->property->type ? $controller->property->type : "",
                               "attributes" => ["id" => "type"]
                             ]
                         )
@@ -38,20 +38,32 @@ function echo_properties_edit_page(EditPropertiesController $controller){ ?>
                         echo prepare_select_box_from_query_result(
                             db_select("property_statuses")->execute(),
                             [ "name" => "property[status]",
-                              "default-value" => $controller->property->status ? $controller->property->status : "",
+                              "default_value" => $controller->property->status ? $controller->property->status : "",
                               "attributes" => ["id" => "status"]
                             ]
                         )
                     ?>
                 </div>
                 <div class="col-12">
-                    <label for="scheme"><?php echo _t(122); ?></label>
+                    <label for="scheme_a"><?php echo _t(122); ?> A</label>
                     <?php 
                         echo prepare_select_box_from_query_result(
                             db_select("property_scheme_a")->execute(),
-                            [ "name" => "property[scheme]",
-                              "default-value" => $controller->property->scheme ? $controller->property->scheme : "",
-                              "attributes" => ["id" => "scheme"]
+                            [ "name" => "property[scheme_a]",
+                              "default_value" => $controller->property->scheme_a ? $controller->property->scheme_a : "",
+                              "attributes" => ["id" => "scheme_b"]
+                            ]
+                        )
+                    ?>
+                </div>
+                <div class="col-12">
+                    <label for="scheme_b"><?php echo _t(122); ?> B</label>
+                    <?php 
+                        echo prepare_select_box_from_query_result(
+                            db_select("property_scheme_b")->execute(),
+                            [ "name" => "property[scheme_b]",
+                              "default_value" => $controller->property->scheme_b ? $controller->property->scheme_b : "",
+                              "attributes" => ["id" => "scheme_b"]
                             ]
                         )
                     ?>
@@ -62,7 +74,7 @@ function echo_properties_edit_page(EditPropertiesController $controller){ ?>
                         echo prepare_select_box_from_query_result(
                             db_select(USERS)->execute(),
                             [ "name" => "property[landlord]",
-                              "default-value" => $controller->property->landlord ? $controller->property->landlord : "",
+                              "default_value" => $controller->property->landlord ? $controller->property->landlord : "",
                               "attributes" => ["id" => "landlord",
                                     "data-reference-table" => USERS, 
                                     "data-reference-column" => "USERNAME"
