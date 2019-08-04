@@ -10,6 +10,10 @@ function echo_properties_edit_page(EditPropertiesController $controller){ ?>
                     <textarea id="adress" name="property[adress]" class="form-control"><?php echo $controller->property->adress ? $controller->property->adress : ""; ?></textarea>
                 </div>
                 <div class="col-12">
+                    <label for="postcode"><?php echo _t(133); ?></label>
+                    <input type="number" id="postcode" name="property[postcode]" class="form-control" value="<?php echo $controller->property->postcode ? $controller->property->postcode : ""; ?>"/>
+                </div>
+                <div class="col-12">
                     <label for="bedrooms"><?php echo _t(120); ?></label>
                     <input type="number" id="bedrooms" name="property[bedrooms]" class="form-control" 
                     placeholder="<?php echo _t(120); ?>"

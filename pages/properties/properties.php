@@ -50,6 +50,7 @@ class PropertiesController extends AdminPage {
             $this->table_headers =  [
                 _t(118), 
                 _t(119), 
+                _t(133),
                 "MR", 
                 "IR", 
                 "<img src='".(BASE_URL."/assets/bed.jpg")."' title='"._t(120)."' />", 
@@ -96,6 +97,7 @@ class PropertiesController extends AdminPage {
             $this->table_headers =  [
                 _t(118), 
                 _t(119), 
+                _t(133),
                 "PSF", 
                 "PCL", 
                 "<img src='".(BASE_URL."/assets/bed.jpg")."' title='"._t(120)."' />", 
@@ -144,6 +146,7 @@ class PropertiesController extends AdminPage {
             $this->table_headers =  [
                 _t(118), 
                 _t(119), 
+                _t(133),
                 "MR", 
                 "IR", 
                 "<img src='".(BASE_URL."/assets/bed.jpg")."' title='"._t(120)."' />", 

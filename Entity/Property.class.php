@@ -2,7 +2,7 @@
 
 class Property extends DBObject{
     const TABLE = "properties";
-    public $ID, $adress, $bedrooms, $type, $floor, $status, $scheme_a, $scheme_b, $landlord;
+    public $ID, $adress, $postcode, $bedrooms, $type, $floor, $status, $scheme_a, $scheme_b, $landlord;
 
     public function __construct()
     {
@@ -61,7 +61,7 @@ class Property extends DBObject{
         );
         $count = $query->select_with_function(["Count(*) as count"])->execute()->fetchObject()->count;
         $query->unset_fields();
-        $query->select("p", ["ID", "adress"])
+        $query->select("p", ["ID", "adress", "postcode"])
         ->select_with_function([" (select count(*) from maintenance_reports mr where mr.property = p.ID ) AS MR ", 
         "(select count(*) from incident_reports ir where ir.property = p.ID ) AS 'IR'"])
         ->select("p", ["bedrooms"])
