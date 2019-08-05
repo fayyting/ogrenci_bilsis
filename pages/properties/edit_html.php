@@ -16,7 +16,7 @@ function echo_properties_edit_page(EditPropertiesController $controller){ ?>
                 </div>
                 <div class="col-12">
                     <label for="postcode"><?php echo _t(133); ?></label>
-                    <input type="number" id="postcode" name="property[postcode]" class="form-control" value="<?php echo $controller->property->postcode ? $controller->property->postcode : ""; ?>"/>
+                    <input type="text" id="postcode" name="property[postcode]" class="form-control uppercase_filter" value="<?php echo $controller->property->postcode ? $controller->property->postcode : ""; ?>"/>
                 </div>
                 <div class="col-12">
                     <label for="bedrooms"><?php echo _t(120); ?></label>
