@@ -16,8 +16,15 @@ class PropertiesController extends AdminPage {
         if($arguments[0] == "edit"){
             include __DIR__."/editController.php";
             $this->edit_controller = new EditPropertiesController($this->arguments);
+        }
+    }
+
+    public function echoPage()
+    {
+        if($this->edit_controller){
             $this->edit_controller->echoPage();
-            die();
+        }else{
+            parent::echoPage();
         }
     }
 
