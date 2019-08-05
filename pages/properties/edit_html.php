@@ -4,6 +4,11 @@ function echo_properties_edit_page(EditPropertiesController $controller){ ?>
     <div class="container container-fluid content">
         <div class="row">
             <form method='POST' id="edit_form">
+                <div class="col-sm-12 back_link">
+                    <a href="<?php echo BASE_URL."/properties"; ?>">
+                    <span class="glyphicon glyphicon-menu-left"></span> <?php echo _t(134);?>
+                    </a>
+                </div>
                 <?php $controller->printMessages(); ?>
                 <div class="col-12">
                     <label for="adress"><?php echo _t(119); ?></label>

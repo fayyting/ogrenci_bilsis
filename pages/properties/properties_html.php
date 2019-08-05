@@ -5,7 +5,7 @@ function echo_properties_page(PropertiesController $controller){ ?>
         <div class="row">
             <div class="col-sm-3">
                     <a href="<?php echo BASE_URL."/properties/edit/0"; ?>" class="btn btn-info pull-left form-control" >
-                        <?php echo _t(125); ?>
+                        <?php echo _t(135); ?>
                     </a>
             </div>
         </div>
