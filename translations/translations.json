@@ -658,5 +658,20 @@
         "ID": "132",
         "EN": "All",
         "TR": "T\u00fcm\u00fc"
+    },
+    {
+        "ID": "133",
+        "EN": "Postcode",
+        "TR": "Posta Kodu"
+    },
+    {
+        "ID": "134",
+        "EN": "Back",
+        "TR": "Geri"
+    },
+    {
+        "ID": "135",
+        "EN": "Add New",
+        "TR": "Yeni Ekle"
     }
 ]

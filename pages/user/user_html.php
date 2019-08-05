@@ -2,6 +2,11 @@
     $user = $controller->user;?>
 <div class="container container-fluid">
     <div class="row">
+        <div class="col-sm-12 back_link">
+            <a href="<?php echo BASE_URL."/manage/user"; ?>">
+            <span class="glyphicon glyphicon-menu-left"></span> <?php echo _t(134);?>
+            </a>
+        </div>
         <?php $controller->printMessages(); ?>
         <form class="container-fluid text-center" method="POST">
             <input type="text" class="hidden" name="form_build_id" value="<?php echo $controller->form_build_id; ?>"/>

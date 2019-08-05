@@ -38,3 +38,12 @@ hr{
     bottom: 0;
     width: 100%;
 }
+
+.back_link{
+    font-size: 40px;
+    margin-left: 10px;
+    vertical-align: middle;
+}
+.back_link a:hover{
+    text-decoration: none;
+}
