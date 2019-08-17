@@ -47,17 +47,31 @@ class SelectQueryPreparer extends CoreDBQueryPreparer{
             if($this->quote) {
                 $table[tableName] = "`$table[tableName]`";
             }
-            $tables.= ($index>0 ? ", ": "").$table[tableName].($table[alias] ? " AS ".$table[alias] : "");
+            $tables.= (isset($table["join"]) ? $table["join"]." JOIN " : " ").
+            $table[tableName].($table[alias] ? " AS ".$table[alias] : " ")
+            .(isset($table["on"]) && $table["on"] ? " ON ".$table["on"]." " : " ");
             $index++;
         }
         return $tables;
     }
     
-    public function join(string $table_name, string $alias = ""){
+    public function join(string $table_name, string $alias = "", string $on = "" ,string $join = "INNER"){
         array_push($this->tables, array(
             tableName => $table_name,
-            alias => $alias
+            alias => $alias,
+            "join" => $join,
+            "on" => $on
         ));
+        return $this;
+    }
+
+    public function leftjoin(string $table_name, string $alias = "", string $on = "" ){
+        $this->join($table_name, $alias, $on, "LEFT");
+        return $this;
+    }
+
+    public function rightjoin(string $table_name, string $alias = "", string $on = ""){
+        $this->join($table_name, $alias, $on,"RIGHT");
         return $this;
     }
     

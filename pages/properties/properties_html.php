@@ -5,7 +5,7 @@ function echo_properties_page(PropertiesController $controller){ ?>
         <div class="row">
             <div class="col-sm-3">
                     <a href="<?php echo BASE_URL."/properties/edit/0"; ?>" class="btn btn-info pull-left form-control" >
-                        <?php echo _t(135); ?>
+                        <span class="glyphicon glyphicon-plus"></span> <?php echo _t(135); ?>
                     </a>
             </div>
         </div>
@@ -14,6 +14,7 @@ function echo_properties_page(PropertiesController $controller){ ?>
             <li class="<?php echo $controller->operation == "active" ? "active" : ""; ?>"><a href="<?php echo BASE_URL."/properties/active"; ?>"><?php echo _t(124); ?></a></li>
             <li class="<?php echo $controller->operation == "new" ? "active" : ""; ?>"><a href="<?php echo BASE_URL."/properties/new"; ?>"><?php echo _t(125); ?></a></li>
             <li class="<?php echo $controller->operation == "archived" ? "active" : ""; ?>"><a href="<?php echo BASE_URL."/properties/archived"; ?>"><?php echo _t(126); ?></a></li>
+            <li class="<?php echo $controller->operation == "view" ? "active" : ""; ?>"><a href="<?php echo BASE_URL."/properties/view"; ?>"><?php echo _t(136); ?></a></li>
         </ul>
         <div class="row" id="main_content">
             <form method='GET' id="filter_form">

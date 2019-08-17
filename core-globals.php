@@ -181,7 +181,7 @@ function prepare_select_box(array $elements, array $options){
     }
     $out = "<select name='$name' class='selectpicker form-control "
     .implode("",$classes)."' $attributes_out >".
-    ($null_element ? "<option value='0'>$null_element</option>" : "");
+    ($null_element ? "<option value='NULL'>$null_element</option>" : "");
 
     foreach($elements as $key => $value){
         $out.="<option value='$key' ".($key == $default_value ? "selected" : "").">$value</option>";

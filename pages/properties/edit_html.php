@@ -4,12 +4,12 @@ function echo_properties_edit_page(EditPropertiesController $controller){ ?>
     <div class="container container-fluid content">
         <div class="row">
             <form method='POST' id="edit_form">
+                <?php $controller->printMessages(); ?>
                 <div class="col-sm-12 back_link">
-                    <a href="<?php echo BASE_URL."/properties"; ?>">
+                    <a href="<?php echo BASE_URL."/properties"; ?>" class="btn btn-info">
                     <span class="glyphicon glyphicon-menu-left"></span> <?php echo _t(134);?>
                     </a>
                 </div>
-                <?php $controller->printMessages(); ?>
                 <div class="col-12">
                     <label for="adress"><?php echo _t(119); ?></label>
                     <textarea id="adress" name="property[adress]" class="form-control"><?php echo $controller->property->adress ? $controller->property->adress : ""; ?></textarea>
@@ -31,7 +31,8 @@ function echo_properties_edit_page(EditPropertiesController $controller){ ?>
                             db_select("property_type_a")->execute(),
                             [ "name" => "property[type]",
                               "default_value" => $controller->property->type ? $controller->property->type : "",
-                              "attributes" => ["id" => "type"]
+                              "attributes" => ["id" => "type"],
+                              "null_element" => _t(137)
                             ]
                         )
                     ?>
@@ -48,7 +49,8 @@ function echo_properties_edit_page(EditPropertiesController $controller){ ?>
                             db_select("property_statuses")->execute(),
                             [ "name" => "property[status]",
                               "default_value" => $controller->property->status ? $controller->property->status : "",
-                              "attributes" => ["id" => "status"]
+                              "attributes" => ["id" => "status"],
+                              "null_element" => _t(137)
                             ]
                         )
                     ?>
@@ -60,7 +62,8 @@ function echo_properties_edit_page(EditPropertiesController $controller){ ?>
                             db_select("property_scheme_a")->execute(),
                             [ "name" => "property[scheme_a]",
                               "default_value" => $controller->property->scheme_a ? $controller->property->scheme_a : "",
-                              "attributes" => ["id" => "scheme_b"]
+                              "attributes" => ["id" => "scheme_b"],
+                              "null_element" => _t(137)
                             ]
                         )
                     ?>
@@ -72,7 +75,8 @@ function echo_properties_edit_page(EditPropertiesController $controller){ ?>
                             db_select("property_scheme_b")->execute(),
                             [ "name" => "property[scheme_b]",
                               "default_value" => $controller->property->scheme_b ? $controller->property->scheme_b : "",
-                              "attributes" => ["id" => "scheme_b"]
+                              "attributes" => ["id" => "scheme_b"],
+                              "null_element" => _t(137)
                             ]
                         )
                     ?>
@@ -88,7 +92,8 @@ function echo_properties_edit_page(EditPropertiesController $controller){ ?>
                                     "data-reference-table" => USERS, 
                                     "data-reference-column" => "USERNAME"
                                 ],
-                              "classes" => ["autocomplete"]  
+                              "classes" => ["autocomplete"],
+                              "null_element" => _t(137)  
                             ]
                         )
                     ?>

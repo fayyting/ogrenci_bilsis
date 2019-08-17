@@ -39,7 +39,7 @@ class PropertiesController extends AdminPage {
             $this->operation = "active";
         }else{
             $this->operation = $this->arguments[0];
-            if(!in_array($this->operation, ["active", "new", "archived"])){
+            if(!in_array($this->operation, ["active", "new", "archived","view"])){
                 create_warning_message(_t(67));
                 $this->operation = "active";
             }
@@ -54,6 +54,7 @@ class PropertiesController extends AdminPage {
         $this->import_view("table_view");
         switch($this->operation){
             case "active":
+            case "view";
             $this->table_headers =  [
                 _t(118), 
                 _t(119), 

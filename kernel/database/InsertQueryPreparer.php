@@ -19,10 +19,13 @@ class InsertQueryPreparer extends CoreDBQueryPreparer{
         $values = "VALUES (";
         $this->params = [];
         $param_count = count($this->fields);
-        $index = 1;
+        $index = 0;
         foreach ($this->fields as $key => $field){
-            $fields.= "`".$key.($index<$param_count ? "` , " : "`");
-            $values.= "? ".($index<$param_count ? ", " : "");
+            if($field === null || $field === "NULL"){
+                continue;
+            }
+            $fields.= ($index>0 ? ", `" : "`").$key."`";
+            $values.= ($index>0 ? ", " : "")." ? ";
             array_push($this->params,  filter_var($field, FILTER_SANITIZE_SPECIAL_CHARS, FILTER_NULL_ON_FAILURE));
             $index++;
         }

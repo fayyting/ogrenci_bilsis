@@ -30,8 +30,13 @@ class EditPropertiesController extends AdminPage{
         if(!$this->check_csrf()){
             return;
         }
+        if(!$_POST["property"]["adress"]){
+            create_warning_message(_t(138));
+            return;
+        }
         $this->property = new Property();
         object_map($this->property, $_POST["property"]);
+        $this->property->is_view = 1;
         $this->property->insert();
         create_warning_message(_t(91));
         core_go_to(BASE_URL."/properties/edit/".$this->property->ID);

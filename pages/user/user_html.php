@@ -2,8 +2,8 @@
     $user = $controller->user;?>
 <div class="container container-fluid">
     <div class="row">
-        <div class="col-sm-12 back_link">
-            <a href="<?php echo BASE_URL."/manage/user"; ?>">
+        <div class="col-sm-12">
+            <a href="<?php echo BASE_URL."/manage/user"; ?>" class="btn btn-info">
             <span class="glyphicon glyphicon-menu-left"></span> <?php echo _t(134);?>
             </a>
         </div>

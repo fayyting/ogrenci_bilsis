@@ -2,7 +2,8 @@
 
 class Property extends DBObject{
     const TABLE = "properties";
-    public $ID, $adress, $postcode, $bedrooms, $type, $floor, $status, $scheme_a, $scheme_b, $landlord;
+    public $ID, $adress, $postcode, $bedrooms, $type, $floor, $status, $scheme_a, $scheme_b, $landlord,
+    $is_view;
 
     public function __construct()
     {
@@ -22,7 +23,12 @@ class Property extends DBObject{
     }
 
     public static function getTableDataByFilter(string $list, int $page){
-        $condition_sentence = "p.type = pta.ID AND p.scheme_a = psa.ID AND p.scheme_b = psb.ID AND p.status = ps.ID AND p.landlord = u.ID";
+        $condition_sentence = "";
+        if($list == "view"){
+            $condition_sentence .= " p.is_view = 1 ";
+        }else{
+            $condition_sentence .= " p.is_view = 0 ";
+        }
         if ($list == "active"){
             $condition_sentence .= " AND ps.shortcode NOT IN ('A', 'CS')";
         }elseif($list == "new"){
@@ -51,11 +57,11 @@ class Property extends DBObject{
             $condition_params[":user"] = intval($_GET["user"]);
         }
         $query = db_select(self::TABLE, "p")
-        ->join("property_type_a", "pta")
-        ->join("property_scheme_a", "psa")
-        ->join("property_scheme_b", "psb")
-        ->join("property_statuses", "ps")
-        ->join(USERS, "u")
+        ->leftjoin("property_type_a", "pta", "p.type = pta.ID")
+        ->leftjoin("property_scheme_a", "psa", "p.scheme_a = psa.ID")
+        ->leftjoin("property_scheme_b", "psb", "p.scheme_b = psb.ID")
+        ->leftjoin("property_statuses", "ps", "p.status = ps.ID")
+        ->leftjoin(USERS, "u", "p.landlord = u.ID")
         ->condition($condition_sentence,
                 $condition_params
         );
