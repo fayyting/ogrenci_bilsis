@@ -192,14 +192,21 @@ function autocompleteFilter(){
     select_field = text_field.parents(".bootstrap-select").find("select");
     filter_caller = setTimeout(
         function(){
+            let data = {
+                table : $(select_field).attr("data-reference-table"),
+                column : $(select_field).attr("data-reference-column"),
+                data : text_field.val()
+            };
+            if($(select_field).attr("data-reference-filter-column")){
+                data["filter-column"] = $(select_field).attr("data-reference-filter-column");
+            }
+            if($(select_field).attr("data-reference-filter-value")){
+                data["filter-value"] = $(select_field).attr("data-reference-filter-value");
+            }
             $.ajax({
                 url: root+"/ajax/AutoCompleteSelectBoxFilter",
                 method: "post",
-                data: {
-                    table : $(select_field).attr("data-reference-table"),
-                    column : $(select_field).attr("data-reference-column"),
-                    data : text_field.val()
-                },
+                data: data,
                 success: function(response){
                     response_data = $.parseJSON(response);
                     let options = "";
