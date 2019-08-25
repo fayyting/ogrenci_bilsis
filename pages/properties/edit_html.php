@@ -9,7 +9,13 @@ function echo_properties_edit_page(EditPropertiesController $controller){ ?>
                     <a href="<?php echo BASE_URL."/properties"; ?>" class="btn btn-info">
                     <span class="glyphicon glyphicon-menu-left"></span> <?php echo _t(134);?>
                     </a>
-                </div>  
+                </div>
+                <?php if($controller->property->created_date){ ?>
+                <div class="col-12">
+                    <label><?php echo _t(48);?>:</label>
+                    <div id="property[created_date]"><?php echo $controller->property->created_date; ?></div>
+                </div>
+                <?php } ?>
                 <div class="col-3">
                     <label for="property[is_view]">Is View </label>
                     <input type="checkbox" id="is_view" name="property[is_view]" class="yes_no_box"
@@ -27,7 +33,7 @@ function echo_properties_edit_page(EditPropertiesController $controller){ ?>
                     <label for="bedrooms"><?php echo _t(120); ?></label>
                     <input type="number" id="bedrooms" name="property[bedrooms]" class="form-control" 
                     placeholder="<?php echo _t(120); ?>"
-                    value="<?php echo $controller->property->bedrooms ? $controller->property->bedrooms : ""; ?>" />
+                    value="<?php echo $controller->property->bedrooms !== null ? $controller->property->bedrooms : ""; ?>" />
                 </div>
                 <div class="col-12">
                     <label for="type"><?php echo _t(116); ?></label>
@@ -45,7 +51,7 @@ function echo_properties_edit_page(EditPropertiesController $controller){ ?>
                 <div class="col-12">
                     <label for="floor"><?php echo _t(121); ?></label>
                     <input type="number" id="floor" name="property[floor]" class="form-control" placeholder="<?php echo _t(121); ?>" 
-                    value="<?php echo $controller->property->floor ? $controller->property->floor : ""; ?>"/>
+                    value="<?php echo $controller->property->floor !== null ? $controller->property->floor : ""; ?>"/>
                 </div>
                 <div class="col-12">
                     <label for="status"><?php echo _t(117); ?></label>
@@ -106,7 +112,7 @@ function echo_properties_edit_page(EditPropertiesController $controller){ ?>
                 <div class="col-12">
                     <label for="rent"><?php echo _t(139); ?></label>
                     <input type="number" step="0.01" id="rent" name="property[rent]" class="form-control" placeholder="<?php echo _t(139); ?>" 
-                    value="<?php echo $controller->property->rent ? $controller->property->rent : ""; ?>"/>
+                    value="<?php echo $controller->property->rent !== null ? $controller->property->rent : ""; ?>"/>
                 </div>
                 <div class="col-12">
                     <label for="interval_type"><?php echo _t(140); ?></label>

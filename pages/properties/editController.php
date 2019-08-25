@@ -89,6 +89,7 @@ class EditPropertiesController extends AdminPage{
         $this->property = new Property();
         object_map($this->property, $_POST["property"]);
         $this->check_creatable_fields();
+        $this->property->created_date = get_current_date();
         $this->property->insert();
         create_warning_message(_t(91), "alert-success");
         core_go_to(BASE_URL."/properties/edit/".$this->property->ID);
