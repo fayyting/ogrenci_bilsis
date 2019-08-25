@@ -80,6 +80,16 @@ $(document).ready(function () {
             $(this).next().next().removeAttr("disabled");
         }
     })
+
+    $(document).on("keyup", ".bootstrap-select.autocomplete.create_if_not_exist .bs-searchbox input", function(){
+        text_val = $(this).val();
+        select_field = $(this).parents(".bootstrap-select").find("select");
+        if($(select_field).find("option:contains('"+text_val+"')").length == 0){
+            $(select_field).append("<option value='"+text_val+"'>"+text_val+"</option>");
+            select_field.selectpicker("refresh");
+        }
+    })
+
     $(document).submit(function () {
         $(".loader").removeClass("hidden");
     }); 
@@ -225,6 +235,11 @@ function autocompleteFilter(){
                         options +=selected_option;
                     }
                     select_field.html(options);
+                    if(select_field.hasClass("create_if_not_exist")){
+                        if($(select_field).find("option:contains('"+text_val+"')").length == 0){
+                            $(select_field).append("<option value='"+text_val+"'>"+text_val+"</option>");
+                        }
+                    }
                     select_field.selectpicker("refresh");
                 }
             });

@@ -36,7 +36,7 @@ class EditPropertiesController extends AdminPage{
         }
         $this->property = new Property();
         object_map($this->property, $_POST["property"]);
-        $this->property->is_view = 1;
+        $this->check_creatable_fields();
         $this->property->insert();
         create_warning_message(_t(91));
         core_go_to(BASE_URL."/properties/edit/".$this->property->ID);
@@ -47,6 +47,7 @@ class EditPropertiesController extends AdminPage{
             return;
         }
         object_map($this->property, $_POST["property"]);
+        $this->check_creatable_fields();
         $this->property->update();
         create_warning_message(_t(32), "alert-success");
     }
@@ -58,4 +59,17 @@ class EditPropertiesController extends AdminPage{
         }
         return true;
     }
+
+    private function check_creatable_fields(){
+        foreach($this->create_if_not_exist_fields as $type => $field_name){
+            if(!is_numeric($this->property->$field_name)){
+                $service_provider = new DBObject("service_providers");
+                $service_provider->provider_name = $this->property->$field_name;
+                $service_provider->provider_type = $type;
+                $service_provider->insert();
+                $this->property->$field_name = $service_provider->ID;
+            }
+        }
+    }
+    
 }
