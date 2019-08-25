@@ -22,21 +22,21 @@ function echo_properties_edit_page(EditPropertiesController $controller){ ?>
                     <?php echo $controller->property->is_view ? "checked" : ""; ?> />
                 </div>
                 <div class="col-12">
-                    <label for="adress"><?php echo _t(119); ?></label>
+                    <label for="adress"><?php echo _t(119); ?>:</label>
                     <textarea id="adress" name="property[adress]" class="form-control"><?php echo $controller->property->adress ? $controller->property->adress : ""; ?></textarea>
                 </div>
-                <div class="col-12">
-                    <label for="postcode"><?php echo _t(133); ?></label>
+                <div class="col-sm-3">
+                    <label for="postcode"><?php echo _t(133); ?>:</label>
                     <input type="text" id="postcode" name="property[postcode]" class="form-control uppercase_filter" value="<?php echo $controller->property->postcode ? $controller->property->postcode : ""; ?>"/>
                 </div>
-                <div class="col-12">
-                    <label for="bedrooms"><?php echo _t(120); ?></label>
+                <div class="col-sm-3">
+                    <label for="bedrooms"><?php echo _t(120); ?>:</label>
                     <input type="number" id="bedrooms" name="property[bedrooms]" class="form-control" 
                     placeholder="<?php echo _t(120); ?>"
                     value="<?php echo $controller->property->bedrooms !== null ? $controller->property->bedrooms : ""; ?>" />
                 </div>
-                <div class="col-12">
-                    <label for="type"><?php echo _t(116); ?></label>
+                <div class="col-sm-3">
+                    <label for="type"><?php echo _t(116); ?>:</label>
                     <?php 
                         echo prepare_select_box_from_query_result(
                             db_select("property_type_a")->execute(),
@@ -48,13 +48,13 @@ function echo_properties_edit_page(EditPropertiesController $controller){ ?>
                         )
                     ?>
                 </div>
-                <div class="col-12">
-                    <label for="floor"><?php echo _t(121); ?></label>
+                <div class="col-sm-3">
+                    <label for="floor"><?php echo _t(121); ?>:</label>
                     <input type="number" id="floor" name="property[floor]" class="form-control" placeholder="<?php echo _t(121); ?>" 
                     value="<?php echo $controller->property->floor !== null ? $controller->property->floor : ""; ?>"/>
                 </div>
-                <div class="col-12">
-                    <label for="status"><?php echo _t(117); ?></label>
+                <div class="col-sm-3">
+                    <label for="status"><?php echo _t(117); ?>:</label>
                     <?php 
                         echo prepare_select_box_from_query_result(
                             db_select("property_statuses")->execute(),
@@ -66,8 +66,8 @@ function echo_properties_edit_page(EditPropertiesController $controller){ ?>
                         )
                     ?>
                 </div>
-                <div class="col-12">
-                    <label for="scheme_a"><?php echo _t(122); ?> A</label>
+                <div class="col-sm-3">
+                    <label for="scheme_a"><?php echo _t(122); ?> A:</label>
                     <?php 
                         echo prepare_select_box_from_query_result(
                             db_select("property_scheme_a")->execute(),
@@ -79,8 +79,8 @@ function echo_properties_edit_page(EditPropertiesController $controller){ ?>
                         )
                     ?>
                 </div>
-                <div class="col-12">
-                    <label for="scheme_b"><?php echo _t(122); ?> B</label>
+                <div class="col-sm-3">
+                    <label for="scheme_b"><?php echo _t(122); ?> B:</label>
                     <?php 
                         echo prepare_select_box_from_query_result(
                             db_select("property_scheme_b")->execute(),
@@ -92,8 +92,8 @@ function echo_properties_edit_page(EditPropertiesController $controller){ ?>
                         )
                     ?>
                 </div>
-                <div class="col-12">
-                    <label for="landlord">Landlord</label>
+                <div class="col-sm-3">
+                    <label for="landlord">Landlord:</label>
                     <?php 
                         echo prepare_select_box_from_query_result(
                             db_select(USERS)->execute(),
@@ -109,18 +109,19 @@ function echo_properties_edit_page(EditPropertiesController $controller){ ?>
                         )
                     ?>
                 </div>
-                <div class="col-12">
-                    <label for="rent"><?php echo _t(139); ?></label>
+                <div class="col-sm-3">
+                    <label for="rent"><?php echo _t(139); ?>:</label>
                     <input type="number" step="0.01" id="rent" name="property[rent]" class="form-control" placeholder="<?php echo _t(139); ?>" 
                     value="<?php echo $controller->property->rent !== null ? $controller->property->rent : ""; ?>"/>
                 </div>
-                <div class="col-12">
-                    <label for="interval_type"><?php echo _t(140); ?></label>
+                <div class="col-sm-3">
+                    <label for="interval_type"><?php echo _t(140); ?>:</label>
                     <input type="text" id="interval_type" name="property[interval_type]" class="form-control datetimeinput" placeholder="<?php echo _t(140); ?>" 
                     value="<?php echo $controller->property->interval_type ? $controller->property->interval_type : ""; ?>"
                     data-date-format="yyyy-mm-dd"
                     />
                 </div>
+                <br clear="all">
                 <div class="col-sm-3">
                     <label for="new_letting"><?php echo _t(141); ?></label> 
                     <input type="checkbox" id="new_letting" name="property[new_letting]" class="yes_no_box"
