@@ -180,7 +180,7 @@ function prepare_select_box(array $elements, array $options){
         $attributes_out.= " $attribute='$value' ";
     }
     $out = "<select name='$name' class='selectpicker form-control "
-    .implode("",$classes)."' $attributes_out >".
+    .implode(" ",$classes)."' $attributes_out >".
     ($null_element ? "<option value='NULL'>$null_element</option>" : "");
 
     foreach($elements as $key => $value){
