@@ -152,7 +152,7 @@ function alertMessage(message, title = _t(54) , type = BootstrapDialog.TYPE_WARN
 
 var lowercase_filter = function () {
     $(this).val($(this).val().toLowerCase());
-    if(!($(this).val().match(/^[a-z1-9_\s]+$/))){
+    if(!($(this).val().match(/^[a-z0-9_\s]+$/))){
         $(this).parent().addClass("has-error");
     }else{
         $(this).parent().removeClass("has-error");
@@ -161,7 +161,7 @@ var lowercase_filter = function () {
    
 var uppercase_filter = function () {
     $(this).val($(this).val().toUpperCase());
-    if(!($(this).val().match(/^[A-Z1-9_\s]+$/))){
+    if(!($(this).val().match(/^[A-Z0-9_\s]+$/))){
         $(this).parent().addClass("has-error");
     }else{
         $(this).parent().removeClass("has-error");
