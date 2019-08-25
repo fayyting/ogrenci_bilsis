@@ -266,11 +266,16 @@ class AjaxController extends ServicePage{
         if(in_array($table, get_information_scheme()) ){
             $column = preg_replace('/[^a-zA-Z1-9_]*/', '', $_POST["column"]); ;
             $data = "%".$_POST["data"]."%";
-            $filtered_result = db_select($table)
+            $query = db_select($table)
             ->select($table, ["ID", $column])
             ->condition(" $column LIKE :data", [
                 ":data" => $data
-            ])->limit(AUTOCOMPLETE_SELECT_BOX_LIMIT)->execute()->fetchAll(PDO::FETCH_NUM);
+            ])->limit(AUTOCOMPLETE_SELECT_BOX_LIMIT);
+            if(isset($_POST["filter-column"]) && isset($_POST["filter-value"]) ){
+                $query->condition(escapeshellarg($_POST["filter-column"])." = :value", 
+                [":value" => $_POST["filter-value"]]);
+            }
+            $filtered_result = $query->execute()->fetchAll(PDO::FETCH_NUM);
             echo json_encode($filtered_result);
         }
     }
