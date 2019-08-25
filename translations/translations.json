@@ -673,5 +673,260 @@
         "ID": "135",
         "EN": "Add New",
         "TR": "Yeni Ekle"
+    },
+    {
+        "ID": "136",
+        "EN": "View",
+        "TR": "G\u00f6r\u00fcn\u00fcm"
+    },
+    {
+        "ID": "137",
+        "EN": "None",
+        "TR": "Hi\u00e7biri"
+    },
+    {
+        "ID": "138",
+        "EN": "Adress field is mandatory.",
+        "TR": "Adres alan\u0131 zorunludur."
+    },
+    {
+        "ID": "139",
+        "EN": "Rent",
+        "TR": "Kira"
+    },
+    {
+        "ID": "140",
+        "EN": "Interval\/Type",
+        "TR": "D\u00f6nem\/Tip"
+    },
+    {
+        "ID": "141",
+        "EN": "New Letting",
+        "TR": "Yeni Uygun"
+    },
+    {
+        "ID": "142",
+        "EN": "YES",
+        "TR": "EVET"
+    },
+    {
+        "ID": "143",
+        "EN": "NO",
+        "TR": "HAYIR"
+    },
+    {
+        "ID": "144",
+        "EN": "Internal Steps",
+        "TR": "\u0130\u00e7 Merdivenler"
+    },
+    {
+        "ID": "145",
+        "EN": "External Steps",
+        "TR": "D\u0131\u015f Merdivenler"
+    },
+    {
+        "ID": "146",
+        "EN": "Lift",
+        "TR": "Asans\u00f6r"
+    },
+    {
+        "ID": "147",
+        "EN": "Downstairs Shower",
+        "TR": "A\u015fa\u011f\u0131 kat du\u015f"
+    },
+    {
+        "ID": "148",
+        "EN": "Upstairs Shower",
+        "TR": "Yukar\u0131 kat du\u015f"
+    },
+    {
+        "ID": "149",
+        "EN": "Downstairs Bathroom",
+        "TR": "A\u015fa\u011f\u0131 kat banyo"
+    },
+    {
+        "ID": "150",
+        "EN": "Upstairs Bathroom",
+        "TR": "Yukar\u0131 kat banyo"
+    },
+    {
+        "ID": "151",
+        "EN": "Downstairs Toilet",
+        "TR": "A\u015fa\u011f\u0131 kat tuvalet"
+    },
+    {
+        "ID": "152",
+        "EN": "Upstairs Toilet",
+        "TR": "Yukar\u0131 kat tuvalet"
+    },
+    {
+        "ID": "153",
+        "EN": "Special Facilities",
+        "TR": "\u00d6zel Tesisler"
+    },
+    {
+        "ID": "154",
+        "EN": "Downstairs Level Access",
+        "TR": "Alt kat zemin seviyesi"
+    },
+    {
+        "ID": "155",
+        "EN": "Upstairs Level Access",
+        "TR": "\u00dcst kat zemin seviyesi"
+    },
+    {
+        "ID": "156",
+        "EN": "Seperate",
+        "TR": "Ayr\u0131"
+    },
+    {
+        "ID": "157",
+        "EN": "Bill Meter",
+        "TR": "Fatura"
+    },
+    {
+        "ID": "158",
+        "EN": "Pre-pay",
+        "TR": "\u00d6n \u00f6demeli"
+    },
+    {
+        "ID": "159",
+        "EN": "Set-Pay",
+        "TR": "Ayarl\u0131 \u00d6deme"
+    },
+    {
+        "ID": "161",
+        "EN": "Meter type",
+        "TR": "Saya\u00e7"
+    },
+    {
+        "ID": "162",
+        "EN": "Electiricity",
+        "TR": "Elektrik"
+    },
+    {
+        "ID": "163",
+        "EN": "Gas",
+        "TR": "Gaz"
+    },
+    {
+        "ID": "164",
+        "EN": "Water",
+        "TR": "Su"
+    },
+    {
+        "ID": "165",
+        "EN": "Location",
+        "TR": "Konum"
+    },
+    {
+        "ID": "166",
+        "EN": "Front garden",
+        "TR": "\u00d6n bah\u00e7e"
+    },
+    {
+        "ID": "167",
+        "EN": "Hallway",
+        "TR": "Koridor"
+    },
+    {
+        "ID": "168",
+        "EN": "Cupboard",
+        "TR": "Dolap"
+    },
+    {
+        "ID": "169",
+        "EN": "Kitchen",
+        "TR": "Mutfak"
+    },
+    {
+        "ID": "170",
+        "EN": "Living Room",
+        "TR": "Oturma Odas\u0131"
+    },
+    {
+        "ID": "171",
+        "EN": "Provider",
+        "TR": "Servis Sa\u011flay\u0131c\u0131"
+    },
+    {
+        "ID": "172",
+        "EN": "Reading\/Date",
+        "TR": "Okuma\/G\u00fcn"
+    },
+    {
+        "ID": "173",
+        "EN": "Reading",
+        "TR": "Okuma"
+    },
+    {
+        "ID": "174",
+        "EN": "Date",
+        "TR": "G\u00fcn"
+    },
+    {
+        "ID": "175",
+        "EN": "Heating Type",
+        "TR": "Is\u0131tma Tipi"
+    },
+    {
+        "ID": "176",
+        "EN": "Gas Central Heating (GCH)",
+        "TR": "Merkezi Is\u0131tma"
+    },
+    {
+        "ID": "177",
+        "EN": "Economy 7",
+        "TR": "Ekonomi 7"
+    },
+    {
+        "ID": "178",
+        "EN": "Electric Heating",
+        "TR": "Elektrikli Is\u0131tma"
+    },
+    {
+        "ID": "179",
+        "EN": "Solar\/Green",
+        "TR": "G\u00fcne\u015f Enerjisi\/Ye\u015fil Enerji"
+    },
+    {
+        "ID": "180",
+        "EN": "Oil",
+        "TR": "Fuel Oil"
+    },
+    {
+        "ID": "181",
+        "EN": "Wood",
+        "TR": "Odun"
+    },
+    {
+        "ID": "182",
+        "EN": "Coal",
+        "TR": "K\u00f6m\u00fcr"
+    },
+    {
+        "ID": "183",
+        "EN": "Communal",
+        "TR": "Ortak\/Kamusal"
+    },
+    {
+        "ID": "184",
+        "EN": "Other",
+        "TR": "Di\u011fer"
+    },
+    {
+        "ID": "185",
+        "EN": "Comments about heating",
+        "TR": "Is\u0131tma ile ilgili yorumlar"
+    },
+    {
+        "ID": "186",
+        "EN": "Stopcock Location",
+        "TR": "Musluk Konumu"
+    },
+    {
+        "ID": "187",
+        "EN": "Comments about stopcock",
+        "TR": "Musluk ile ilgili yorumlar"
     }
 ]
