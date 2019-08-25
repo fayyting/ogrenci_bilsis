@@ -9,11 +9,15 @@ td{
     min-width: 10px !important;
 }
 
-thead img{
+thead img {
     min-width: 30px;
     width: 30px;
 }
 
 #main_content{
     min-height: 70vh;
+}
+
+input[type="checkbox"]{
+    float: right;
 }
