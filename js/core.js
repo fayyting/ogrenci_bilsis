@@ -55,6 +55,31 @@ $(document).ready(function () {
         file_input.click();
     });
 
+    $(".yes_no_box").each(function(){
+        this.outerHTML = "<div class='yes_no_box_div'>"+this.outerHTML+"</div>";
+    });
+    $(".yes_no_box").val(1);
+    $(".yes_no_box:checked").each(function(){
+        $(this).after(" <label for='"+$(this).attr("id")+"' class='yes_no_box_info'>"+_t(142)+"</label>"
+        +"<input type='hidden' value='0' name='"+$(this).attr("name")+"'>");
+    })
+    
+    .after(
+        
+    );
+    $(".yes_no_box:not(:checked)").each(function(){
+        $(this).after(" <label for='"+$(this).attr("id")+"' class='yes_no_box_info'>"+_t(143)+"</label>"
+        + "<input type='hidden' value='0' name='"+$(this).attr("name")+"'>");
+    })
+    $(".yes_no_box").click(function(){
+        if($(this).is(':checked')){
+            $(this).next().html(_t(142));
+            $(this).next().next().attr("disabled","disabled");
+        }else{
+            $(this).next().html(_t(143));
+            $(this).next().next().removeAttr("disabled");
+        }
+    })
     $(document).submit(function () {
         $(".loader").removeClass("hidden");
     }); 
