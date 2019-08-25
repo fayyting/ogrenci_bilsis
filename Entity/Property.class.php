@@ -77,7 +77,7 @@ class Property extends DBObject{
         ->select("psa", ["shortcode AS 'Scheme A' "])
         ->select("psb", ["shortcode AS 'Scheme B' "])
         ->select("u",["NAME", "SURNAME"]);
-        if($list == "active"){
+        if( in_array($list, ["active","view"]) ){
             $query->select_with_function(["(select count(*) from messages where messages.property = p.ID ) AS 'messages'"]);
         }
         $query->select_with_function([" CONCAT('<a href=\"".BASE_URL."/properties/edit/',p.ID, '\" >"._t(115)."</a> ') AS 'edit' "])

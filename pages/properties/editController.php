@@ -6,8 +6,60 @@ class EditPropertiesController extends AdminPage{
     public $form_id = "property_edit_form";
     public $form_build_id;
 
+    public $electricity_meter_types;
+    public $gas_meter_types;
+    public $water_meter_types;
+
+    public $locations;
+
+    public $heating_types;
+
+    public $stopcock_locations;
+
+    private $create_if_not_exist_fields = [
+        "electricity" => "electricity_provider",
+        "gas" => "gas_provider",
+        "water" => "water_provider"
+    ];
+
     protected function preprocessPage()
     {
+        $this->add_frontend_translation(142);
+        $this->add_frontend_translation(143);
+        $this->electricity_meter_types = [
+            "bill-meter" => _t(157),
+            "pre-pay" => _t(158),
+        ];
+        $this->gas_meter_types = [
+            "bill-meter" => _t(157),
+            "pre-pay" => _t(158),
+        ];
+        $this->water_meter_types = [
+            "bill-meter" => _t(157),
+            "set-pay" => _t(159),
+        ];
+
+        $this->locations = [
+            "front-garden" => _t(166),
+            "hallway" => _t(167),
+            "cupboard" => _t(168),
+            "kitchen" => _t(169),
+            "living-room" => _t(170)
+        ];
+
+        $this->heating_types = [
+            "gch" => _t(176),
+            "economy_7" => _t(177),
+            "electric_heating" => _t(178),
+            "solar_green" => _t(179),
+            "oil" => _t(180),
+            "wood" => _t(181),
+            "coal" => _t(182),
+            "communal" => _t(183),
+            "other" => _t(184)
+        ];
+
+
         if($this->arguments[1]){
             $this->property = new Property();
             $this->property->getById($this->arguments[1]);
@@ -38,7 +90,7 @@ class EditPropertiesController extends AdminPage{
         object_map($this->property, $_POST["property"]);
         $this->check_creatable_fields();
         $this->property->insert();
-        create_warning_message(_t(91));
+        create_warning_message(_t(91), "alert-success");
         core_go_to(BASE_URL."/properties/edit/".$this->property->ID);
     }
 

@@ -47,3 +47,8 @@ hr{
 .form-control#adress{
     height: 100px;
 }
+
+img.icon {
+    min-width: 16px;
+    width: 16px;
+}
