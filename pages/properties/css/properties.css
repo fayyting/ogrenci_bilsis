@@ -21,3 +21,57 @@ thead img {
 input[type="checkbox"]{
     float: right;
 }
+
+.row{
+    margin-left: 0px !important;
+}
+
+.area_images{
+    display: flex;
+}
+.area_image{
+    display: grid;
+    font-size: larger;
+}
+
+.area_photo{
+    height: 80px;
+    width: 100px;
+    margin: 2px;
+    object-fit: scale-down;
+}
+
+.area_photo.removed{
+    opacity: 0.5;
+}
+
+.area_photo:hover{
+    cursor: pointer;
+}
+
+.file-path{
+    display: none;
+}
+
+.property_file_input .btn{
+    background-color: cadetblue;
+}
+
+.area_selection_button img, .bathroom_selection img, .fire_safety_item_selection img, .fire_safety_item_photo{
+    max-width: 60px;
+    max-height: 60px;
+}
+table .area_selection_button{
+    width: 100%;
+}
+.area_type_selection img{
+    max-width: 70px;
+}
+
+.cover_icon{
+    width: 50px;
+}
+
+.cover_control.checked{
+    background-color: green;
+}

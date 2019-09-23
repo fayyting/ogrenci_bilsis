@@ -1,0 +1,14 @@
+.gallery-dialog .modal-dialog{
+    width: 90vw;
+    height: 90vh;
+}
+.gallery-dialog .modal-content{
+    height: auto;
+    min-height: 100%;
+}
+
+.gallery_image{
+    object-fit: scale-down;
+    height: 70vh;
+    width: 80vw;
+}

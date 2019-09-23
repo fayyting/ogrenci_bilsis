@@ -84,7 +84,7 @@ function store_uploaded_file($table, $field_name, $file) {
 }
 
 function remove_uploaded_file($table, $field_name, $file) {
-    $file_url = "files/uploaded/$table/$field_name/$file";
+    $file_url = __DIR__."/files/uploaded/$table/$field_name/$file";
     unlink($file_url);
 }
 

@@ -52,3 +52,6 @@ img.icon {
     min-width: 16px;
     width: 16px;
 }
+thead{
+    font-weight: bold;
+}

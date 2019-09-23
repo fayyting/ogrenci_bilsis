@@ -22,7 +22,7 @@ class DBObject{
             $condition_sentence.= (!$condition_sentence ? "" : "AND")." `$key` = :$key";
             $params[":$key"] = $value;
         }
-        return db_select($table)->condition($condition_sentence)->params($params)->execute()
+        return db_select($table)->condition($condition_sentence)->params($params)->orderBy("ID")->execute()
         ->fetchObject(get_called_class(), [$table]);
     }
 
@@ -33,7 +33,7 @@ class DBObject{
             $condition_sentence.= (!$condition_sentence ? "" : "AND")." `$key` = :$key";
             $params[":$key"] = $value;
         }
-        return db_select($table)->condition($condition_sentence)->params($params)->execute()
+        return db_select($table)->condition($condition_sentence)->params($params)->orderBy("ID")->execute()
         ->fetchAll(PDO::FETCH_CLASS, get_called_class(), [$table]);
     }
 
@@ -56,6 +56,10 @@ class DBObject{
             }
         }
         return db_delete($this->table)->condition(" ID = :id ", ["id" => $this->ID])->execute();
+    }
+
+    protected function get_file_url_for_field($field_name){
+        return BASE_URL."/files/uploaded/$this->table/$field_name/".$this->$field_name;
     }
     
 }

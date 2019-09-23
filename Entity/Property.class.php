@@ -21,6 +21,20 @@ class Property extends DBObject{
     {
         return parent::getAll($filter, $table);
     }
+    
+    /**
+     * @Override
+     */
+    public function delete()
+    {
+       foreach($this->getAreas() as $area){
+           $area->delete();
+       } 
+       foreach($this->getDocuments() as $document){
+           $document->delete();
+       }
+       parent::delete();
+    }
 
     public static function getTableDataByFilter(string $list, int $page){
         $condition_sentence = "";
@@ -87,4 +101,79 @@ class Property extends DBObject{
         return [$query->execute()->fetchAll(PDO::FETCH_ASSOC), $count]; 
     }
 
+    public function getAreas(){
+        return PropertyArea::getAll(["property" => $this->ID]);
+    }
+
+    public function addArea(PropertyArea $area){
+        $area->property = $this->ID;
+        $area->insert();
+    }
+    
+    public function updateAreas(array $area_list){
+        $current_areas = $this->getAreas();
+        foreach($area_list as $index => $area){
+            if(isset($current_areas[$index])){
+                object_map($current_areas[$index], $area);
+                if($current_areas[$index]->remove){
+                    unset($current_areas[$index]->remove);
+                    $current_areas[$index]->delete();
+                }else{
+                    $area_photos = $current_areas[$index]->getPhotos();
+                    if(isset($current_areas[$index]->photos)){
+                        $photos_to_remove = array_keys($current_areas[$index]->photos);
+                        foreach($photos_to_remove as $photo_to_remove_index){
+                            $area_photos[$photo_to_remove_index]->delete();
+                        }
+                        unset($current_areas[$index]->photos);
+                    }
+                    if(isset($_FILES["areas"]["tmp_name"][$index]["photos"])){
+                        $area_photos_tmp_names = $_FILES["areas"]["tmp_name"][$index]["photos"];
+                        $area_photos_types = $_FILES["areas"]["type"][$index]["photos"];
+                        $current_areas[$index]->updatePhotos($area_photos_tmp_names, $area_photos_types);
+                    }
+                    $current_areas[$index]->update();
+                }
+            }else{
+                $new_area = new PropertyArea();
+                object_map($new_area, $area);
+                $new_area->property = $this->ID;
+                $new_area->insert();
+                if(isset($_FILES["areas"]["tmp_name"][$index]["photos"])){
+                    $area_photos_tmp_names = $_FILES["areas"]["tmp_name"][$index]["photos"];
+                    $area_photos_types = $_FILES["areas"]["type"][$index]["photos"];
+                    $new_area->updatePhotos($area_photos_tmp_names, $area_photos_types);
+                }
+            }
+        }
+    }
+
+    public function getDocuments(){
+        $documents = PropertyDocument::getAll(["property" => $this->ID]);
+        //If not exist property documents, create all documents
+        if(empty($documents)){
+            $document_types = PropertyDocumentType::getAll([]);
+            foreach($document_types as $document_type){
+                $document = new PropertyDocument();
+                $document->property = $this->ID;
+                $document->document_type = $document_type->ID;
+                $document->required = 0;
+                $document->received = 0;
+                $document->insert();
+            }
+            $documents = PropertyDocument::getAll(["property" => $this->ID]);
+        }
+        return $documents;
+    }
+
+    public function updateDocuments(array $new_documents){
+        $documents = $this->getDocuments();
+        foreach($new_documents as $index => $new_document){
+            object_map($documents[$index], $new_document);
+            if($_FILES["documents"]["tmp_name"][$index]){
+                $documents[$index]->updateDocument($_FILES["documents"]["tmp_name"][$index], $_FILES["documents"]["name"][$index]);
+            }
+            $documents[$index]->update();
+        }
+    }
 }

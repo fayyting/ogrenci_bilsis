@@ -3,7 +3,7 @@ function echo_properties_edit_page(EditPropertiesController $controller){ ?>
 
     <div class="container container-fluid content">
         <div class="row">
-            <form method='POST' id="edit_form">
+            <form method='POST' id="edit_form" enctype="multipart/form-data">
                 <?php $controller->printMessages(); ?>
                 <div class="col-sm-12 back_link">
                     <a href="<?php echo BASE_URL."/properties"; ?>" class="btn btn-info">
@@ -11,17 +11,39 @@ function echo_properties_edit_page(EditPropertiesController $controller){ ?>
                     </a>
                 </div>
                 <?php if($controller->property->created_date){ ?>
-                <div class="col-12">
+                <div class="col-sm-12">
                     <label><?php echo _t(48);?>:</label>
                     <div id="property[created_date]"><?php echo $controller->property->created_date; ?></div>
                 </div>
                 <?php } ?>
-                <div class="col-3">
-                    <label for="property[is_view]">Is View </label>
-                    <input type="checkbox" id="is_view" name="property[is_view]" class="yes_no_box"
-                    <?php echo $controller->property->is_view ? "checked" : ""; ?> />
+                <div class="col-sm-3">
+                    <label for="rent"><?php echo _t(139); ?>:</label>
+                    <input type="number" step="0.01" id="rent" name="property[rent]" class="form-control" placeholder="<?php echo _t(139); ?>" 
+                    value="<?php echo $controller->property->rent !== null ? $controller->property->rent : ""; ?>"/>
                 </div>
-                <div class="col-12">
+                <div class="col-sm-3">
+                    <label for="interval"><?php echo _t(140); ?>:</label>
+                    <?php
+                    echo prepare_select_box($controller->intervals,
+                    [ "name" => "property[interval]",
+                    "default_value" => $controller->property->interval ? $controller->property->interval : "month",
+                    "attributes" => ["id" => "interval"]
+                  ]);
+                  ?>
+                </div>
+                <div class="col-sm-3">
+                    <label for="payment_type"><?php echo _t(195); ?>:</label>
+                    <?php
+                    echo prepare_select_box($controller->payment_types,
+                        [ "name" => "property[payment_type]",
+                        "default_value" => $controller->property->payment_type ? $controller->property->payment_type : "",
+                        "attributes" => ["id" => "payment_type"],
+                        "null_element" => _t(137)
+                    ]);
+                    ?>
+                </div>
+                <br clear="all">
+                <div class="col-sm-12">
                     <label for="adress"><?php echo _t(119); ?>:</label>
                     <textarea id="adress" name="property[adress]" class="form-control"><?php echo $controller->property->adress ? $controller->property->adress : ""; ?></textarea>
                 </div>
@@ -110,19 +132,6 @@ function echo_properties_edit_page(EditPropertiesController $controller){ ?>
                     ?>
                 </div>
                 <div class="col-sm-3">
-                    <label for="rent"><?php echo _t(139); ?>:</label>
-                    <input type="number" step="0.01" id="rent" name="property[rent]" class="form-control" placeholder="<?php echo _t(139); ?>" 
-                    value="<?php echo $controller->property->rent !== null ? $controller->property->rent : ""; ?>"/>
-                </div>
-                <div class="col-sm-3">
-                    <label for="interval_type"><?php echo _t(140); ?>:</label>
-                    <input type="text" id="interval_type" name="property[interval_type]" class="form-control datetimeinput" placeholder="<?php echo _t(140); ?>" 
-                    value="<?php echo $controller->property->interval_type ? $controller->property->interval_type : ""; ?>"
-                    data-date-format="yyyy-mm-dd"
-                    />
-                </div>
-                <br clear="all">
-                <div class="col-sm-3">
                     <label for="new_letting"><?php echo _t(141); ?></label> 
                     <input type="checkbox" id="new_letting" name="property[new_letting]" class="yes_no_box"
                     <?php echo $controller->property->new_letting ? "checked" : ""; ?> />
@@ -181,7 +190,8 @@ function echo_properties_edit_page(EditPropertiesController $controller){ ?>
                     <label for="special_facilities"><?php echo _t(153); ?></label> 
                     <input type="checkbox" id="special_facilities" name="property[special_facilities]" class="yes_no_box"
                     <?php echo $controller->property->special_facilities ? "checked" : ""; ?> />
-                </div><br clear="all">
+                </div>
+                <br clear="all"/>
                 <div class="col-sm-3">
                     <label for="downstairs_level_access"><?php echo _t(154); ?></label> 
                     <input type="checkbox" id="downstairs_level_access" name="property[downstairs_level_access]" class="yes_no_box"
@@ -203,38 +213,38 @@ function echo_properties_edit_page(EditPropertiesController $controller){ ?>
                     <?php echo $controller->property->upstairs_seperate ? "checked" : ""; ?> />
                 </div>
                 <div class="row">
-                    <div class="col-sm-2">
+                    <div class="col-sm-2 col-xs-3">
                         
                     </div>
-                    <div class="col-sm-2 text-center">
+                    <div class="col-sm-2 col-xs-3 text-center">
                        <label><?php echo _t(162); ?></label>
                     </div>
-                    <div class="col-sm-2 text-center">
+                    <div class="col-sm-2 col-xs-3 text-center">
                         <label><?php echo _t(163); ?></label>
                     </div>
-                    <div class="col-sm-2 text-center">
+                    <div class="col-sm-2 col-xs-3 text-center">
                         <label><?php echo _t(164); ?></label>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-sm-2">
+                    <div class="col-sm-2 col-xs-3">
                         <label><?php echo _t(161); ?> :</label>
                     </div>
-                    <div class="col-sm-2">
+                    <div class="col-sm-2 col-xs-3">
                         <?php echo prepare_select_box($controller->electricity_meter_types, [
                             "name" => "property[electricity_meter_type]",
                             "null_element" => _t(137),
                             "default_value" => $controller->property->electricity_meter_type
                         ]); ?>
                     </div>
-                    <div class="col-sm-2">
+                    <div class="col-sm-2 col-xs-3">
                         <?php echo prepare_select_box($controller->gas_meter_types, [
                             "name" => "property[gas_meter_type]",
                             "null_element" => _t(137),
                             "default_value" => $controller->property->gas_meter_type
                         ]); ?>
                     </div>
-                    <div class="col-sm-2">
+                    <div class="col-sm-2 col-xs-3">
                         <?php echo prepare_select_box($controller->water_meter_types, [
                             "name" => "property[water_meter_type]",
                             "null_element" => _t(137),
@@ -243,33 +253,36 @@ function echo_properties_edit_page(EditPropertiesController $controller){ ?>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-sm-2">
+                    <div class="col-sm-2 col-xs-3">
                         <label><?php echo _t(165); ?> :</label>
                     </div>
-                    <div class="col-sm-2">
+                    <div class="col-sm-2 col-xs-3">
                         <?php echo prepare_select_box($controller->locations, [
                             "name" => "property[electricity_location]",
-                            "default_value" => $controller->property->electricity_location
+                            "default_value" => $controller->property->electricity_location,
+                            "null_element" => _t(137)  
                         ]); ?>
                     </div>
-                    <div class="col-sm-2">
+                    <div class="col-sm-2 col-xs-3">
                         <?php echo prepare_select_box($controller->locations, [
                             "name" => "property[gas_location]",
-                            "default_value" => $controller->property->gas_location
+                            "default_value" => $controller->property->gas_location,
+                            "null_element" => _t(137)  
                         ]); ?>
                     </div>
-                    <div class="col-sm-2">
+                    <div class="col-sm-2 col-xs-3">
                         <?php echo prepare_select_box($controller->locations, [
                             "name" => "property[water_location]",
-                            "default_value" => $controller->property->water_location
+                            "default_value" => $controller->property->water_location,
+                            "null_element" => _t(137)  
                         ]); ?>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-sm-2">
+                    <div class="col-sm-2 col-xs-3">
                         <label><?php echo _t(171); ?> :</label>
                     </div>
-                    <div class="col-sm-2">
+                    <div class="col-sm-2 col-xs-3">
                         <?php echo prepare_select_box_from_query_result(
                             db_select("service_providers")
                             ->condition("provider_type = 'electricity' ")
@@ -282,10 +295,11 @@ function echo_properties_edit_page(EditPropertiesController $controller){ ?>
                                 "data-reference-column" => "provider_name",
                                 "data-reference-filter-column" => "provider_type",
                                 "data-reference-filter-value" => "electricity"
-                                ]
+                            ],
+                            "null_element" => _t(137)  
                         ]); ?>
                     </div>
-                    <div class="col-sm-2">
+                    <div class="col-sm-2 col-xs-3">
                         <?php echo prepare_select_box_from_query_result(
                             db_select("service_providers")
                             ->condition("provider_type = 'gas' ")
@@ -298,10 +312,11 @@ function echo_properties_edit_page(EditPropertiesController $controller){ ?>
                                 "data-reference-column" => "provider_name",
                                 "data-reference-filter-column" => "provider_type",
                                 "data-reference-filter-value" => "gas"
-                                ]
+                            ],
+                            "null_element" => _t(137)  
                         ]); ?>
                     </div>
-                    <div class="col-sm-2">
+                    <div class="col-sm-2 col-xs-3">
                         <?php echo prepare_select_box_from_query_result(
                             db_select("service_providers")
                             ->condition(" provider_type = 'water' ")
@@ -314,29 +329,30 @@ function echo_properties_edit_page(EditPropertiesController $controller){ ?>
                                 "data-reference-column" => "provider_name",
                                 "data-reference-filter-column" => "provider_type",
                                 "data-reference-filter-value" => "water"
-                                ]
+                            ],
+                            "null_element" => _t(137)  
                         ]); ?>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-sm-2">
+                    <div class="col-sm-2 col-xs-3">
                         <label><?php echo _t(172); ?> :</label>
                     </div>
-                    <div class="col-sm-2">
+                    <div class="col-sm-2 col-xs-3">
                         <input type="number" step="0.01" id="electricity_reading" name="property[electricity_reading]" class="form-control" placeholder="<?php echo _t(173); ?>" 
                         value="<?php echo $controller->property->electricity_reading ? $controller->property->electricity_reading : ""; ?>"/>
                         <input type="text" id="electricity_reading_date" name="property[electricity_reading_date]" class="form-control datetimeinput" placeholder="<?php echo _t(174); ?>" 
                         value="<?php echo $controller->property->electricity_reading_date ? $controller->property->electricity_reading_date : ""; ?>"
                         data-date-format="yyyy-mm-dd" />
                     </div>
-                    <div class="col-sm-2">
+                    <div class="col-sm-2 col-xs-3">
                         <input type="number" step="0.01" id="gas_reading" name="property[gas_reading]" class="form-control" placeholder="<?php echo _t(173); ?>" 
                         value="<?php echo $controller->property->gas_reading ? $controller->property->gas_reading : ""; ?>"/>
                         <input type="text" id="gas_reading_date" name="property[gas_reading_date]" class="form-control datetimeinput" placeholder="<?php echo _t(174); ?>" 
                         value="<?php echo $controller->property->gas_reading_date ? $controller->property->gas_reading_date : ""; ?>"
                         data-date-format="yyyy-mm-dd" />
                     </div>
-                    <div class="col-sm-2">
+                    <div class="col-sm-2 col-xs-3">
                         <input type="number" step="0.01" id="water_reading" name="property[water_reading]" class="form-control" placeholder="<?php echo _t(173); ?>" 
                         value="<?php echo $controller->property->water_reading ? $controller->property->water_reading : ""; ?>"/>
                         <input type="text" id="water_reading_date" name="property[water_reading_date]" class="form-control datetimeinput" placeholder="<?php echo _t(174); ?>" 
@@ -352,7 +368,8 @@ function echo_properties_edit_page(EditPropertiesController $controller){ ?>
                         "default_value" => $controller->property->heating_type,
                         "attributes" => [
                                 "id" => "heating_type"
-                            ]
+                        ],
+                        "null_element" => _t(137)  
                     ]);
                     ?>
                 </div>
@@ -366,7 +383,8 @@ function echo_properties_edit_page(EditPropertiesController $controller){ ?>
                     <?php echo prepare_select_box($controller->locations, [
                         "name" => "property[stopcock_location]",
                         "default_value" => $controller->property->stopcock_location,
-                        "attributes" => ["id" => "stopcock_location"]
+                        "attributes" => ["id" => "stopcock_location"],
+                        "null_element" => _t(137)  
                     ]); ?>
                 </div>
                 <div class="col-sm-9">
@@ -374,13 +392,116 @@ function echo_properties_edit_page(EditPropertiesController $controller){ ?>
                     <input id="property[stopcock_comment]" type="text" name="property[stopcock_comment]" class="form-control"
                     value="<?php echo $controller->property->stopcock_comment ? $controller->property->stopcock_comment : ""; ?>" />
                 </div>
-                <div class="col-12">
-                    <?php if(!$controller->property){ ?>
-                        <input type="submit" name="add" value="<?php echo _t(14); ?>" class="btn btn-info form-control"/>
-                    <?php }else{ ?>
-                        <input type="submit" name="update" value="<?php echo _t(85); ?>" class="btn btn-warning form-control"/>
-                    <?php } ?>
+                <div class="col-sm-12">
+                        <h3>Areas</h3>
                 </div>
+                <div class="col-12 area_table">
+                    <?php 
+                        echo_table($controller->area_table_headers, $controller->area_table_data);
+                    ?>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <button class="btn btn-success" id="add_new_area_button"><span class="glyphicon glyphicon-plus"></span> <?php echo _t(135); ?></button>
+                    </div>
+                </div>
+                <div class="col-12 documents_table">
+                    <?php 
+                        echo_table($controller->documents_table_headers, $controller->documents_table_data);
+                    ?>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-sm-2 cover_control text-center">
+                        <label for="maintanence_notify_required"><img src="<?php echo BASE_URL."/assets/maintanence.png"; ?>" class="cover_icon"/></label>
+                        <input type='checkbox' name='property[maintanence_notify_required]' class="hidden cover_option" id='maintanence_notify_required' <?php echo $controller->property->maintanence_notify_required ? "checked" : ""; ?> />
+                    </div>
+                    <div class="col-sm-10">
+                        <input type="text" name='property[maintanence_notify_required_note]' class="form-control" value="<?php echo $controller->property->maintanence_notify_required_note; ?>"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2 cover_control text-center">
+                        <label for="general_maintanence_cover"><img src="<?php echo BASE_URL."/assets/general_maintanence.png"; ?>" class="cover_icon"/></label>
+                        <input type='checkbox' name='property[general_maintanence_cover]' class="hidden cover_option" id='general_maintanence_cover' <?php echo $controller->property->general_maintanence_cover ? "checked" : ""; ?> />
+                    </div>
+                    <div class="col-sm-10">
+                        <input type="text" name='property[general_maintanence_cover_note]' class="form-control" value="<?php echo $controller->property->general_maintanence_cover_note; ?>"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2 cover_control text-center">
+                        <label for="boiler_cover"><img src="<?php echo BASE_URL."/assets/boiler_cover.png"; ?>" class="cover_icon"/></label>
+                        <input type='checkbox' name='property[boiler_cover]' class="hidden cover_option" id='boiler_cover' <?php echo $controller->property->boiler_cover ? "checked" : ""; ?> />
+                    </div>
+                    <div class="col-sm-10">
+                        <input type="text" name='property[boiler_cover_note]' class="form-control" value="<?php echo $controller->property->boiler_cover_note; ?>"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2 cover_control text-center">
+                        <label for="plumbing_cover"><img src="<?php echo BASE_URL."/assets/plumbing_cover.png"; ?>" class="cover_icon"/></label>
+                        <input type='checkbox' name='property[plumbing_cover]' class="hidden cover_option" id='plumbing_cover' <?php echo $controller->property->plumbing_cover ? "checked" : ""; ?> />
+                    </div>
+                    <div class="col-sm-10">
+                        <input type="text" name='property[plumbing_cover_note]' class="form-control" value="<?php echo $controller->property->plumbing_cover_note; ?>"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2 cover_control text-center">
+                        <label for="drainage_cover"><img src="<?php echo BASE_URL."/assets/drainage_cover.png"; ?>" class="cover_icon"/></label>
+                        <input type='checkbox' name='property[drainage_cover]' class="hidden cover_option" id='drainage_cover' <?php echo $controller->property->plumbing_cover ? "checked" : ""; ?> />
+                    </div>
+                    <div class="col-sm-10">
+                        <input type="text" name='property[drainage_cover_note]' class="form-control" value="<?php echo $controller->property->drainage_cover_note; ?>"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2 cover_control text-center">
+                        <label for="electrical_cover"><img src="<?php echo BASE_URL."/assets/electrical_cover.png"; ?>" class="cover_icon"/></label>
+                        <input type='checkbox' name='property[electrical_cover]' class="hidden cover_option" id='electrical_cover' <?php echo $controller->property->electrical_cover ? "checked" : ""; ?> />
+                    </div>
+                    <div class="col-sm-10">
+                        <input type="text" name='property[electrical_cover_note]' class="form-control" value="<?php echo $controller->property->electrical_cover_note; ?>"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2 cover_control text-center">
+                        <label for="miscellaneous_cover"><img src="<?php echo BASE_URL."/assets/miscellaneous.png"; ?>" class="cover_icon"/></label>
+                        <input type='checkbox' name='property[miscellaneous_cover]' class="hidden cover_option" id='miscellaneous_cover' <?php echo $controller->property->miscellaneous_cover ? "checked" : ""; ?> />
+                    </div>
+                    <div class="col-sm-10">
+                        <input type="text" name='property[miscellaneous_cover_note]' class="form-control" value="<?php echo $controller->property->miscellaneous_cover_note; ?>"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2 cover_control text-center">
+                        <label for="parking_restrictions"><img src="<?php echo BASE_URL."/assets/parking.png"; ?>" class="cover_icon"/></label>
+                        <input type='checkbox' name='property[parking_restrictions]' class="hidden cover_option" id='parking_restrictions' <?php echo $controller->property->parking_restrictions ? "checked" : ""; ?> />
+                    </div>
+                    <div class="col-sm-10">
+                        <input type="text" name='property[parking_restrictions_note]' class="form-control" value="<?php echo $controller->property->parking_restrictions_note; ?>"/>
+                    </div>
+                </div>
+                    <?php if(!$controller->property){ ?>
+                        <div class="col-sm-6">
+                            <input type="submit" name="add" value="<?php echo _t(14); ?>" class="btn btn-info form-control"/>
+                        </div>
+                        <?php if(!$controller->property || $controller->property->is_view){ ?>
+                            <div class="col-sm-6">
+                                <input type="submit" name="add_and_publish" value="<?php echo _t(194); ?>" class="btn btn-primary form-control"/>
+                            </div>
+                        <?php } ?>
+                    <?php }else{ ?>
+                        <div class="col-sm-6">
+                            <input type="submit" name="update" value="<?php echo _t(85); ?>" class="btn btn-warning form-control"/>
+                        </div>
+                        <?php if($controller->property->is_view){ ?>
+                            <div class="col-sm-6">
+                                <input type="submit" name="update_and_publish" value="<?php echo _t(194); ?>" class="btn btn-primary form-control"/>
+                            </div>    
+                        <?php } ?>
+                    <?php } ?>
                 <input type="text" class="hidden" name="form_build_id" value="<?php echo $controller->form_build_id; ?>"/>
             </form>
         </div>

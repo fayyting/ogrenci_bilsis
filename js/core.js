@@ -43,7 +43,7 @@ $(document).ready(function () {
         window.location = "?"+link;
     });
     
-    $(".file-field").click(function() {
+    $(document).on("click", ".file-field",function(e) {
         var file_input = $(this).next("input");
         var file_path = $(this).next().next().children("input");
         file_input.change(function (){
@@ -53,6 +53,7 @@ $(document).ready(function () {
             }
         });
         file_input.click();
+        e.preventDefaut();
     });
 
     $(".yes_no_box").each(function(){
@@ -61,7 +62,7 @@ $(document).ready(function () {
     $(".yes_no_box").val(1);
     $(".yes_no_box:checked").each(function(){
         $(this).after(" <label for='"+$(this).attr("id")+"' class='yes_no_box_info'>"+_t(142)+"</label>"
-        +"<input type='hidden' value='0' name='"+$(this).attr("name")+"'>");
+        +"<input type='hidden' value='0' name='"+$(this).attr("name")+"' disabled='disabled'>");
     })
     
     .after(

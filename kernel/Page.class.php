@@ -109,9 +109,12 @@ abstract class Page {
             "js/bootstrap-datetimepicker.min.js",
             "js/bootstrap-datetimepicker.tr.js",
             "js/bootstrap-dialog.min.js",
+            "js/easy-numpad.min.js",
+            "js/bootstrap-notify.js",
             "js/summernote.js",
             "js/summernote-tr-TR.js",
-            "js/core.js"
+            "js/core.js",
+            "js/housingbritain_gallery.js"
         ];
         if(Translator::$language != "EN"){
             $default_js_files[] = "js/bootstrap-select.".Translator::$language.".js";
@@ -125,9 +128,12 @@ abstract class Page {
             "css/bootstrap-select.min.css",
             "css/bootstrap-datetimepicker.min.css",
             "css/bootstrap-dialog.min.css",
+            "css/easy-numpad.min.css",
             "css/summernote.css",
+            "css/animate.css",
             "css/footer.css",
-            "css/housingbritain.css"
+            "css/housingbritain.css",
+            "css/housingbritain_gallery.css"
         ];
         $this->css_files = $default_css_files;
     }
@@ -138,6 +144,10 @@ abstract class Page {
         $this->add_frontend_translation(53);
         $this->add_frontend_translation(52);
         $this->add_frontend_translation(54);
+        $this->add_frontend_translation(84);
+        $this->add_frontend_translation(82);
+        $this->add_frontend_translation(200);
+        $this->add_frontend_translation(201);
     }
 
     protected function echoTranslations() {

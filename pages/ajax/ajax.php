@@ -279,4 +279,115 @@ class AjaxController extends ServicePage{
             echo json_encode($filtered_result);
         }
     }
+
+    /**
+     * Delete record
+     */
+    private function deleteProperty(){
+        $values = $_POST;
+        $property = new Property();
+        object_map($property, $values);
+        $property->delete();
+    }
+
+    private function areaSelectionByType(){
+        $type = $_GET["type"];
+        if(!in_array($type, ["general_living_area", "bathroom", "parking", "bedroom", "gardens"])){
+            http_response_code(400);
+            return ;
+        }
+        $this->import_view("table_view");
+        $table_data = [];
+        switch($type){
+            case "general_living_area":
+                $available_variables = array_chunk(PropertyArea::getAvailableVariablesForLivingArea(), 3, true);
+                foreach($available_variables as $row_num => $row){
+                    $table_data[$row_num] = [];
+                    foreach($row as $key=> $data){
+                        $table_data[$row_num][] = '<button class="area_selection_button" data-type="'.$key.'">'.$data.'</button>';
+                    }
+                }
+                $table_data[$row_num][] = '<label for="living_area_other">'._t(184).' :</label>
+                                            <input type="text" id="living_area_other" class="form-control"/>
+                                            <button class="area_selection_button hidden" data-type=""></button>
+                                            <button class="area_other_selection_button" data-type="">'._t(77).'</button>';
+                break;
+            case "bathroom":
+                $table_data[] = [
+                    _t(221).":",
+                    '<label class="bathroom_selection">
+                        <input type="radio" name="bath" value="none" checked/>
+                        '._t(137).'
+                    </label>',
+                    '<label class="bathroom_selection">
+                        <input type="radio" name="bath" value="with_shower_bath" checked/>
+                        <img src="'.BASE_URL.'/assets/bathroom.png">
+                    </label>',
+                    '<label class="bathroom_selection">
+                        <input type="radio" name="bath" value="without_shower_bath"/>
+                        <img src="'.BASE_URL.'/assets/bathroom2.png">
+                    </label>'
+                ];
+                $table_data[] = [
+                    _t(222).":",
+                    '<label class="bathroom_selection">
+                        <input type="radio" name="shower" value="none" checked/>
+                        '._t(137).'
+                    </label>',
+                    '<label class="bathroom_selection">
+                        <input type="radio" name="shower" value="with_shower"/>
+                        <img src="'.BASE_URL.'/assets/shower.png">
+                    </label>'
+                ];
+                $table_data[] = [
+                    _t(223).":",
+                    '<label class="bathroom_selection">
+                        <input type="radio" name="toilet" value="none" checked/>
+                        '._t(137).'
+                    </label>',
+                    '<label class="bathroom_selection">
+                        <input type="radio" name="toilet" value="with_toilet"/>
+                        <img src="'.BASE_URL.'/assets/toilet.png">
+                    </label>
+                    <button class="area_selection_button hidden"></button>'
+                ];
+                break;
+            case "parking":
+                $available_variables = PropertyArea::getAvailableVariablesForParking();
+                $table_data[0] = [];
+                foreach($available_variables as $key => $value){
+                    $table_data[0][] = '<button class="area_selection_button" data-type="'.$key.'"><img src="'.BASE_URL.$value.'"></button>';
+                }
+                break;
+            case "bedroom":
+                $table_data[0] = [
+                    '<button class="area_selection_button" data-type="1">1</button>',
+                    '<button class="area_selection_button" data-type="2">2</button>',
+                    '<button class="area_selection_button" data-type="3">3</button>'
+                ];
+                break;
+            case "gardens":
+                $available_variables = PropertyArea::getAvailableVariablesForGardens();
+                $table_data[0] = [];
+                foreach($available_variables as $key => $value){
+                    $table_data[0][] = '<button class="area_selection_button" data-type="'.$key.'"><img src="'.BASE_URL.$value.'"></button>';
+                }
+                break;
+        }
+        echo_table([],$table_data);
+    }
+
+    private function fireSafetyItemSelection(){
+        $this->import_view("table_view");
+        $fire_safety_items = FireSafetyItem::getAll([]);
+        $table_data = [];
+        foreach($fire_safety_items as $index => $item){
+            $table_data[$index/3][] = 
+            "<label class='fire_safety_item_selection text-center'><br>
+                <img src='".$item->getImageUrl()."' />
+                <input type='checkbox' value='{$item->ID}'/>
+            </label>";
+        }
+        echo_table([], $table_data);
+    }
 }
