@@ -72,6 +72,22 @@
                     </div>
                 </div>
                 <div class="row content">
+                    <div class="col-sm-6 text-left">
+                        <?php echo mb_convert_case(_t(119), MB_CASE_TITLE); ?>
+                    </div>            
+                    <div class="col-sm-6 text-left">
+                        <textarea class="form-control" name="user_info[address]"><?php echo $user->address; ?></textarea>
+                    </div>
+                </div>
+                <div class="row content">
+                    <div class="col-sm-6 text-left">
+                        <?php echo mb_convert_case(_t(133), MB_CASE_TITLE); ?>
+                    </div>            
+                    <div class="col-sm-6 text-left">
+                        <input class="form-control" type="text" name="user_info[postcode]" value="<?php echo $user->postcode; ?>"/>
+                    </div>
+                </div>
+                <div class="row content">
                     <div class="col-sm-12">
                         <input type="submit" name="save" class="btn btn-success form-control" value="<?php echo $controller->operation == "update" ? _t(37) : _t(14); ?>"/> 
                     </div>

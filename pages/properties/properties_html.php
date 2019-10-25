@@ -16,7 +16,7 @@ function echo_properties_page(PropertiesController $controller){ ?>
             <li class="<?php echo $controller->operation == "archived" ? "active" : ""; ?>"><a href="<?php echo BASE_URL."/properties/archived"; ?>"><?php echo _t(126); ?></a></li>
             <li class="<?php echo $controller->operation == "view" ? "active" : ""; ?>"><a href="<?php echo BASE_URL."/properties/view"; ?>"><?php echo _t(136); ?></a></li>
         </ul>
-        <div class="row" id="main_content">
+        <div class="row table_container" id="property_table">
             <form method='GET' id="filter_form">
                 <?php $controller->printMessages();
                 echo_table($controller->table_headers, $controller->table_data, "", "", true); ?>

@@ -3,7 +3,12 @@
 class Property extends DBObject{
     const TABLE = "properties";
     public $ID, $adress, $postcode, $bedrooms, $type, $floor, $status, $scheme_a, $scheme_b, $landlord,
-    $is_view;
+    $category;
+
+    const PROPERTY_CATEGORY_VIEWING = 0;
+    const PROPERTY_CATEGORY_ACTIVE = 1;
+    const PROPERTY_CATEGORY_NEW = 2;
+    const PROPERTY_CATEGORY_ARCHIVED = 3;
 
     public function __construct()
     {
@@ -37,19 +42,23 @@ class Property extends DBObject{
     }
 
     public static function getTableDataByFilter(string $list, int $page){
-        $condition_sentence = "";
-        if($list == "view"){
-            $condition_sentence .= " p.is_view = 1 ";
-        }else{
-            $condition_sentence .= " p.is_view = 0 ";
+        $category = Property::PROPERTY_CATEGORY_ACTIVE;
+        switch($list){
+            case "view":
+                $category = Property::PROPERTY_CATEGORY_VIEWING;
+                break;
+            case "active":
+                $category = Property::PROPERTY_CATEGORY_ACTIVE;
+                break;
+            case "new":
+                $category = Property::PROPERTY_CATEGORY_NEW;
+                break;
+            case "archived":
+                $category = Property::PROPERTY_CATEGORY_ARCHIVED;
+                break;
         }
-        if ($list == "active"){
-            $condition_sentence .= " AND ps.shortcode NOT IN ('A', 'CS')";
-        }elseif($list == "new"){
-            $condition_sentence .= " AND ps.shortcode = 'CS'"; //Coming Soon
-        }elseif ($list == "archived") {
-            $condition_sentence .= " AND ps.shortcode = 'A'"; //Archived
-        }
+        $condition_sentence = "p.category = :category";
+        $condition_params[":category"] = $category;
         if(intval($_GET["type"])){
             $condition_sentence .= " AND p.type = :type";
             $condition_params[":type"] = intval($_GET["type"]);
@@ -94,7 +103,7 @@ class Property extends DBObject{
         if( in_array($list, ["active","view"]) ){
             $query->select_with_function(["(select count(*) from messages where messages.property = p.ID ) AS 'messages'"]);
         }
-        $query->select_with_function([" CONCAT('<a href=\"".BASE_URL."/properties/edit/',p.ID, '\" >"._t(115)."</a> ') AS 'edit' "])
+        $query->select_with_function([" CONCAT('<a href=\"".BASE_URL."/properties/edit/',p.ID, '\" class=\"edit_button\" >"._t(115)."</a> ') AS 'edit' "])
         ->select_with_function([" CONCAT('<a href=\"#\" class=\"remove_button\" data-id=\"',p.ID, '\" >"._t(82)."</a> ') AS 'remove' "])
         ->orderBy("ID")
         ->limit(PAGE_SIZE_LIMIT, PAGE_SIZE_LIMIT * ($page -1));
@@ -133,6 +142,7 @@ class Property extends DBObject{
                         $current_areas[$index]->updatePhotos($area_photos_tmp_names, $area_photos_types);
                     }
                     $current_areas[$index]->update();
+                    $current_areas[$index]->updateFacilities($_POST["facilities"][$index]);
                 }
             }else{
                 $new_area = new PropertyArea();
@@ -143,6 +153,7 @@ class Property extends DBObject{
                     $area_photos_tmp_names = $_FILES["areas"]["tmp_name"][$index]["photos"];
                     $area_photos_types = $_FILES["areas"]["type"][$index]["photos"];
                     $new_area->updatePhotos($area_photos_tmp_names, $area_photos_types);
+                    $new_area->updateFacilities($_POST["facilities"][$index]);
                 }
             }
         }
@@ -151,7 +162,7 @@ class Property extends DBObject{
     public function getDocuments(){
         $documents = PropertyDocument::getAll(["property" => $this->ID]);
         //If not exist property documents, create all documents
-        if(empty($documents)){
+        if(count($documents) == 0 && $this->ID){
             $document_types = PropertyDocumentType::getAll([]);
             foreach($document_types as $document_type){
                 $document = new PropertyDocument();
@@ -170,10 +181,51 @@ class Property extends DBObject{
         $documents = $this->getDocuments();
         foreach($new_documents as $index => $new_document){
             object_map($documents[$index], $new_document);
-            if($_FILES["documents"]["tmp_name"][$index]){
-                $documents[$index]->updateDocument($_FILES["documents"]["tmp_name"][$index], $_FILES["documents"]["name"][$index]);
+            if(isset($_FILES["documents"]["tmp_name"][$index]["files"])){
+                $documents_tmp_names = $_FILES["documents"]["tmp_name"][$index]["files"];
+                $documents_names = $_FILES["documents"]["name"][$index]["files"];
+                $documents[$index]->updateDocumentFiles($documents_tmp_names, $documents_names, $index);
             }
             $documents[$index]->update();
         }
+    }
+
+    public function getAreasTableData(){
+        $areas =  $this->getAreas();
+        $area_table_data = [];
+        $type_orders = PropertyArea::getAvailableOptionsForAreaType();
+        foreach($type_orders as &$value){
+            $value = 0;
+        }
+        foreach($areas as $index=>$area){
+            $type_orders[$area->area_type]++;
+            $area_table_data[] = $area->getAreaTableRowData($index, FALSE, $type_orders[$area->area_type]);
+        }
+        return $area_table_data;
+    }
+
+    public static function getDocumentsTableData(Property $property = NULL){
+        $documents_table_data = [];
+        $document_types = PropertyDocumentType::getAll([]);
+        $documents = $property ? $property->getDocuments() : NULL;
+        foreach($document_types as $index => $document_type){
+            $document_table_row = [];
+            $document_table_row[] = $document_type->document_name.($property->ID ? "<span href='' class='document_comment glyphicon glyphicon-comment' data-document-id='".$documents[$index]->ID."'></span>" : "");
+            $document_table_row[] = "<input type='checkbox' class='yes_no_box' id='document_{$index}_required' "
+                                    ."name='documents[$index][required]'"
+                                    .($documents[$index]->required ? "checked" : "")
+                                    ."/>";
+            $document_table_row[] = $documents[$index] ? $documents[$index]->getFilesRendered($index) : PropertyDocument::getDocumentFileInput($index);
+            $document_table_row[] = "<input type='checkbox' class='yes_no_box' id='document_{$index}_received' "
+                                    ."name='documents[$index][received]'"
+                                    .($documents[$index]->received ? "checked" : "")
+                                    ."/>";
+            $document_table_row[] = "<input type='checkbox' class='yes_no_box' id='document_{$index}_checked' "
+                                    ."name='documents[$index][checked]'"
+                                    .($documents[$index]->checked ? "checked" : "")
+                                    ."/>";
+            $documents_table_data[] = $document_table_row;
+        }
+        return $documents_table_data;
     }
 }

@@ -8,7 +8,7 @@ class InsertController extends AdminPage{
     public function __construct(array $arguments){
         parent::__construct($arguments);
         if(!$this->arguments){
-            Router::getInstance()->loadPage(Router::$notFound);
+            Router::getInstance()->route(Router::$notFound);
         }
     }
     

@@ -18,6 +18,8 @@ class EditPropertiesController extends AdminPage{
 
     public $stopcock_locations;
 
+    public $property_categories;
+
     private $create_if_not_exist_fields = [
         "electricity" => "electricity_provider",
         "gas" => "gas_provider",
@@ -29,13 +31,25 @@ class EditPropertiesController extends AdminPage{
 
     public $documents_table_headers;
     public $documents_table_data;
+
+    public $suitable_for_disabled_types;
     protected function preprocessPage()
     {
+        if($this->arguments[1]){
+            $this->property = new Property();
+            $this->property->getById($this->arguments[1]);
+            if(!$this->property->ID){
+                Router::getInstance()->route(Router::$notFound);
+            }
+        }
+
         $this->add_frontend_translation(142);
         $this->add_frontend_translation(143);
         $this->add_frontend_translation(199);
         $this->add_frontend_translation(202);
         $this->add_frontend_translation(115);
+        $this->add_frontend_translation(242);
+        $this->add_frontend_translation(254);
         $this->add_css_files("pages/properties/css/properties.css");
         $this->add_js_files("pages/properties/js/properties.js");
 
@@ -53,20 +67,23 @@ class EditPropertiesController extends AdminPage{
         $this->payment_types = [
             "GR" => _t(196),
             "AC" => _t(197),
-            "PU" => _t(108)
+            "PU" => _t(198)
         ];
 
         $this->electricity_meter_types = [
             "bill-meter" => _t(157),
             "pre-pay" => _t(158),
+            "smart-meter" => _t(148)
         ];
         $this->gas_meter_types = [
             "bill-meter" => _t(157),
             "pre-pay" => _t(158),
+            "smart-meter" => _t(148)
         ];
         $this->water_meter_types = [
             "bill-meter" => _t(157),
             "set-pay" => _t(159),
+            "smart-meter" => _t(148)
         ];
 
         $this->locations = [
@@ -91,117 +108,54 @@ class EditPropertiesController extends AdminPage{
 
         $this->area_table_headers = [
             _t(212),
-            "",
             _t(204),
             _t(205),
-            "Level",
+            _t(244),
             _t(206),
             _t(207),
-            _t(224)
+            _t(250),
+            _t(224),
+            _t(240)
         ];
 
         $this->documents_table_headers = [
             _t(208),
             _t(209),
             _t(210),
-            _t(211)
+            _t(211),
+            _t(240)
         ];
 
-        if($this->arguments[1]){
-            $this->property = new Property();
-            $this->property->getById($this->arguments[1]);
-        }
-        if(isset($_POST["add"]) || isset($_POST["add_and_publish"]) ){
+        $this->property_categories = [
+            Property::PROPERTY_CATEGORY_VIEWING => _t(136),
+            Property::PROPERTY_CATEGORY_ACTIVE => _t(124),
+            Property::PROPERTY_CATEGORY_NEW => _t(125),
+            Property::PROPERTY_CATEGORY_ARCHIVED => _t(126)
+        ];
+        
+        $this->suitable_for_disabled_types = [
+            "not_suitable" => _t(251),
+            "suitable" => _t(152),
+            "part_suitable" => _t(252)
+        ];
+
+        $this->add_js("var suitable_for_disabled_types = ".json_encode($this->suitable_for_disabled_types).";");
+
+        if(isset($_POST["add"]) ){
             $this->addNewProperty();
-        }elseif(isset($_POST["update"]) || isset($_POST["update_and_publish"])){
+        }elseif(isset($_POST["update"]) ){
             $this->updateProperty();
         }
 
         /**
          * Area table generation
          */
-        $areas =  $this->property ? $this->property->getAreas() : [];
-        $this->area_table_data = [];
-        $type_and_image_map = [
-            "general_living_area" => "/assets/dinner.jpg",
-            "bathroom" => "/assets/bathroom.png",
-            "parking" => "/assets/parking.png",
-            "bedroom" => "/assets/bedroom.jpg",
-            "gardens" => "/assets/gardens.png"
-        ];
-        foreach($areas as $index=>$area){
-            $area_table_row = [];
-
-            $area_table_row[] = "<div class='area_type_selection'><img src='".BASE_URL.$type_and_image_map[$area->area_type]."' /></div>";
-            $area_table_row[] = "<div class='area_type_selection'>".($area->getAreaType2Rendered())."</div>";
-            $area_table_row[] = "<input type='text' name='areas[$index][area_comment]' class='form-control'>";
-            $photos_html = "<div class='area_images'>";
-            $photos = $area->getPhotos();
-            
-            foreach($photos as $photo_index => $photo){
-                $photos_html .= "<div class='area_image'> 
-                                    <img src='".$photo->getPhotoUrl()."' class='area_photo'/>
-                                    <a href='' class='remove_photo' data-connected-name='areas[$index][photos][$photo_index]'><span class='glyphicon glyphicon-remove core-control'></span></a>
-                                </div>";
-            }
-            $photos_html .= "</div>";
-            $photos_html .= get_file_input("areas[$index][photos][0]", "", 
-            [
-                "label" => "<span class='glyphicon glyphicon-camera'></span>",
-                "classes" => ["property_file_input"],
-                "button_style" => ["col-sm-4", "col-xs-12"],
-                "attributes" => [
-                    "data-area-index" => $index,
-                    "data-area-file-index" => "0"
-                ],
-                "accept" => "image/*"
-            ]);
-            $area_table_row[] = $photos_html;
-            $area_table_row[] = "Level";
-            $area_table_row[] = "<input type='number' name='areas[$index][width]' value='$area->width' class='numberpicker area_width' readonly='true' data-on-change='updateTotal'/>".
-                                "<input type='number' name='areas[$index][length]' value='$area->length' class='numberpicker area_length' readonly='true' data-on-change='updateTotal'/>".
-                                "<input type='checkbox' name='areas[$index][measurement_type]' id='areas_{$index}_measurementtype' value='$area->measurement_type' class='measurementtype_picker checked hidden'/>".
-                                "<label for='areas_{$index}_measurementtype' class='btn btn-default'>$area->measurement_type</label>";
-            $area_table_row[] = $area->width*$area->length;
-            $area_table_row[] = 
-            "<input type='text' name='areas[$index][fire_safety_items]' class='hidden' value='{$area->fire_safety_items}' />
-            <div>
-                ".$area->getFireSafetyItemsRendered()."
-                <br>
-                <a href='' class='fire_safety_item_edit'>"._t(115)."</a>
-            </div>";
-            $area_table_row[] = "<a href='' class='glyphicon glyphicon-remove remove_area'>"._t(82)."</a>".
-                                "<input type='checkbox' value='0' name='areas[$index][remove]' class='hidden' />";
-            $this->area_table_data[] = $area_table_row;
-        }
+        $this->area_table_data = $this->property ? $this->property->getAreasTableData() : [];
 
         /**
          * Documents table generation
          */
-        $this->documents_table_data = [];
-        $document_types = PropertyDocumentType::getAll([]);
-        $documents = $this->property ? $this->property->getDocuments() : [];
-        foreach($document_types as $index => $document_type){
-            $document_table_row = [];
-            $document_table_row[] = $document_type->document_name;
-            $document_table_row[] = "<input type='checkbox' class='yes_no_box' id='document_{$index}_required' "
-                                    ."name='documents[$index][required]'"
-                                    .($documents[$index]->required ? "checked" : "")
-                                    ."/>";
-            $document_table_row[] = ($documents[$index]->document ?  
-                            "<div class='dbl_click_file'><a target='_blank' href='{$documents[$index]->getDocumentUrl()}'>{$documents[$index]->document_name}</a>"
-                            : "").
-                            get_file_input("documents[$index]", "", 
-                            [
-                                "label" => "<span class='glyphicon glyphicon glyphicon-paperclip'></span>",
-                                "classes" => ["document-file-input"]
-                            ]);
-            $document_table_row[] = "<input type='checkbox' class='yes_no_box' id='document_{$index}_received' "
-                                    ."name='documents[$index][received]'"
-                                    .($documents[$index]->received ? "checked" : "")
-                                    ."/>";
-            $this->documents_table_data[] = $document_table_row;
-        }
+        $this->documents_table_data = Property::getDocumentsTableData($this->property);
 
         $this->form_build_id = create_csrf($this->form_id, $this->arguments[1] ? $this->arguments[1] : 0);
     }
@@ -216,22 +170,20 @@ class EditPropertiesController extends AdminPage{
         if(!$this->check_csrf()){
             return;
         }
-        if(!$_POST["property"]["adress"]){
+        if(!$_POST["property"]["adress"] || !$_POST["property"]["postcode"]){
             create_warning_message(_t(138));
             return;
         }
         $this->property = new Property();
         object_map($this->property, $_POST["property"]);
         $this->check_creatable_fields();
-        if(isset($_POST["add_and_publish"])){
-            $this->property->is_view = "0";
-        }else{
-            $this->property->is_view = "1";
+        if(!$this->checkUser()){
+            return;
         }
         $this->property->created_date = get_current_date();
         $this->property->insert();
 
-        $areas = $_POST["areas"];
+        $areas = $_POST["areas"] ? : [];
         foreach($areas as $index => $area_data){
             $area = new PropertyArea();
             object_map($area, $area_data);
@@ -242,7 +194,7 @@ class EditPropertiesController extends AdminPage{
                 $area->updatePhotos($area_photos_tmp_names, $area_photos_types);
             }
         }
-
+        $this->property->updateDocuments($_POST["documents"]);
         create_warning_message(_t(91), "alert-success");
         core_go_to(BASE_URL."/properties/edit/".$this->property->ID);
     }
@@ -252,10 +204,7 @@ class EditPropertiesController extends AdminPage{
             return;
         }
         object_map($this->property, $_POST["property"]);
-        if(isset($_POST["update_and_publish"])){
-            $this->property->is_view = "0";
-        }
-        $this->property->updateAreas($_POST["areas"]);
+        $_POST["areas"] ? $this->property->updateAreas($_POST["areas"]) : "";
         $this->property->updateDocuments($_POST["documents"]);
         $this->check_creatable_fields();
         $this->property->update();
@@ -273,13 +222,65 @@ class EditPropertiesController extends AdminPage{
     private function check_creatable_fields(){
         foreach($this->create_if_not_exist_fields as $type => $field_name){
             if(!is_numeric($this->property->$field_name)){
-                $service_provider = new DBObject("service_providers");
+                //Empty input
+                if($this->property->$field_name == "NULL" || !$this->property->$field_name){
+                    $this->property->$field_name = NULL;
+                    continue;
+                }
+                $service_provider = new ServiceProvider();
                 $service_provider->provider_name = $this->property->$field_name;
                 $service_provider->provider_type = $type;
+                $service_provider->phone = $_POST[$field_name]["phone"];
                 $service_provider->insert();
                 $this->property->$field_name = $service_provider->ID;
+            }else{
+                $service_provider = ServiceProvider::get(["ID" => $this->property->$field_name]);
+                $service_provider->phone = $_POST[$field_name]["phone"];
+                $service_provider->update();
             }
         }
     }
     
+    private function checkUser(){
+        if($this->property->landlord != "NULL"){
+            $landlord = User::getUserById($this->property->landlord);
+            if(!$landlord->ID){
+                create_warning_message(_t(67));
+                return FALSE;
+            }else{
+                return TRUE;
+            }
+        }else if(empty( array_filter($_POST["landlord"]) )){
+            return TRUE;
+        }else if(!$_POST["landlord"]["NAME"] || !$_POST["landlord"]["SURNAME"] || !$_POST["landlord"]["PHONE"] || !$_POST["landlord"]["EMAIL"]){
+            create_warning_message(_t(226));
+            return FALSE;
+        }elseif (preg_match("/[^a-z\s\p{L}]+/iu", $_POST["landlord"]["NAME"]) ){
+            create_warning_message(_t(26, [mb_strtolower(_t(27))]));
+        }elseif (preg_match("/[^a-z\s\p{L}]+/iu", $_POST["landlord"]["SURNAME"]) ) {
+            create_warning_message(_t(26, [_t(28)]));
+        }elseif (preg_match("/[^0-9]+/i", $_POST["landlord"]["PHONE"]) || strlen($_POST["landlord"]["PHONE"]) != 11) {
+            create_warning_message(_t(26, [_t(29)]));
+        }elseif(filter_var($_POST["landlord"]["EMAIL"], FILTER_VALIDATE_EMAIL) == ""){
+            create_warning_message(_t(30));
+        }else{
+            $user = new User();
+            $user->NAME = $_POST["landlord"]["NAME"];
+            $user->SURNAME = $_POST["landlord"]["SURNAME"];
+            $user->PHONE = $_POST["landlord"]["PHONE"];
+            $user->USERNAME = preg_replace("/[^a-z_\-0-9]+/i", "",mb_strtolower($user->NAME));
+            $user->EMAIL = $_POST["landlord"]["EMAIL"];
+            $user->address = $_POST["landlord"]["address"];
+            $user->postcode = $_POST["landlord"]["postcode"];
+            while(!$user->checkUsernameInsertAvailable()){
+                $user->USERNAME .= random_int(0,9);
+            }
+            $user->STATUS = User::STATUS_PENDING;
+            $user->insert();
+            $this->property->landlord = $user->ID;
+            return TRUE;
+        }
+        return FALSE;
+    }
+
 }

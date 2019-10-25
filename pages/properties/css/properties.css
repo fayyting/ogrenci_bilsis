@@ -18,9 +18,6 @@ thead img {
     min-height: 70vh;
 }
 
-input[type="checkbox"]{
-    float: right;
-}
 
 .row{
     margin-left: 0px !important;
@@ -73,5 +70,88 @@ table .area_selection_button{
 }
 
 .cover_control.checked{
-    background-color: green;
+    background-color: rgb(125, 211, 125);
+}
+
+.section{
+    border: 1px dotted;
+    border-radius: 20px;
+    padding: 20px 0px 20px 0px;
+    margin: 15px;
+}
+.form-control#adress,.form-control#comment{
+    height: 100px;
+}
+
+.yes_no_box_div{
+    padding: 0 0 10px 10px;
+}
+
+.yes_no_box + label{
+    font-weight: normal; 
+}
+
+#management_fee_type{
+    position: absolute;
+    right: 15px;
+    bottom: 5px;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+@media (max-width: 767px){
+    #management_fee_type{
+        bottom: 0px;
+    }
+}
+.cover_control label{
+    width: 100%;
+    height: 100%;
+}
+.cover_control label:hover{
+    cursor: pointer;
+}
+
+tr.not_received{
+    background-color: rgb(250, 153, 153);
+}
+
+.document_comment{
+    float: right;
+    font-size: xx-large;
+    margin-right: 10px;
+    color: rgb(121, 121, 253);
+}
+.document_comment:hover{
+    cursor: pointer;
+}
+
+.step_count_control{
+    position: absolute;
+    max-width: 50%;
+    right: 15px;
+}
+
+.remove_document, .remove_new_document, .remove_facility{
+    float: right;
+    margin-right: 3px;
+    margin-bottom: 10px;
+}
+
+.add_new_area_facility{
+    margin-top: 40px;
+}
+.property_file_input .file-field{
+    width: 45px;
+}
+
+.submit_container{
+    position: fixed; 
+    top: 80px; 
+    right: 10px;
+    z-index: 9999;
+    width: 125px;
+}
+
+#property_table tr{
+    cursor: pointer;
 }

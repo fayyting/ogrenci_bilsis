@@ -36,4 +36,11 @@ class PropertyAreaPhotos extends DBObject{
         $this->photo = $file_name;
         return true;
     }
+
+    public function getPhotoRendered(int $area_index, int $photo_index){
+        return "<div class='area_image'> 
+                    <img src='".$this->getPhotoUrl()."' class='area_photo'/>
+                    <a href='' class='remove_photo' data-connected-name='areas[$area_index][photos][$photo_index]'><span class='glyphicon glyphicon-remove core-control'></span></a>
+                </div>";
+    }
 }

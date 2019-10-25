@@ -2,7 +2,7 @@
 
 class PropertyArea extends DBObject{
     const TABLE = "property_areas";
-    public $ID, $property, $area_type, $area_type_2,$width, $length, $measurement_type, $area_comment;
+    public $ID, $property, $area_type, $width, $length, $measurement_type, $area_comment;
 
     public function __construct()
     {
@@ -22,6 +22,10 @@ class PropertyArea extends DBObject{
         return PropertyAreaPhotos::getAll(["property_area" => $this->ID]);
     }
 
+    public function getFacilities(){
+        return PropertyAreaFacility::getAll(["property_area" => $this->ID]);
+    }
+
     public function updatePhotos($photo_file_tmp_names, $photo_file_types){
         foreach($photo_file_tmp_names as $index => $photo_file_tmp_name){
             if(!$photo_file_tmp_name) return;
@@ -30,6 +34,31 @@ class PropertyArea extends DBObject{
             if($photo->importFile($photo_file_tmp_name, $photo_file_types[$index])){
                 $photo->insert();
             }
+        }
+    }
+
+    public function updateFacilities($facilities_info){
+        $facilities = $facilities_info ? explode(";", $facilities_info) : [];
+        $current_facilities = $this->getFacilities();
+        if( count($facilities) < count($current_facilities) ){
+            $facilities_to_delete = array_slice($current_facilities, count($facilities));
+            $current_facilities = array_slice($current_facilities, 0, count($facilities));
+            foreach($facilities_to_delete as $to_delete){
+                $to_delete->delete();
+            }
+        }elseif(count($facilities) > count($current_facilities)){
+            $facilities_to_add = array_slice($facilities, count($current_facilities));
+            foreach($facilities_to_add as $to_add){
+                $area_facility = new PropertyAreaFacility();
+                $area_facility->property_area = $this->ID;
+                $area_facility->facility = $to_add;
+                $area_facility->insert();
+            }
+        }
+
+        foreach($current_facilities as $index => $facility){
+            $facility->facility = $facilities[$index];
+            $facility->update();
         }
     }
 
@@ -42,48 +71,63 @@ class PropertyArea extends DBObject{
         parent::delete();
     }
 
-    public function getAreaType2Rendered(){
-        switch($this->area_type){
-            case "general_living_area":
-                return self::getAvailableVariablesForLivingArea()[$this->area_type_2] ? : $this->area_type_2;
-                break;
-            case "bathroom":
-                $values = explode(",",$this->area_type_2);
-                $result = "";
-                foreach($values as $value){
-                    $url_value = self::getAvailableVariablesForBathroom()[$value];
-                    if(!$url_value) continue;
-                    $result .= "<img src='".BASE_URL.$url_value."' />";
-                }
-                return $result;
-                break;
-            case "parking":
-                return "<img src='".BASE_URL.self::getAvailableVariablesForParking()[$this->area_type_2]."' />";
-                break;
-            case "bedroom":
-                return $this->area_type_2;
-                break;
-            case "gardens":
-                return "<img src='".BASE_URL.self::getAvailableVariablesForGardens()[$this->area_type_2]."' />";
-                break;
-        }
+    public function getAreaTableRowData(int $area_index, bool $is_new_area, int $type_order){
+        $area_table_row = [];
+        $options = $this->getAvailableOptionsForAreaType();
+        $type_output = $options[$this->area_type] ? : $this->area_type;
+        $area_table_row[] = "<div class='area_type_selection'> $type_order. $type_output
+                            <input type='hidden' class='area_type_value' value='$this->area_type' name='areas[$area_index][area_type]'/></div>";
+        $area_table_row[] = "<input type='text' name='areas[$area_index][area_comment]' class='form-control'>";        
+        $area_table_row[] = $this->getPhotosRendered($area_index);
+        $area_table_row[] = "<input type='number' name='areas[$area_index][level]' value='$this->level' class='form-control'/>";
+        $area_table_row[] = "<input type='number' name='areas[$area_index][width]' value='$this->width' class='numberpicker area_width' readonly='true' data-on-change='updateTotal'/>".
+                            "<input type='number' name='areas[$area_index][length]' value='$this->length' class='numberpicker area_length' readonly='true' data-on-change='updateTotal'/>".
+                            "<input type='checkbox' name='areas[$area_index][measurement_type]' id='areas_{$area_index}_measurementtype' value='$this->measurement_type' class='measurementtype_picker checked hidden' ".($is_new_area ? "checked": "")."/>".
+                            "<label for='areas_{$area_index}_measurementtype' class='btn btn-default'>$this->measurement_type</label>";
+        $area_table_row[] = $this->width*$this->length;
+        $area_table_row[] = "<input type='text' name='facilities[$area_index]' class='hidden' 
+        value='".implode(";", array_map(function($el){
+            return $el->facility;
+        }, $this->getFacilities() ) )."' />
+        <div>
+            <a href='' class='facilities_edit' data-area='{$this->ID}'>"._t(115)."</a>
+        </div>";
+        $area_table_row[] = 
+        "<input type='text' name='areas[$area_index][fire_safety_items]' class='hidden' value='{$this->fire_safety_items}' />
+        <div>
+            <a href='' class='fire_safety_item_edit' data-area='{$this->ID}'>"._t(115)."</a>
+        </div>";
+        $area_table_row[] = "<input type='checkbox' class='yes_no_box' id='areas_{$area_index}_checked' "
+                            ."name='areas[$area_index][checked]'"
+                            .($this->checked ? "checked" : "")
+                            ."/>";
+        $area_table_row[] = "<a href='' class='glyphicon glyphicon-remove ".($is_new_area ? "remove_new_area" : "remove_area")."'>"._t(82)."</a>".
+                            "<input type='checkbox' value='0' name='areas[$area_index][remove]' class='hidden' />";
+        return $area_table_row;
     }
 
-    public function getFireSafetyItemsRendered(){
-        if(!$this->fire_safety_items){
-            return;
+    private function getPhotosRendered(int $area_index){
+        $photos = $this->getPhotos();
+        $photos_html = "<div class='area_images'>";
+        foreach($photos as $photo_index => $photo){
+            $photos_html .= $photo->getPhotoRendered($area_index, $photo_index);
         }
-        $items = explode(",",$this->fire_safety_items);
-        $result = "";
-        $fire_safety_item = new FireSafetyItem();
-        foreach($items as $item){
-            $fire_safety_item->getById(intval($item));
-            $result .= "<img src='".$fire_safety_item->getImageUrl()."' class='fire_safety_item_photo'/>";
-        }
-        return $result;
+        $photos_html .= "</div>";
+        $photos_html .= get_file_input("areas[$area_index][photos][0]", "", 
+        [
+            "label" => "<span class='glyphicon glyphicon-camera'></span>",
+            "classes" => ["property_file_input"],
+            "button_style" => ["col-sm-4", "col-xs-12"],
+            "attributes" => [
+                "data-area-index" => $area_index,
+                "data-area-file-index" => "0"
+            ],
+            "accept" => "image/*"
+        ]);
+        return $photos_html;
     }
 
-    public static function getAvailableVariablesForLivingArea(){
+    public static function getAvailableOptionsForAreaType(){
         return [
             "kitchen" => _t(169),
             "kitchen_dinner" => _t(213),
@@ -95,34 +139,14 @@ class PropertyArea extends DBObject{
             "landing" => _t(217),
             "porch" => _t(218),
             "study" => _t(219),
-            "utility_area" => _t(220)
-        ];
-    }
-
-    public static function getAvailableVariablesForParking(){
-        return [
-            "garage" => "/assets/parking1.png",
-            "off-street" => "/assets/parking2.jpg",
-            "resident-permit" => "/assets/parking3.png",
-            "free-on-street" => "/assets/parking4.png"
-        ];
-    }
-    
-    public static function getAvailableVariablesForGardens(){
-        return [
-            "side-garden" => "/assets/garden1.png",
-            "shed-outbuilding" => "/assets/garden2.png",
-            "terrace-balcony" => "/assets/garden3.png",
-            "communal" => "/assets/garden4.png"
-        ];
-    }
-    public static function getAvailableVariablesForBathroom(){
-        return [
-            "none" => "",
-            "with_shower_bath" => "/assets/bathroom.png",
-            "without_shower_bath" => "/assets/bathroom2.png",
-            "with_shower" => "/assets/shower.png",
-            "with_toilet" => "/assets/toilet.png"
+            "utility_area" => _t(220),
+            "bathroom" => _t(221),
+            "shower" => _t(222),
+            "toilet" => _t(223),
+            "garden" => _t(153),
+            "balcony" => _t(154),
+            "terrace" => _t(155),
+            "parking" => _t(156)
         ];
     }
 }

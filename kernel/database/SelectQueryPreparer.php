@@ -122,10 +122,10 @@ class SelectQueryPreparer extends CoreDBQueryPreparer{
         return $this->orderBy ? "ORDER BY ".$this->orderBy : "";
     }
     
-    public function condition(string $condition, array $params = NULL){
-        $this->condition = $condition;
+    public function condition(string $condition, array $params = NULL, $connect = "AND"){
+        $this->condition = $this->condition ? "$this->condition $connect $condition" : $condition;
         if($params){
-            $this->params = $params;
+            $this->params = empty($this->params) ? $params : array_merge($this->params,$params);
         }
         return $this;
     }

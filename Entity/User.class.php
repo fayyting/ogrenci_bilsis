@@ -5,9 +5,11 @@ class User extends DBObject{
     const TABLE = USERS;
     const STATUS_ACTIVE = "active";
     const STATUS_BLOCKED = "blocked";
+    const STATUS_PENDING = "pending";
 
 
     public $ID, $USERNAME,$NAME, $SURNAME, $EMAIL, $PHONE, $PASSWORD, $CREATED_AT, $ACCESS, $STATUS;
+    public $address, $postcode;
     public $ROLES;
     private static $ALLROLES;
     public function __construct() {

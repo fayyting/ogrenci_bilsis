@@ -4,6 +4,7 @@ abstract class Page {
     
     protected $arguments;
     protected $js_files;
+    protected $js_codes;
     protected $css_files;
     protected $frontend_translations = [];
     protected $accessable_roles = ["USER"];
@@ -33,6 +34,7 @@ abstract class Page {
         $this->echoContent();
         $this->echoFooter();
         $this->echoTranslations();
+        $this->echoJSCodes();
         echo '</body>';
         echo '</html>';
     }
@@ -76,6 +78,13 @@ abstract class Page {
             $this->js_files[] = $js_file_path;
         }
     }
+
+    protected function add_js(string $js_code){
+        if(!$this->js_codes){
+            $this->js_codes = [];
+        }
+        $this->js_codes[] = $js_code;
+    }
     
     protected function add_css_files($css_file_path){
         if(is_array($css_file_path)){
@@ -106,8 +115,8 @@ abstract class Page {
             "js/jquery.js",
             "js/bootstrap.min.js",
             "js/bootstrap-select.js",
+            "js/moment.js",
             "js/bootstrap-datetimepicker.min.js",
-            "js/bootstrap-datetimepicker.tr.js",
             "js/bootstrap-dialog.min.js",
             "js/easy-numpad.min.js",
             "js/bootstrap-notify.js",
@@ -148,11 +157,22 @@ abstract class Page {
         $this->add_frontend_translation(82);
         $this->add_frontend_translation(200);
         $this->add_frontend_translation(201);
+        $this->add_frontend_translation(37);
     }
 
     protected function echoTranslations() {
         echo "<script> var translations = ".json_encode($this->frontend_translations).";"
                 . "var language = '".Translator::$language."';</script>";
+    }
+
+    protected function echoJSCodes()
+    {
+        if(!is_array($this->js_codes)){
+            return;
+        }
+        foreach($this->js_codes as $js_code){
+            echo "<script> $js_code </script>";
+        }
     }
 }
 

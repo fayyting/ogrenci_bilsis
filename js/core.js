@@ -7,6 +7,12 @@ $(document).ready(function () {
    $(document).on("keyup", ".uppercase_filter", uppercase_filter);
    $(document).on("keyup", ".lowercase_filter", lowercase_filter);
    $(".datetimeinput").datetimepicker();
+   $(".dateinput").datetimepicker({
+       format: "YYYY-MM-DD"
+   });
+   $(".timeinput").datetimepicker({
+    format: 'HH:mm'
+   });
     
     $(".search-field").on("keyup", function() {
         var value = $(this).val().toLowerCase();
@@ -195,18 +201,23 @@ String.prototype.format = function () {
 };
 
 var filter_caller = null;
-function autocompleteFilter(){
+function autocompleteFilter(event){
+    var input = String.fromCharCode(event.keyCode);
+    var text  = $(this).val();
+    //input key is not a character
+    if (text && !/[a-zA-Z0-9-_ ]/.test(input)){
+        return;
+    }
     if(filter_caller){
         clearInterval(filter_caller);
     }
-    text_field = $(this);
-    select_field = text_field.parents(".bootstrap-select").find("select");
+    var select_field = $(this).parents(".bootstrap-select").find("select");
     filter_caller = setTimeout(
         function(){
             let data = {
                 table : $(select_field).attr("data-reference-table"),
                 column : $(select_field).attr("data-reference-column"),
-                data : text_field.val()
+                data : text
             };
             if($(select_field).attr("data-reference-filter-column")){
                 data["filter-column"] = $(select_field).attr("data-reference-filter-column");

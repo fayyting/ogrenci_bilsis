@@ -6,7 +6,7 @@ function echo_header(array $js_files, array $css_files){?>
         <link rel="icon" href="/logo/housingbritain.png"/>
         <title> <?php echo SITE_NAME;?> </title>
         <?php foreach ($js_files as $js_file) { ?>
-        <script src="<?php echo BASE_URL."/$js_file?". hash("MD5", filemtime($js_file));?>"></script>
+        <script src="<?php echo strpos($js_file, "http") !== 0 ? BASE_URL."/$js_file?". hash("MD5", filemtime($js_file)): $js_file;?>"></script>
         <?php } ?>
         <?php foreach ($css_files as $css_file) { ?>
             <link rel="stylesheet" href="<?php echo BASE_URL."/$css_file?".hash("MD5", filemtime($css_file));?>"/>

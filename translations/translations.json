@@ -42,7 +42,7 @@
     {
         "ID": "9",
         "EN": "Edit User",
-        "TR": "Kullan\u0131c\u0131y\u0131 d\u00fczenle"
+        "TR": "Kullan\u0131c\u0131y\u0131 D\u00fczenle"
     },
     {
         "ID": "10",
@@ -87,22 +87,22 @@
     {
         "ID": "18",
         "EN": "Roles of %s",
-        "TR": "%s kullan\u0131c\u0131s\u0131n\u0131n rolleri"
+        "TR": "%s Kullan\u0131c\u0131s\u0131n\u0131n Rolleri"
     },
     {
         "ID": "19",
-        "EN": "This user not exists.",
+        "EN": "This user does not exist.",
         "TR": "Bu kullan\u0131c\u0131 mevcut de\u011fil."
     },
     {
         "ID": "20",
         "EN": "Username",
-        "TR": "Kullan\u0131c\u0131 ad\u0131"
+        "TR": "Kullan\u0131c\u0131 Ad\u0131"
     },
     {
         "ID": "21",
         "EN": "Login",
-        "TR": "Oturum a\u00e7"
+        "TR": "Oturum A\u00e7"
     },
     {
         "ID": "22",
@@ -126,7 +126,7 @@
     },
     {
         "ID": "26",
-        "EN": "Please be sure that you written %s correct.",
+        "EN": "Please be sure you write %s correct.",
         "TR": "%s alan\u0131n\u0131 do\u011fru yazd\u0131\u011f\u0131n\u0131zdan emin olun."
     },
     {
@@ -136,13 +136,13 @@
     },
     {
         "ID": "28",
-        "EN": "surname",
-        "TR": "soyisim"
+        "EN": "Surname",
+        "TR": "Soyisim"
     },
     {
         "ID": "29",
-        "EN": "phone",
-        "TR": "telefon numaras\u0131"
+        "EN": "Phone",
+        "TR": "Telefon Numaras\u0131"
     },
     {
         "ID": "30",
@@ -151,8 +151,8 @@
     },
     {
         "ID": "31",
-        "EN": "Invalid role.",
-        "TR": "Ge\u00e7ersiz rol belirteci."
+        "EN": "Invalid Role",
+        "TR": "Ge\u00e7ersiz Rol Belirteci."
     },
     {
         "ID": "32",
@@ -166,8 +166,8 @@
     },
     {
         "ID": "34",
-        "EN": "Last access",
-        "TR": "Son eri\u015fim"
+        "EN": "Last Access",
+        "TR": "Son Eri\u015fim"
     },
     {
         "ID": "35",
@@ -216,7 +216,7 @@
     },
     {
         "ID": "44",
-        "EN": "Username can only contain letters and numbers and must contain at least %d characters. ",
+        "EN": "Username can only contain letters and numbers, and must contain at least %d characters. ",
         "TR": "Kullan\u0131c\u0131 ad\u0131 sadece harf ve rakam i\u00e7erebilir ve en az %d karakter i\u00e7ermelidir."
     },
     {
@@ -226,13 +226,13 @@
     },
     {
         "ID": "46",
-        "EN": "Please be sure that you written password correct. ",
+        "EN": "Please be sure that you spell the password correct. ",
         "TR": "\u015eifreyi do\u011fru yazd\u0131\u011f\u0131n\u0131zdan emin olun."
     },
     {
         "ID": "47",
-        "EN": "The password must be at least 8 characters long and must contain uppercase letter, lowercase letter, punctioation and number. ",
-        "TR": "\u015eifre en az 8 karakter uzunlu\u011funda olmal\u0131. B\u00fcy\u00fck harf, k\u00fc\u00e7\u00fck harf, noktalama i\u015fareti ve rakam bulundurmal\u0131. ."
+        "EN": "The password must be at least 8 characters long, and must iclude uppercase letter, lowercase letter, punctuation, and number. ",
+        "TR": "\u015eifre en az 8 karakter uzunlu\u011funda olmal\u0131. B\u00fcy\u00fck harf, k\u00fc\u00e7\u00fck harf, noktalama i\u015fareti ve rakam bulundurmal\u0131."
     },
     {
         "ID": "48",
@@ -276,8 +276,8 @@
     },
     {
         "ID": "56",
-        "EN": "Available characters: %s",
-        "TR": "Kullan\u0131labilir karakterler: %s"
+        "EN": "Available Characters: %s",
+        "TR": "Kullan\u0131labilir Karakterler: %s"
     },
     {
         "ID": "57",
@@ -321,18 +321,18 @@
     },
     {
         "ID": "65",
-        "EN": "Document removed.",
-        "TR": "D\u00f6k\u00fcman silindi."
+        "EN": "Record removed.",
+        "TR": "Kay\u0131t silindi."
     },
     {
         "ID": "66",
-        "EN": "A table with same name already created.",
+        "EN": "A table with same name already exists.",
         "TR": "Bu isimde bir tablo zaten tan\u0131ml\u0131."
     },
     {
         "ID": "67",
-        "EN": "Invalid operation.",
-        "TR": "Ge\u00e7ersiz i\u015flem."
+        "EN": "Invalid Operation",
+        "TR": "Ge\u00e7ersiz \u0130\u015flem"
     },
     {
         "ID": "68",
@@ -351,7 +351,7 @@
     },
     {
         "ID": "71",
-        "EN": "There is at least one user which is in this role.",
+        "EN": "There is at least one user in this role.",
         "TR": "Bu rol\u00fc kullanan en az bir kullan\u0131c\u0131 mevcut."
     },
     {
@@ -401,7 +401,7 @@
     },
     {
         "ID": "81",
-        "EN": "Are you sure to remove that record?",
+        "EN": "Are you sure you want to remove this record?",
         "TR": "Bu kayd\u0131 silmek istedi\u011finize emin misiniz?"
     },
     {
@@ -431,12 +431,12 @@
     },
     {
         "ID": "87",
-        "EN": "This link maybe used before.",
+        "EN": "This link may have been used before.",
         "TR": "Bu ba\u011flant\u0131 daha \u00f6nce kullan\u0131lm\u0131\u015f olabilir."
     },
     {
         "ID": "88",
-        "EN": "Password reset e-mail has send.",
+        "EN": "Password reset e-mail has been sent.",
         "TR": "\u015eifre s\u0131f\u0131rlama e-postas\u0131 g\u00f6nderildi."
     },
     {
@@ -461,18 +461,18 @@
     },
     {
         "ID": "93",
-        "EN": "Are you sure want to drop table %s?",
+        "EN": "Are you sure you want to drop table %s?",
         "TR": "%s tablosunu kald\u0131rmak istedi\u011finize emin misiniz?"
     },
     {
         "ID": "94",
-        "EN": "Out of %d records %d-%d is monitoring.",
-        "TR": "Toplan %d kay\u0131ttan %d-%d aras\u0131 g\u00f6r\u00fcnt\u00fcleniyor."
+        "EN": "Out of %d records %d-%d are displayed.",
+        "TR": "Toplam %d kay\u0131ttan %d-%d aras\u0131 g\u00f6r\u00fcnt\u00fcleniyor."
     },
     {
         "ID": "95",
-        "EN": "Invalid key.",
-        "TR": "Ge\u00e7ersiz anahtar."
+        "EN": "Invalid Key",
+        "TR": "Ge\u00e7ersiz Anahtar."
     },
     {
         "ID": "96",
@@ -481,23 +481,23 @@
     },
     {
         "ID": "97",
-        "EN": "Your user account has been blocked. Please login after reset password.",
+        "EN": "Your user account has been blocked. Please login after resetting password.",
         "TR": "Hesab\u0131n\u0131z kilitlenmi\u015ftir. L\u00fctfen \u015fifrenizi s\u0131f\u0131rlayarak sisteme yeniden giri\u015f yap\u0131n."
     },
     {
         "ID": "98",
-        "EN": "Are you sure want to remove user %s?",
+        "EN": "Are you sure you want to remove user %s?",
         "TR": "%s kullan\u0131c\u0131s\u0131n\u0131 silmek istedi\u011finize emin misiniz?"
     },
     {
         "ID": "99",
-        "EN": "File cannot uploaded.",
+        "EN": "File cannot be uploaded.",
         "TR": "Dosya y\u00fcklenemedi."
     },
     {
         "ID": "100",
         "EN": "Translations",
-        "TR": "\u00c7eviri"
+        "TR": "\u00c7eviriler"
     },
     {
         "ID": "101",
@@ -511,12 +511,12 @@
     },
     {
         "ID": "103",
-        "EN": "This option only imports translations on translations\/translations.json file.",
+        "EN": "This option imports only translations from translations\/translations.json file.",
         "TR": "Bu se\u00e7enek sadece translations\/translations.json dosyas\u0131ndaki \u00e7evirileri i\u00e7e aktar\u0131r."
     },
     {
         "ID": "104",
-        "EN": "This will exports translations on translations\/translations.json file.",
+        "EN": "This option exports translations to translations\/translations.json file.",
         "TR": "Bu se\u00e7enek \u00e7evirileri, translations\/translations.json dosyas\u0131na d\u0131\u015fa aktar\u0131r."
     },
     {
@@ -541,7 +541,7 @@
     },
     {
         "ID": "109",
-        "EN": "Are you sure want to truncate table %s?",
+        "EN": "Are you sure you want to truncate table %s?",
         "TR": "%s tablosunu bo\u015faltmak istedi\u011finize emin misiniz?"
     },
     {
@@ -561,7 +561,7 @@
     },
     {
         "ID": "113",
-        "EN": "Remember me",
+        "EN": "Remember Me",
         "TR": "Beni Hat\u0131rla"
     },
     {
@@ -596,8 +596,8 @@
     },
     {
         "ID": "120",
-        "EN": "Bedrooms",
-        "TR": "Oda say\u0131s\u0131"
+        "EN": "Number of Bedrooms",
+        "TR": "Yatak Odas\u0131 Say\u0131s\u0131"
     },
     {
         "ID": "121",
@@ -661,7 +661,7 @@
     },
     {
         "ID": "133",
-        "EN": "Postcode",
+        "EN": "Postal Code",
         "TR": "Posta Kodu"
     },
     {
@@ -676,8 +676,8 @@
     },
     {
         "ID": "136",
-        "EN": "View",
-        "TR": "G\u00f6r\u00fcn\u00fcm"
+        "EN": "Viewing",
+        "TR": "G\u00f6zden ge\u00e7irilenler"
     },
     {
         "ID": "137",
@@ -686,8 +686,8 @@
     },
     {
         "ID": "138",
-        "EN": "Adress field is mandatory.",
-        "TR": "Adres alan\u0131 zorunludur."
+        "EN": "Adress and poscode fields are mandatory.",
+        "TR": "Adres ve posta kodu alanlar\u0131 zorunludur."
     },
     {
         "ID": "139",
@@ -696,8 +696,8 @@
     },
     {
         "ID": "140",
-        "EN": "Interval\/Type",
-        "TR": "D\u00f6nem\/Tip"
+        "EN": "Interval",
+        "TR": "D\u00f6nem"
     },
     {
         "ID": "141",
@@ -731,53 +731,53 @@
     },
     {
         "ID": "147",
-        "EN": "Downstairs Shower",
-        "TR": "A\u015fa\u011f\u0131 kat du\u015f"
+        "EN": "Time",
+        "TR": "Zaman"
     },
     {
         "ID": "148",
-        "EN": "Upstairs Shower",
-        "TR": "Yukar\u0131 kat du\u015f"
+        "EN": "Smart Meter",
+        "TR": "Ak\u0131ll\u0131 Saya\u00e7"
     },
     {
         "ID": "149",
-        "EN": "Downstairs Bathroom",
-        "TR": "A\u015fa\u011f\u0131 kat banyo"
+        "EN": "Location Comment",
+        "TR": "Konum Yorumu"
     },
     {
         "ID": "150",
-        "EN": "Upstairs Bathroom",
-        "TR": "Yukar\u0131 kat banyo"
+        "EN": "Entrance",
+        "TR": "Giri\u015f"
     },
     {
         "ID": "151",
-        "EN": "Downstairs Toilet",
-        "TR": "A\u015fa\u011f\u0131 kat tuvalet"
+        "EN": "Shower\/Bath",
+        "TR": "Du\u015f\/Banyo"
     },
     {
         "ID": "152",
-        "EN": "Upstairs Toilet",
-        "TR": "Yukar\u0131 kat tuvalet"
+        "EN": "Suitable",
+        "TR": "Uygun"
     },
     {
         "ID": "153",
-        "EN": "Special Facilities",
-        "TR": "\u00d6zel Tesisler"
+        "EN": "Garden",
+        "TR": "Bah\u00e7e"
     },
     {
         "ID": "154",
-        "EN": "Downstairs Level Access",
-        "TR": "Alt kat zemin seviyesi"
+        "EN": "Balcony",
+        "TR": "Balkon"
     },
     {
         "ID": "155",
-        "EN": "Upstairs Level Access",
-        "TR": "\u00dcst kat zemin seviyesi"
+        "EN": "Terrace",
+        "TR": "Teras"
     },
     {
         "ID": "156",
-        "EN": "Seperate",
-        "TR": "Ayr\u0131"
+        "EN": "Parking Area",
+        "TR": "Park Alan\u0131"
     },
     {
         "ID": "157",
@@ -786,8 +786,8 @@
     },
     {
         "ID": "158",
-        "EN": "Pre-pay",
-        "TR": "\u00d6n \u00f6demeli"
+        "EN": "Prepaid",
+        "TR": "\u00d6n \u00d6demeli"
     },
     {
         "ID": "159",
@@ -796,7 +796,7 @@
     },
     {
         "ID": "161",
-        "EN": "Meter type",
+        "EN": "Meter Type",
         "TR": "Saya\u00e7"
     },
     {
@@ -821,8 +821,8 @@
     },
     {
         "ID": "166",
-        "EN": "Front garden",
-        "TR": "\u00d6n bah\u00e7e"
+        "EN": "Front Yard",
+        "TR": "\u00d6n Bah\u00e7e"
     },
     {
         "ID": "167",
@@ -848,11 +848,6 @@
         "ID": "171",
         "EN": "Provider",
         "TR": "Servis Sa\u011flay\u0131c\u0131"
-    },
-    {
-        "ID": "172",
-        "EN": "Reading\/Date",
-        "TR": "Okuma\/G\u00fcn"
     },
     {
         "ID": "173",
@@ -916,7 +911,7 @@
     },
     {
         "ID": "185",
-        "EN": "Comments about heating",
+        "EN": "Comments on heating",
         "TR": "Is\u0131tma ile ilgili yorumlar"
     },
     {
@@ -926,7 +921,337 @@
     },
     {
         "ID": "187",
-        "EN": "Comments about stopcock",
+        "EN": "Comments on stopcock",
         "TR": "Musluk ile ilgili yorumlar"
+    },
+    {
+        "ID": "188",
+        "EN": "Per Day",
+        "TR": "G\u00fcnl\u00fck"
+    },
+    {
+        "ID": "189",
+        "EN": "Per Week",
+        "TR": "Haftal\u0131k"
+    },
+    {
+        "ID": "190",
+        "EN": "Per Month",
+        "TR": "Ayl\u0131k"
+    },
+    {
+        "ID": "191",
+        "EN": "Quaterly",
+        "TR": "Mevsimlik"
+    },
+    {
+        "ID": "192",
+        "EN": "Annual",
+        "TR": "Y\u0131ll\u0131k"
+    },
+    {
+        "ID": "193",
+        "EN": "Collection",
+        "TR": "Toplu"
+    },
+    {
+        "ID": "194",
+        "EN": "Add to Properties List",
+        "TR": "Varl\u0131klar Listesine Ekle"
+    },
+    {
+        "ID": "195",
+        "EN": "Payment Type",
+        "TR": "\u00d6deme Tipi"
+    },
+    {
+        "ID": "196",
+        "EN": "Guaranteed",
+        "TR": "Garantilenmi\u015f"
+    },
+    {
+        "ID": "197",
+        "EN": "Active Collection",
+        "TR": "Aktif Grup"
+    },
+    {
+        "ID": "198",
+        "EN": "Paid Upfront",
+        "TR": "Pe\u015fin \u00d6denmi\u015f"
+    },
+    {
+        "ID": "199",
+        "EN": "All changes are temporary until form submission.",
+        "TR": "Form g\u00f6nderilinceye kadar de\u011fi\u015fiklikler ge\u00e7icidir."
+    },
+    {
+        "ID": "200",
+        "EN": "Next",
+        "TR": "Sonraki"
+    },
+    {
+        "ID": "201",
+        "EN": "Previous",
+        "TR": "\u00d6nceki"
+    },
+    {
+        "ID": "202",
+        "EN": "Are you sure you want to remove this photo?",
+        "TR": "Bu foto\u011fraf\u0131 silmek istedi\u011finize emin misiniz?"
+    },
+    {
+        "ID": "203",
+        "EN": "Please upload merely an image file.",
+        "TR": "L\u00fctfen sadece resim dosyas\u0131 y\u00fckleyin."
+    },
+    {
+        "ID": "204",
+        "EN": "Comment",
+        "TR": "Yorum"
+    },
+    {
+        "ID": "205",
+        "EN": "Photos",
+        "TR": "Foto\u011fraflar"
+    },
+    {
+        "ID": "206",
+        "EN": "Measurement",
+        "TR": "\u00d6l\u00e7\u00fc"
+    },
+    {
+        "ID": "207",
+        "EN": "Total",
+        "TR": "Toplam"
+    },
+    {
+        "ID": "208",
+        "EN": "Documents",
+        "TR": "Dok\u00fcmanlar"
+    },
+    {
+        "ID": "209",
+        "EN": "Required",
+        "TR": "Gerekli"
+    },
+    {
+        "ID": "210",
+        "EN": "Attachment",
+        "TR": "Ek Dosya"
+    },
+    {
+        "ID": "211",
+        "EN": "Received",
+        "TR": "Al\u0131nd\u0131"
+    },
+    {
+        "ID": "212",
+        "EN": "Area",
+        "TR": "Alan"
+    },
+    {
+        "ID": "213",
+        "EN": "Kitchen\/Dinner",
+        "TR": "Mutfak\/Yemek"
+    },
+    {
+        "ID": "214",
+        "EN": "Kitchen\/Living Area",
+        "TR": "Mutfak\/Ya\u015fam Alan\u0131"
+    },
+    {
+        "ID": "215",
+        "EN": "Dining Room",
+        "TR": "Yemek Odas\u0131"
+    },
+    {
+        "ID": "216",
+        "EN": "Conservatory",
+        "TR": "Konservatuvar"
+    },
+    {
+        "ID": "217",
+        "EN": "Landing",
+        "TR": "Sahanl\u0131k"
+    },
+    {
+        "ID": "218",
+        "EN": "Porch",
+        "TR": "Veranda"
+    },
+    {
+        "ID": "219",
+        "EN": "Study Room",
+        "TR": "\u00c7al\u0131\u015fma Odas\u0131"
+    },
+    {
+        "ID": "220",
+        "EN": "Cellar",
+        "TR": "Kiler"
+    },
+    {
+        "ID": "221",
+        "EN": "Bathroom",
+        "TR": "Banyo"
+    },
+    {
+        "ID": "222",
+        "EN": "Shower",
+        "TR": "Du\u015f"
+    },
+    {
+        "ID": "223",
+        "EN": "Toilet",
+        "TR": "Tuvalet"
+    },
+    {
+        "ID": "224",
+        "EN": "Fire Safety Items",
+        "TR": "Yang\u0131n G\u00fcvenlik Ekipmanlar\u0131"
+    },
+    {
+        "ID": "225",
+        "EN": "New Landlord",
+        "TR": "Yeni Landlord"
+    },
+    {
+        "ID": "226",
+        "EN": "To add new user NAME, SURNAME, PHONE and E-MAIL fields are required.",
+        "TR": "Yeni bir kullan\u0131c\u0131 eklemek i\u00e7in \u0130S\u0130M, SOY\u0130S\u0130M, TELEFON ve E-POSTA alanlar\u0131n\u0131n doldurulmas\u0131 zorunludur."
+    },
+    {
+        "ID": "227",
+        "EN": "Category",
+        "TR": "Kategori"
+    },
+    {
+        "ID": "228",
+        "EN": "Management Fee",
+        "TR": "Y\u00f6netim \u00dccreti"
+    },
+    {
+        "ID": "229",
+        "EN": "All Maintenance Covered by Landlord",
+        "TR": "Lanlord Taraf\u0131ndan Tam Bak\u0131m Deste\u011fi"
+    },
+    {
+        "ID": "230",
+        "EN": "Part Maintenance Covered by Landlord",
+        "TR": "Lanlord Taraf\u0131ndan K\u0131smi Bak\u0131m Deste\u011fi"
+    },
+    {
+        "ID": "231",
+        "EN": "Boiler Cover",
+        "TR": "Kombi Deste\u011fi"
+    },
+    {
+        "ID": "232",
+        "EN": "Plumbing Cover",
+        "TR": "Su Tesisat\u0131 Deste\u011fi"
+    },
+    {
+        "ID": "233",
+        "EN": "Drainage Cover",
+        "TR": "Drenaj Deste\u011fi"
+    },
+    {
+        "ID": "234",
+        "EN": "Electrical Cover",
+        "TR": "Elektrik Deste\u011fi"
+    },
+    {
+        "ID": "235",
+        "EN": "Miscellaneous Cover",
+        "TR": "\u00c7e\u015fitli Destekler"
+    },
+    {
+        "ID": "236",
+        "EN": "Parking Restrictions",
+        "TR": "Park Etme K\u0131s\u0131tlar\u0131"
+    },
+    {
+        "ID": "237",
+        "EN": "Appliance Cover",
+        "TR": "Kurulum Deste\u011fi"
+    },
+    {
+        "ID": "238",
+        "EN": "Closest Bus Stops",
+        "TR": "En Yak\u0131n Otob\u00fcs Duraklar\u0131"
+    },
+    {
+        "ID": "239",
+        "EN": "Closest Metro\/Tram Stations",
+        "TR": "En Yak\u0131n Metro\/Tramvay Duraklar\u0131"
+    },
+    {
+        "ID": "240",
+        "EN": "Checked",
+        "TR": "Kontrol Edildi"
+    },
+    {
+        "ID": "241",
+        "EN": "Steps count",
+        "TR": "Merdiven say\u0131s\u0131"
+    },
+    {
+        "ID": "242",
+        "EN": "Are you sure you want to remove this document?",
+        "TR": "Bu belgeyi silmek istedi\u011finize emin misiniz?"
+    },
+    {
+        "ID": "244",
+        "EN": "Level",
+        "TR": "Seviye"
+    },
+    {
+        "ID": "245",
+        "EN": "Property Section",
+        "TR": "Varl\u0131k Alan\u0131"
+    },
+    {
+        "ID": "246",
+        "EN": "Landlord Section",
+        "TR": "Landlord Alan\u0131"
+    },
+    {
+        "ID": "247",
+        "EN": "Rent-Scheme Section",
+        "TR": "Kira-T\u00fcr Alan\u0131"
+    },
+    {
+        "ID": "248",
+        "EN": "Disabled Section",
+        "TR": "Engelli Alan\u0131"
+    },
+    {
+        "ID": "249",
+        "EN": "Provider Telephone",
+        "TR": "Servis Sa\u011flay\u0131c\u0131 Telefonu"
+    },
+    {
+        "ID": "250",
+        "EN": "Facilities",
+        "TR": "Olanaklar"
+    },
+    {
+        "ID": "251",
+        "EN": "Not Suitable",
+        "TR": "Uygun De\u011fil"
+    },
+    {
+        "ID": "252",
+        "EN": "Part Suitable",
+        "TR": "Yar\u0131 Uygun"
+    },
+    {
+        "ID": "253",
+        "EN": "There is no record for this area.",
+        "TR": "Bu alan i\u00e7in hi\u00e7bir kay\u0131t yok."
+    },
+    {
+        "ID": "254",
+        "EN": "Saved",
+        "TR": "Kaydedildi"
     }
 ]

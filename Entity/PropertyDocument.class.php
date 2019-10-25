@@ -2,7 +2,7 @@
 
 class PropertyDocument extends DBObject{
     const TABLE = "property_documents";
-    public $ID, $property, $document_type, $required, $received, $document, $document_name;
+    public $ID, $property, $document_type, $required, $received, $document_comment, $checked;
 
     public function __construct()
     {
@@ -22,21 +22,46 @@ class PropertyDocument extends DBObject{
         return PropertyDocumentType::getById($this->document_type);
     }
 
-    public function getDocumentUrl(){
-        return $this->get_file_url_for_field("document");
+    public function updateDocumentFiles($document_file_tmp_names, $document_file_names, $document_index){
+        $files_to_remove = $_POST["document_files"][$document_index]["files"] ? array_keys($_POST["document_files"][$document_index]["files"]) : [];
+        if(count($files_to_remove)){
+            $current_files = $this->getFiles();
+            foreach($files_to_remove as $file_to_remove){
+                $current_files[$file_to_remove]->delete();
+            }
+        }
+        foreach($document_file_tmp_names as $index => $document_file_tmp_name){
+            if(!$document_file_tmp_name) return;
+            $document = new PropertyDocumentFile();
+            $document->document = $this->ID;
+            if($document->importFile($document_file_tmp_name, $document_file_names[$index])){
+                $document->insert();
+            }
+        }
     }
 
-    public function updateDocument(string $tmp_name, string $name)
-    {
-        if($this->document){
-            remove_uploaded_file($this->table, "document", $this->document);
+    public function getFiles(){
+        return PropertyDocumentFile::getAll(["document" => $this->ID]) ? : [];
+    }
+
+    public function getFilesRendered($document_index){
+        $document_files = $this->getFiles();
+        $render = "";
+        foreach($document_files as $index => $file){
+            $render .= "<div class='dbl_click_file'><a href='".$file->getFileUrl()."' download='$file->file_name'>".$file->getFileIcon()."$file->file_name</a>
+                            <a href='' class='remove_document' data-connected-name='document_files[$document_index][files][$index]'><span class='glyphicon glyphicon-remove core-control'></span></a>
+                        </div>";
         }
-        $file_url = "files/uploaded/$this->table/document/";
-        is_dir($file_url) ?  : mkdir($file_url, 0777, true);
-        $file_name = md5($tmp_name);
-        move_uploaded_file($tmp_name, $file_url.$file_name);
-        $this->document = $file_name;
-        $this->document_name = $name;
-        return true;
+        $render .= self::getDocumentFileInput($document_index);
+        return $render;
+    }
+
+    public static function getDocumentFileInput($document_index){
+        return get_file_input("documents[$document_index][files][0]", "", 
+                            [
+                                "label" => "<span class='glyphicon glyphicon glyphicon-paperclip'></span>",
+                                "classes" => ["document-file-input"],
+                                "attributes" => ["data-document-index" => $document_index, "data-file-index" => "0"]
+                            ]);
     }
 }

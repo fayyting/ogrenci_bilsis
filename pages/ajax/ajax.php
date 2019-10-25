@@ -1,11 +1,21 @@
 <?php
 
+use ___PHPSTORM_HELPERS\object;
+
 class AjaxController extends ServicePage{
     
     public function callService(string $service_name) {
         $this->$service_name();
     }
     
+    public function check_access(): bool
+    {
+        $user = get_current_core_user();
+        if(!$user->isRoot() && !$user->isUserInRole("ADMIN") && !$user->isUserInRole("MANAGER")){
+            return FALSE;
+        }
+        return TRUE;
+    }
     
     /**
      * Select from table
@@ -262,7 +272,7 @@ class AjaxController extends ServicePage{
 
     private function AutoCompleteSelectBoxFilter(){
         $table = $_POST["table"];
-        
+
         if(in_array($table, get_information_scheme()) ){
             $column = preg_replace('/[^a-zA-Z1-9_]*/', '', $_POST["column"]); ;
             $data = "%".$_POST["data"]."%";
@@ -272,7 +282,7 @@ class AjaxController extends ServicePage{
                 ":data" => $data
             ])->limit(AUTOCOMPLETE_SELECT_BOX_LIMIT);
             if(isset($_POST["filter-column"]) && isset($_POST["filter-value"]) ){
-                $query->condition(escapeshellarg($_POST["filter-column"])." = :value", 
+                $query->condition( preg_replace('/[^a-zA-Z1-9_]*/', '', $_POST["filter-column"])." = :value", 
                 [":value" => $_POST["filter-value"]]);
             }
             $filtered_result = $query->execute()->fetchAll(PDO::FETCH_NUM);
@@ -290,104 +300,129 @@ class AjaxController extends ServicePage{
         $property->delete();
     }
 
-    private function areaSelectionByType(){
-        $type = $_GET["type"];
-        if(!in_array($type, ["general_living_area", "bathroom", "parking", "bedroom", "gardens"])){
-            http_response_code(400);
-            return ;
-        }
+    private function areaSelection(){
         $this->import_view("table_view");
         $table_data = [];
-        switch($type){
-            case "general_living_area":
-                $available_variables = array_chunk(PropertyArea::getAvailableVariablesForLivingArea(), 3, true);
-                foreach($available_variables as $row_num => $row){
-                    $table_data[$row_num] = [];
-                    foreach($row as $key=> $data){
-                        $table_data[$row_num][] = '<button class="area_selection_button" data-type="'.$key.'">'.$data.'</button>';
-                    }
-                }
-                $table_data[$row_num][] = '<label for="living_area_other">'._t(184).' :</label>
-                                            <input type="text" id="living_area_other" class="form-control"/>
-                                            <button class="area_selection_button hidden" data-type=""></button>
-                                            <button class="area_other_selection_button" data-type="">'._t(77).'</button>';
-                break;
-            case "bathroom":
-                $table_data[] = [
-                    _t(221).":",
-                    '<label class="bathroom_selection">
-                        <input type="radio" name="bath" value="none" checked/>
-                        '._t(137).'
-                    </label>',
-                    '<label class="bathroom_selection">
-                        <input type="radio" name="bath" value="with_shower_bath" checked/>
-                        <img src="'.BASE_URL.'/assets/bathroom.png">
-                    </label>',
-                    '<label class="bathroom_selection">
-                        <input type="radio" name="bath" value="without_shower_bath"/>
-                        <img src="'.BASE_URL.'/assets/bathroom2.png">
-                    </label>'
-                ];
-                $table_data[] = [
-                    _t(222).":",
-                    '<label class="bathroom_selection">
-                        <input type="radio" name="shower" value="none" checked/>
-                        '._t(137).'
-                    </label>',
-                    '<label class="bathroom_selection">
-                        <input type="radio" name="shower" value="with_shower"/>
-                        <img src="'.BASE_URL.'/assets/shower.png">
-                    </label>'
-                ];
-                $table_data[] = [
-                    _t(223).":",
-                    '<label class="bathroom_selection">
-                        <input type="radio" name="toilet" value="none" checked/>
-                        '._t(137).'
-                    </label>',
-                    '<label class="bathroom_selection">
-                        <input type="radio" name="toilet" value="with_toilet"/>
-                        <img src="'.BASE_URL.'/assets/toilet.png">
-                    </label>
-                    <button class="area_selection_button hidden"></button>'
-                ];
-                break;
-            case "parking":
-                $available_variables = PropertyArea::getAvailableVariablesForParking();
-                $table_data[0] = [];
-                foreach($available_variables as $key => $value){
-                    $table_data[0][] = '<button class="area_selection_button" data-type="'.$key.'"><img src="'.BASE_URL.$value.'"></button>';
-                }
-                break;
-            case "bedroom":
-                $table_data[0] = [
-                    '<button class="area_selection_button" data-type="1">1</button>',
-                    '<button class="area_selection_button" data-type="2">2</button>',
-                    '<button class="area_selection_button" data-type="3">3</button>'
-                ];
-                break;
-            case "gardens":
-                $available_variables = PropertyArea::getAvailableVariablesForGardens();
-                $table_data[0] = [];
-                foreach($available_variables as $key => $value){
-                    $table_data[0][] = '<button class="area_selection_button" data-type="'.$key.'"><img src="'.BASE_URL.$value.'"></button>';
-                }
-                break;
+        $available_variables = array_chunk(PropertyArea::getAvailableOptionsForAreaType(), 4, true);
+        foreach($available_variables as $row_num => $row){
+            $table_data[$row_num] = [];
+            foreach($row as $key=> $data){
+                $table_data[$row_num][] = '<button class="area_selection_button" data-type="'.$key.'">'.$data.'</button>';
+            }
         }
+        $table_data[$row_num][] = '<label for="living_area_other">'._t(184).' :</label>
+                                    <input type="text" id="living_area_other" class="form-control"/>
+                                    <button class="area_selection_button hidden" data-type=""></button>
+                                    <button class="area_other_selection_button" data-type="">'._t(77).'</button>';
         echo_table([],$table_data);
+    }
+
+    private function getNewAreaRow(){
+        $this->import_view("file_input");
+        $index = intval($_POST["index"]);
+        $order = intval($_POST["order"]);
+        $area = new PropertyArea();
+        $area->area_type = htmlspecialchars($_POST["type"]);
+        $area->measurement_type = "m2";
+        echo "<tr><td>".implode("</td><td>",$area->getAreaTableRowData($index, TRUE, $order))."</td></tr>";
     }
 
     private function fireSafetyItemSelection(){
         $this->import_view("table_view");
         $fire_safety_items = FireSafetyItem::getAll([]);
+        $safety_items = json_decode($_POST["fire_safety_items"] ? : "[]");
         $table_data = [];
         foreach($fire_safety_items as $index => $item){
+            $item_info = !empty($safety_items) ? array_pop(array_filter($safety_items, function($el) use ($item){
+                return $el->ID == $item->ID;
+            })) : new stdClass();
             $table_data[$index/3][] = 
             "<label class='fire_safety_item_selection text-center'><br>
                 <img src='".$item->getImageUrl()."' />
-                <input type='checkbox' value='{$item->ID}'/>
+                <input type='number' class='form-control' value='".intval($item_info->count)."' data-item='$item->ID' ".($item_info->ID ? "checked": "")."/>
             </label>";
         }
         echo_table([], $table_data);
+    }
+
+    private function getUserInfoForLandlordSelection(){
+        $user = get_current_core_user();
+        $user_id = intval($_POST["user_id"]);
+        $user_data = User::getUserById($user_id);
+        echo json_encode([
+            "NAME" => $user_data->NAME,
+            "SURNAME" => $user_data->SURNAME,
+            "PHONE" => $user_data->PHONE,
+            "EMAIL" => $user_data->EMAIL,
+            "address" => $user_data->address,
+            "postcode" => $user_data->postcode
+        ]);
+    }
+
+    private function getServiceProviderInfo(){
+        $user = get_current_core_user();
+        if(!$user->isRoot() && !$user->isUserInRole("ADMIN") && !$user->isUserInRole("MANAGER")){
+            http_response_code(403);
+            throw_exception_as_json(_t(114));
+        }
+        $provider_id = intval($_POST["service_provider_id"]);
+        $provider = ServiceProvider::get(["ID" => $provider_id]);
+        echo json_encode([
+            "phone" => $provider->phone
+        ]);
+    }
+    private function getDocumentComment(){
+        $user = get_current_core_user();
+        if(!$user->isRoot() && !$user->isUserInRole("ADMIN") && !$user->isUserInRole("MANAGER")){
+            http_response_code(403);
+            throw_exception_as_json(_t(114));
+        }
+        $document_id = intval($_POST["document_id"]);
+        $document = PropertyDocument::get(["ID" => $document_id]);
+        if(!$document){
+            http_response_code(400);
+            throw_exception_as_json(_t(67));
+        }
+        if(isset($_POST["document_comment"])){
+            $document->document_comment = htmlspecialchars($_POST["document_comment"]);
+            $document->update();
+        }
+        echo json_encode([
+            "document_comment" => strval($document->document_comment)
+        ]);
+    }
+
+    private function editFacilities(){
+        $facilities = !empty($_POST["facilities"]) ? explode(";",$_POST["facilities"]) : [];
+        $output = "";
+        if(empty($facilities)){
+            $this->printMessage("alert-info", _t(253));
+        }else{
+            $options = PropertyAreaFacility::getFacilityOptions();
+            foreach($facilities as $facility){
+                $output .= "<div class='col-sm-4'>".prepare_select_box($options,[
+                    "default_value" => $facility,
+                    "attributes" => [
+                        "data-reference-table" => "area_facilities", 
+                        "data-reference-column" => "facility_name",
+                    ],
+                    "classes" => ["autocomplete", "create_if_not_exist"]
+                ]). "<a href='' class='glyphicon glyphicon-remove remove_facility'></a></div>";
+            }
+        }
+
+        $output.= "<div class='col-sm-12'><input type='button' value='"._t(135)."' class='btn btn-info add_new_area_facility' /> </div>";
+
+        echo $output;
+    }
+
+    private function getNewFacilityInput(){
+        echo "<div class='col-sm-4'>".prepare_select_box(PropertyAreaFacility::getFacilityOptions(),[
+            "attributes" => [
+                "data-reference-table" => "area_facilities", 
+                "data-reference-column" => "facility_name",
+            ],
+            "classes" => ["autocomplete", "create_if_not_exist"]
+        ])."<a href='' class='glyphicon glyphicon-remove remove_facility'></a></div>";
     }
 }

@@ -96,6 +96,8 @@ class UserController extends AdminPage{
         $this->user->EMAIL = $user_info["EMAIL"];
         $this->user->PHONE = $user_info["PHONE"];
         $this->user->ROLES = $user_info["ROLES"];
+        $this->user->address = $user_info["address"];
+        $this->user->postcode = $user_info["postcode"];
         
         CoreDB::getInstance()->beginTransaction();
         

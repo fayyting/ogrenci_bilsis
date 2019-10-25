@@ -29,7 +29,10 @@ class Router {
         return self::$instance;
     }
     
-    public function route(){
+    public function route(string $route = ""){
+        if($route){
+            $this->page = $route;
+        }
         if(!$this->page){
             $this->page = self::$mainPage;
         }elseif(!in_array($this->page, $this->getWhitelist())){
@@ -48,7 +51,7 @@ class Router {
         }
         $this->loadPage();
     }
-     public function loadPage(){
+    public function loadPage(){
         $this->controller->echoPage();
         die();
     }
