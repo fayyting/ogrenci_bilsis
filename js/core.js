@@ -59,7 +59,7 @@ $(document).ready(function () {
             }
         });
         file_input.click();
-        e.preventDefaut();
+        e.preventDefault();
     });
 
     $(".yes_no_box").each(function(){
@@ -139,6 +139,12 @@ $(document).ready(function () {
         }   
     });
     $(document).on("keyup", ".bootstrap-select.autocomplete .bs-searchbox input", autocompleteFilter);
+
+    $(".list-group .list-group-item a span.glyphicon-plus").click(function(e){
+        e.preventDefault();
+        $(this).parents(".list-group-item").find(".subitems").slideToggle();
+        $(this).toggleClass("glyphicon-plus glyphicon-minus");
+    })
     
 });
 

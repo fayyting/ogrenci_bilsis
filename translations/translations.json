@@ -1253,5 +1253,60 @@
         "ID": "254",
         "EN": "Saved",
         "TR": "Kaydedildi"
+    },
+    {
+        "ID": "255",
+        "EN": "Property Management",
+        "TR": "Varl\u0131k Y\u00f6netimi"
+    },
+    {
+        "ID": "256",
+        "EN": "Human Resources",
+        "TR": "\u0130nsan Kaynaklar\u0131"
+    },
+    {
+        "ID": "257",
+        "EN": "Finance",
+        "TR": "Finans"
+    },
+    {
+        "ID": "258",
+        "EN": "Research and Development",
+        "TR": "Ara\u015ft\u0131rma ve Geli\u015ftirme"
+    },
+    {
+        "ID": "259",
+        "EN": "Placements",
+        "TR": "Yerle\u015fimler"
+    },
+    {
+        "ID": "260",
+        "EN": "Maintanence",
+        "TR": "Bak\u0131m"
+    },
+    {
+        "ID": "261",
+        "EN": "Inspection",
+        "TR": "G\u00f6zetim"
+    },
+    {
+        "ID": "262",
+        "EN": "Incidents",
+        "TR": "Olaylar"
+    },
+    {
+        "ID": "263",
+        "EN": "Voids",
+        "TR": "Eksikler"
+    },
+    {
+        "ID": "264",
+        "EN": "Document Monitoring List",
+        "TR": "Belge \u0130zleme Ekran\u0131"
+    },
+    {
+        "ID": "265",
+        "EN": "Complaints",
+        "TR": "\u015eikayetler"
     }
 ]

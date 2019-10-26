@@ -49,7 +49,7 @@ div .list-group-item a{
     color: black;
 }
 
-div .tablelist.active a{
+.list-group .list-group-item.active > a{
     color: white;
 }
 
@@ -280,3 +280,5 @@ body,html {
         height: 40px !important; padding: 5px 0px !important;
       }
 }
+
+.subitems{display: none;}

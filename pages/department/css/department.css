@@ -1,0 +1,22 @@
+.card-container{
+    padding: 15px 20px;
+    display: flex;
+    flex-direction: column;
+    line-height: 1.5;
+    font-size: x-large;
+}
+
+.card{
+    min-height: 160px;
+}
+
+.card-container span{
+    line-height: 2;
+}
+.container-fluid a:hover{
+    text-decoration: none;
+}
+
+.container-fluid .col-sm-4{
+    padding: 0;
+}

@@ -53,7 +53,7 @@
         </div>
         <div class="col-sm-4">
             <div class="card">
-                <a href="#">
+                <a href="<?php echo BASE_URL."/department"; ?>">
                     <div class="card-container">
                         <span class="glyphicon glyphicon-tree-conifer"></span><?php echo _t(129); ?>
                     </div>
