@@ -145,11 +145,11 @@ tr.not_received{
 }
 
 .submit_container{
-    position: fixed; 
-    top: 80px; 
-    right: 10px;
-    z-index: 9999;
+    position: sticky; 
+    bottom: 10px;
+    z-index: 1;
     width: 125px;
+    float: right;
 }
 
 #property_table tr{
