@@ -1,7 +1,5 @@
 <?php
 
-use ___PHPSTORM_HELPERS\object;
-
 function echo_properties_edit_page(EditPropertiesController $controller){ ?>
 
     <div class="container container-fluid content">
@@ -19,7 +17,7 @@ function echo_properties_edit_page(EditPropertiesController $controller){ ?>
                     <div id="property[created_date]"><?php echo $controller->property->created_date; ?></div>
                 </div>
                 <?php } ?>
-                <div class="col-sm*12">
+                <div class="row">
                     <div class="col-sm-3">
                     <label for="category"><?php echo _t(227); ?>:</label>
                         <?php 
@@ -47,7 +45,7 @@ function echo_properties_edit_page(EditPropertiesController $controller){ ?>
                     </div>
                 </div>
 
-                <div class="col-sm-12 section">
+                <div class="col-sm-12 section" id="landlord_info">
                     <div class="col-sm-12">
                         <h3><?php echo _t(246); ?></h3>
                     </div>
@@ -211,74 +209,80 @@ function echo_properties_edit_page(EditPropertiesController $controller){ ?>
                 </div>
                 <div class="col-sm-12 section">
                     <div class="col-sm-12">
-                        <h3><?php echo _t(248); ?> <img src="http://housingbritain.com/admin/assets/disabled_person.png" class="img-responsive" style="display: initial;"></h3>
+                        <h3> <img src="http://housingbritain.com/admin/assets/disabled_person.png" width="6%" class="img-responsive" style="display: initial;"> <?php echo _t(248); ?> </h3>
                     </div>
-                    <div class="col-sm-3">
-                        <label for="internal_steps"><?php echo _t(144); ?></label> 
-                        <input type="number" name="property[internal_steps_count]" class="form-control step_count_control <?php echo !$controller->property->internal_steps ? "hidden" : ""; ?>"
-                        placeholder="<?php echo _t(241); ?>" value="<?php echo $controller->property->internal_steps_count ? : "";?>">
-                        <input type="checkbox" id="internal_steps" name="property[internal_steps]" class="yes_no_box"
-                        <?php echo $controller->property->internal_steps ? "checked" : ""; ?> />
+                    <div class="col-sm-5 section">
+                           <div class="container"><h4>Level Access:</h4></div>
+                         
+                            <div class="col-sm-3">
+                                <label for="entrance"><?php echo _t(150); ?></label> 
+                                <input type="checkbox" id="entrance" name="property[entrance]" class="yes_no_box"
+                                <?php echo $controller->property->entrance ? "checked" : ""; ?> />
+                            </div>
+                            <div class="col-sm-3">
+                                <label for="toilet"><?php echo _t(223); ?></label> 
+                                <input type="checkbox" id="toilet" name="property[toilet]" class="yes_no_box"
+                                <?php echo $controller->property->toilet ? "checked" : ""; ?> />
+                            </div>
+                            <div class="col-sm-3">
+                                <label for="shower_bath"><?php echo _t(151); ?></label> 
+                                <input type="checkbox" id="shower_bath" name="property[shower_bath]" class="yes_no_box"
+                                <?php echo $controller->property->shower_bath ? "checked" : ""; ?> />
+                            </div>
+                            <div class="col-sm-3">
+                                <label for="kitchen"><?php echo _t(169); ?></label> 
+                                <input type="checkbox" id="kitchen" name="property[kitchen]" class="yes_no_box"
+                                <?php echo $controller->property->kitchen ? "checked" : ""; ?> />
+                            </div>
+                            <div class="col-sm-3">
+                                <label for="living_area"><?php echo _t(170); ?></label> 
+                                <input type="checkbox" id="living_area" name="property[living_area]" class="yes_no_box"
+                                <?php echo $controller->property->living_area ? "checked" : ""; ?> />
+                            </div>
+                            <div class="col-sm-3">
+                                <label for="lift"><?php echo _t(146); ?></label> 
+                                <input type="checkbox" id="lift" name="property[lift]" class="yes_no_box"
+                                <?php echo $controller->property->lift ? "checked" : ""; ?> />
+                            </div>
                     </div>
-                    <div class="col-sm-3">
-                        <label for="external_steps"><?php echo _t(145); ?></label> 
-                        <input type="number" name="property[external_steps_count]" class="form-control step_count_control <?php echo !$controller->property->external_steps ? "hidden" : ""; ?>" 
-                        placeholder="<?php echo _t(241); ?>" value="<?php echo $controller->property->external_steps_count ? : "";?>"/>
-                        <input type="checkbox" id="external_steps" name="property[external_steps]" class="yes_no_box"
-                        <?php echo $controller->property->external_steps ? "checked" : ""; ?> />
-                    </div>
-                    <br clear="all">
-                    <div class="col-sm-3">
-                        <label for="lift"><?php echo _t(146); ?></label> 
-                        <input type="checkbox" id="lift" name="property[lift]" class="yes_no_box"
-                        <?php echo $controller->property->lift ? "checked" : ""; ?> />
-                    </div>
-                    <div class="col-sm-3">
-                        <label for="entrance"><?php echo _t(150); ?></label> 
-                        <input type="checkbox" id="entrance" name="property[entrance]" class="yes_no_box"
-                        <?php echo $controller->property->entrance ? "checked" : ""; ?> />
-                    </div>
-                    <div class="col-sm-3">
-                        <label for="toilet"><?php echo _t(223); ?></label> 
-                        <input type="checkbox" id="toilet" name="property[toilet]" class="yes_no_box"
-                        <?php echo $controller->property->toilet ? "checked" : ""; ?> />
-                    </div>
-                    <div class="col-sm-3">
-                        <label for="shower_bath"><?php echo _t(151); ?></label> 
-                        <input type="checkbox" id="shower_bath" name="property[shower_bath]" class="yes_no_box"
-                        <?php echo $controller->property->shower_bath ? "checked" : ""; ?> />
-                    </div>
-                    <div class="col-sm-3">
-                        <label for="kitchen"><?php echo _t(169); ?></label> 
-                        <input type="checkbox" id="kitchen" name="property[kitchen]" class="yes_no_box"
-                        <?php echo $controller->property->kitchen ? "checked" : ""; ?> />
-                    </div>
-                    <div class="col-sm-3">
-                        <label for="living_area"><?php echo _t(170); ?></label> 
-                        <input type="checkbox" id="living_area" name="property[living_area]" class="yes_no_box"
-                        <?php echo $controller->property->living_area ? "checked" : ""; ?> />
-                    </div>
-                    <div class="col-sm-3">
-                        <label><?php echo _t(152); ?></label>
-                        <input type="text" name="property[suitable_for_disabled]" class="hidden" />
-                        <input type="button" class="btn btn-default form-control" id="suitable_for_disabled" value="<?php echo $controller->suitable_for_disabled_types[$controller->property->suitable_for_disabled ? : "not_suitable"]; ?>" />
-                    </div>
-                    <div class="col-sm-3">
-                        <label for="disabled_comment"><?php echo _t(204); ?></label>
-                        <input type="text" class="form-control" name="property[disabled_comment]" id="disabled_comment" value="<?php echo $controller->property->disabled_comment; ?>" />
+                    <div class="col-sm-5 section">
+                            <div class="col-sm-6">
+                                <label for="internal_steps"><?php echo _t(144); ?></label> 
+                                <input type="number" name="property[internal_steps_count]" class="form-control step_count_control <?php echo !$controller->property->internal_steps ? "hidden" : ""; ?>"
+                                placeholder="<?php echo _t(241); ?>" value="<?php echo $controller->property->internal_steps_count ? : "";?>">
+                                <input type="checkbox" id="internal_steps" name="property[internal_steps]" class="yes_no_box"
+                                <?php echo $controller->property->internal_steps ? "checked" : ""; ?> />
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="external_steps"><?php echo _t(145); ?></label> 
+                                <input type="number" name="property[external_steps_count]" class="form-control step_count_control <?php echo !$controller->property->external_steps ? "hidden" : ""; ?>" 
+                                placeholder="<?php echo _t(241); ?>" value="<?php echo $controller->property->external_steps_count ? : "";?>"/>
+                                <input type="checkbox" id="external_steps" name="property[external_steps]" class="yes_no_box"
+                                <?php echo $controller->property->external_steps ? "checked" : ""; ?> />
+                            </div>
+                            <br clear="all">
+                            <div class="col-sm-6">
+                                <label><?php echo _t(152); ?></label>
+                                <input type="text" name="property[suitable_for_disabled]" class="hidden" />
+                                <input type="button" class="btn btn-default form-control" id="suitable_for_disabled" value="<?php echo $controller->suitable_for_disabled_types[$controller->property->suitable_for_disabled ? : "not_suitable"]; ?>" />
+                            </div>
+                            <div class="col-sm-12">
+                                <label for="disabled_comment"><?php echo _t(204); ?></label>
+                                <input type="text" class="form-control" name="property[disabled_comment]" id="disabled_comment" value="<?php echo $controller->property->disabled_comment; ?>" />
+                            </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-sm-2 col-xs-3">
                         
                     </div>
-                    <div class="col-sm-2 col-xs-3 text-center">
+                    <div class="col-sm-3 col-xs-3 text-center">
                        <label><?php echo _t(162); ?></label>
                     </div>
-                    <div class="col-sm-2 col-xs-3 text-center">
+                    <div class="col-sm-3 col-xs-3 text-center">
                         <label><?php echo _t(163); ?></label>
                     </div>
-                    <div class="col-sm-2 col-xs-3 text-center">
+                    <div class="col-sm-3 col-xs-3 text-center">
                         <label><?php echo _t(164); ?></label>
                     </div>
                 </div>
@@ -286,21 +290,21 @@ function echo_properties_edit_page(EditPropertiesController $controller){ ?>
                     <div class="col-sm-2 col-xs-3">
                         <label><?php echo _t(161); ?> :</label>
                     </div>
-                    <div class="col-sm-2 col-xs-3">
+                    <div class="col-sm-3 col-xs-3">
                         <?php echo prepare_select_box($controller->electricity_meter_types, [
                             "name" => "property[electricity_meter_type]",
                             "null_element" => _t(137),
                             "default_value" => $controller->property->electricity_meter_type
                         ]); ?>
                     </div>
-                    <div class="col-sm-2 col-xs-3">
+                    <div class="col-sm-3 col-xs-3">
                         <?php echo prepare_select_box($controller->gas_meter_types, [
                             "name" => "property[gas_meter_type]",
                             "null_element" => _t(137),
                             "default_value" => $controller->property->gas_meter_type
                         ]); ?>
                     </div>
-                    <div class="col-sm-2 col-xs-3">
+                    <div class="col-sm-3 col-xs-3">
                         <?php echo prepare_select_box($controller->water_meter_types, [
                             "name" => "property[water_meter_type]",
                             "null_element" => _t(137),
@@ -312,21 +316,21 @@ function echo_properties_edit_page(EditPropertiesController $controller){ ?>
                     <div class="col-sm-2 col-xs-3">
                         <label><?php echo _t(165); ?> :</label>
                     </div>
-                    <div class="col-sm-2 col-xs-3">
+                    <div class="col-sm-3 col-xs-3">
                         <?php echo prepare_select_box($controller->locations, [
                             "name" => "property[electricity_location]",
                             "default_value" => $controller->property->electricity_location,
                             "null_element" => _t(137)  
                         ]); ?>
                     </div>
-                    <div class="col-sm-2 col-xs-3">
+                    <div class="col-sm-3 col-xs-3">
                         <?php echo prepare_select_box($controller->locations, [
                             "name" => "property[gas_location]",
                             "default_value" => $controller->property->gas_location,
                             "null_element" => _t(137)  
                         ]); ?>
                     </div>
-                    <div class="col-sm-2 col-xs-3">
+                    <div class="col-sm-3 col-xs-3">
                         <?php echo prepare_select_box($controller->locations, [
                             "name" => "property[water_location]",
                             "default_value" => $controller->property->water_location,
@@ -338,15 +342,15 @@ function echo_properties_edit_page(EditPropertiesController $controller){ ?>
                     <div class="col-sm-2 col-xs-3">
                         <label><?php echo _t(149); ?> :</label>
                     </div>
-                    <div class="col-sm-2 col-xs-3">
+                    <div class="col-sm-3 col-xs-3">
                         <input type="text" name="property[electricity_location_comment]" class="form-control" placeholder="<?php echo _t(204); ?>" 
                         value="<?php echo $controller->property->electricity_location_comment; ?>"/>
                     </div>
-                    <div class="col-sm-2 col-xs-3">
+                    <div class="col-sm-3 col-xs-3">
                         <input type="text" name="property[gas_location_comment]" class="form-control" placeholder="<?php echo _t(204); ?>"
                         value="<?php echo $controller->property->gas_location_comment; ?>"/>
                     </div>
-                    <div class="col-sm-2 col-xs-3">
+                    <div class="col-sm-3 col-xs-3">
                         <input type="text" name="property[water_location_comment]" class="form-control" placeholder="<?php echo _t(204); ?>"
                         value="<?php echo $controller->property->water_location_comment; ?>"/>
                     </div>
@@ -356,7 +360,7 @@ function echo_properties_edit_page(EditPropertiesController $controller){ ?>
                         <label><?php echo _t(171); ?> :</label>
                         <label style="margin-top:15px;"><?php echo _t(249); ?> :</label>
                     </div>
-                    <div class="col-sm-2 col-xs-3">
+                    <div class="col-sm-3 col-xs-3">
                         <?php echo prepare_select_box_from_query_result(
                             db_select("service_providers")
                             ->condition("provider_type = 'electricity' ")
@@ -377,7 +381,7 @@ function echo_properties_edit_page(EditPropertiesController $controller){ ?>
                         <input type="text" name="electricity_provider[phone]" class="form-control" placeholder="05xxxxxxxxx"
                         value="<?php echo $electricity_provider->phone;?>"/>
                     </div>
-                    <div class="col-sm-2 col-xs-3">
+                    <div class="col-sm-3 col-xs-3">
                         <?php echo prepare_select_box_from_query_result(
                             db_select("service_providers")
                             ->condition("provider_type = 'gas' ")
@@ -398,7 +402,7 @@ function echo_properties_edit_page(EditPropertiesController $controller){ ?>
                         <input type="text" name="gas_provider[phone]" class="form-control" placeholder="05xxxxxxxxx"
                         value="<?php echo $gas_provider->phone;?>"/>
                     </div>
-                    <div class="col-sm-2 col-xs-3">
+                    <div class="col-sm-3 col-xs-3">
                         <?php echo prepare_select_box_from_query_result(
                             db_select("service_providers")
                             ->condition(" provider_type = 'water' ")
@@ -423,15 +427,15 @@ function echo_properties_edit_page(EditPropertiesController $controller){ ?>
                     <div class="col-sm-2 col-xs-3">
                         <label><?php echo _t(173); ?> :</label>
                     </div>
-                    <div class="col-sm-2 col-xs-3">
+                    <div class="col-sm-3 col-xs-3">
                         <input type="number" step="0.01" id="electricity_reading" name="property[electricity_reading]" class="form-control" placeholder="<?php echo _t(173); ?>" 
                         value="<?php echo $controller->property->electricity_reading ? $controller->property->electricity_reading : ""; ?>"/>
                     </div>
-                    <div class="col-sm-2 col-xs-3">
+                    <div class="col-sm-3 col-xs-3">
                         <input type="number" step="0.01" id="gas_reading" name="property[gas_reading]" class="form-control" placeholder="<?php echo _t(173); ?>" 
                         value="<?php echo $controller->property->gas_reading ? $controller->property->gas_reading : ""; ?>"/>
                     </div>
-                    <div class="col-sm-2 col-xs-3">
+                    <div class="col-sm-3 col-xs-3">
                         <input type="number" step="0.01" id="water_reading" name="property[water_reading]" class="form-control" placeholder="<?php echo _t(173); ?>" 
                         value="<?php echo $controller->property->water_reading ? $controller->property->water_reading : ""; ?>"/>
                     </div>
@@ -440,19 +444,19 @@ function echo_properties_edit_page(EditPropertiesController $controller){ ?>
                     <div class="col-sm-2 col-xs-3">
                         <label><?php echo _t(147); ?> :</label>
                     </div>
-                    <div class="col-sm-2 col-xs-3">
+                    <div class="col-sm-3 col-xs-3">
                         <input type="text" id="electricity_reading_date" name="property[electricity_reading_date]" class="form-control dateinput" placeholder="<?php echo _t(174); ?>" 
                         <?php echo $controller->property->electricity_reading_date ? "value=\"{$controller->property->electricity_reading_date}\"" : ""; ?> />
                         <input type="text" class="timeinput form-control" name="property[electricity_reading_time]" value="<?php echo $controller->property->electricity_reading_time; ?>"
                         placeholder="<?php echo _t(147); ?>"/>
                     </div>
-                    <div class="col-sm-2 col-xs-3">
+                    <div class="col-sm-3 col-xs-3">
                         <input type="text" id="gas_reading_date" name="property[gas_reading_date]" class="form-control dateinput" placeholder="<?php echo _t(174); ?>" 
                         <?php echo $controller->property->gas_reading_date ? "value=\"{$controller->property->gas_reading_date}\"" : ""; ?> />
                         <input type="text" class="timeinput form-control" name="property[gas_reading_time]" value="<?php echo $controller->property->gas_reading_time; ?>"
                         placeholder="<?php echo _t(147); ?>"/>
                     </div>
-                    <div class="col-sm-2 col-xs-3">
+                    <div class="col-sm-3 col-xs-3">
                         <input type="text" id="water_reading_date" name="property[water_reading_date]" class="form-control dateinput" placeholder="<?php echo _t(174); ?>" 
                         <?php echo $controller->property->water_reading_date ? "value=\"{$controller->property->water_reading_date}\"" : ""; ?> />
                         <input type="text" class="timeinput form-control" name="property[water_reading_time]" value="<?php echo $controller->property->water_reading_time; ?>"

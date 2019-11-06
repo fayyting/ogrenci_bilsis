@@ -68,8 +68,18 @@ $(document).ready(function(){
     $(document).on("click",".fire_safety_item_selection",function(e){
         e.preventDefault();
         let input = $(this).find("input[type='number']");
-        input.val(parseInt(input.val())+1);
+        let new_value = parseInt(input.val())+1;
+        input.val(new_value);
+        $(this).find(".fsi_count").text(new_value);
     });
+    $(document).on("click", ".fire_safety_item_selection .glyphicon-remove", function(e){
+        e.stopPropagation();
+        let parent = $(this).parent(".fire_safety_item_selection");
+        let input = parent.find("input[type='number']");
+        let new_value = parseInt(input.val())-1;
+        input.val(new_value);
+        parent.find(".fsi_count").text(new_value);
+    })
 
     $(document).on("click",".facilities_edit", function(e){
         e.preventDefault();

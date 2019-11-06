@@ -1,7 +1,5 @@
 <?php
 
-use ___PHPSTORM_HELPERS\object;
-
 class AjaxController extends ServicePage{
     
     public function callService(string $service_name) {
@@ -337,10 +335,11 @@ class AjaxController extends ServicePage{
                 return $el->ID == $item->ID;
             })) : new stdClass();
             $table_data[$index/3][] = 
-            "<label class='fire_safety_item_selection text-center'><br>
+            "<div class='fire_safety_item_selection text-center'><br>
                 <img src='".$item->getImageUrl()."' />
-                <input type='number' class='form-control' value='".intval($item_info->count)."' data-item='$item->ID' ".($item_info->ID ? "checked": "")."/>
-            </label>";
+                <span class='glyphicon glyphicon-remove core-control fsi_count'>".intval($item_info->count)."</span>
+                <input type='number' class='form-control hidden' value='".intval($item_info->count)."' data-item='$item->ID' ".($item_info->ID ? "checked": "")."/>
+            </div>";
         }
         echo_table([], $table_data);
     }

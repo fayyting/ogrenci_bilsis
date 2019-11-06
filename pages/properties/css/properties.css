@@ -73,22 +73,8 @@ table .area_selection_button{
     background-color: rgb(125, 211, 125);
 }
 
-.section{
-    border: 1px dotted;
-    border-radius: 20px;
-    padding: 20px 0px 20px 0px;
-    margin: 15px;
-}
 .form-control#adress,.form-control#comment{
     height: 100px;
-}
-
-.yes_no_box_div{
-    padding: 0 0 10px 10px;
-}
-
-.yes_no_box + label{
-    font-weight: normal; 
 }
 
 #management_fee_type{
@@ -154,4 +140,11 @@ tr.not_received{
 
 #property_table tr{
     cursor: pointer;
+}
+
+.fsi_count{
+    position: relative;
+    font-size: large;
+    float: right;
+    left: -10px;
 }
