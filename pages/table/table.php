@@ -15,6 +15,8 @@ class TableController extends AdminPage{
         }
         if(!$table_exist){
             core_go_to(BASE_URL."/table");
+        }else{
+            $this->setTitle(_t(1).": ".$this->arguments[0]);
         }
     }
 

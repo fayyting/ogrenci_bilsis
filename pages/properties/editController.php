@@ -41,6 +41,9 @@ class EditPropertiesController extends AdminPage{
             if(!$this->property->ID){
                 Router::getInstance()->route(Router::$notFound);
             }
+            $this->setTitle(_t(343).": ".$this->property->adress);
+        }else{
+            $this->setTitle(_t(342));
         }
 
         $this->add_frontend_translation(142);
@@ -50,6 +53,9 @@ class EditPropertiesController extends AdminPage{
         $this->add_frontend_translation(115);
         $this->add_frontend_translation(242);
         $this->add_frontend_translation(254);
+        $this->add_frontend_translation(344);
+        $this->add_frontend_translation(345);
+        $this->add_frontend_translation(346);
         $this->add_css_files("pages/properties/css/properties.css");
         $this->add_js_files("pages/properties/js/properties.js");
 

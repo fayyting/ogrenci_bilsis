@@ -4,6 +4,7 @@ class ManageController extends AdminPage{
     public $operation;
     public $table_headers;
     public $table_content;
+    public $entry_count;
     public $page;
     public function __construct($arguments) {
         parent::__construct($arguments);
@@ -27,13 +28,18 @@ class ManageController extends AdminPage{
         switch ($this->operation){
         case "user":
             $this->getUserTableInfo();
+            $this->setTitle(_t(2).": "._t(5));
             break;
         case "role":
             $this->getRoleTableInfo();
+            $this->setTitle(_t(2).": "._t(6));
             break;
         case "translation":
             $this->getTranslationInfo();
+            $this->setTitle(_t(2).": "._t(100));
             break;
+        default:
+            $this->setTitle(_t(2));
         }
     }
 
@@ -43,27 +49,30 @@ class ManageController extends AdminPage{
     }
     
     private function getUserTableInfo() {
-        $this->table_content = db_select(USERS)->select(USERS, ["ID", "USERNAME","NAME","SURNAME","EMAIL","PHONE","CREATED_AT", "ACCESS"])
-                ->orderBy("ID")
-                ->limit(PAGE_SIZE_LIMIT, ($this->page-1)*PAGE_SIZE_LIMIT)
-                ->execute()->fetchAll(PDO::FETCH_NUM);
+        $query = db_select(USERS)
+        ->orderBy("ID");
+        $this->entry_count = $query->select_with_function(["COUNT(*) AS count"])->execute()->fetchObject()->count;
+        $query->unset_fields();
+        $this->table_content = $query->limit(PAGE_SIZE_LIMIT, ($this->page-1)*PAGE_SIZE_LIMIT)->execute()->fetchAll(PDO::FETCH_NUM);
         $this->table_headers = ["ID", _t(20), _t(27),mb_convert_case(_t(28),MB_CASE_TITLE), _t(35), mb_convert_case(_t(29), MB_CASE_TITLE), _t(48), _t(34)];
     }
     
     private function getRoleTableInfo() {
-        $this->table_content = db_select(ROLES)
-                ->orderBy("ID")
-                ->limit(PAGE_SIZE_LIMIT, ($this->page-1)*PAGE_SIZE_LIMIT)
-                ->execute()->fetchAll(PDO::FETCH_NUM);
+        $query = db_select(ROLES)
+        ->orderBy("ID");
+        $this->entry_count = $query->select_with_function(["COUNT(*) AS count"])->execute()->fetchObject()->count;
+        $query->unset_fields();
+        $this->table_content = $query->limit(PAGE_SIZE_LIMIT, ($this->page-1)*PAGE_SIZE_LIMIT)->execute()->fetchAll(PDO::FETCH_NUM);
         $this->table_headers = ["ID", _t(49)];
         require 'add_role_modal.php';
     }
     
     function getTranslationInfo() {
-        $this->table_content = db_select(TRANSLATIONS)
-                ->orderBy("ID")
-                ->limit(PAGE_SIZE_LIMIT, ($this->page-1)*PAGE_SIZE_LIMIT)
-                ->execute()->fetchAll(PDO::FETCH_NUM);
+        $query = db_select(TRANSLATIONS)
+        ->orderBy("ID");
+        $this->entry_count = $query->select_with_function(["COUNT(*) AS count"])->execute()->fetchObject()->count;
+        $query->unset_fields();
+        $this->table_content = $query->limit(PAGE_SIZE_LIMIT, ($this->page-1)*PAGE_SIZE_LIMIT)->execute()->fetchAll(PDO::FETCH_NUM);
         $this->table_headers = ["ID", "EN", "TR"];
     }
 }

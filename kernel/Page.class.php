@@ -8,6 +8,7 @@ abstract class Page {
     protected $css_files;
     protected $frontend_translations = [];
     protected $accessable_roles = ["USER"];
+    protected $title = SITE_NAME;
 
 
     public function __construct(array $arguments){
@@ -17,6 +18,10 @@ abstract class Page {
     public function check_access(): bool {
         $user_roles = get_current_core_user()->getUserRoles();
         return array_diff($this->accessable_roles, $user_roles) == 0 ? TRUE : FALSE;
+    }
+
+    public function setTitle(string $title){
+        $this->title = $title;
     }
 
 
@@ -101,7 +106,7 @@ abstract class Page {
 
     protected function echoHeader(){
         $this->import_view("header");
-        echo_header($this->js_files, $this->css_files);
+        echo_header($this->js_files, $this->css_files, $this->title);
     }
     protected function echoNavbar(){
         $this->import_view("navbar");

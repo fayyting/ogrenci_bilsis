@@ -35,11 +35,17 @@ class PropertiesController extends AdminPage {
 
     protected function preprocessPage()
     {
+        $operation_map = [
+            "active" => _t(124),
+            "new" => _t(125),
+            "archived" => _t(126),
+            "view" => _t(136)
+        ];
         if(count($this->arguments) == 0){
             $this->operation = "active";
         }else{
             $this->operation = $this->arguments[0];
-            if(!in_array($this->operation, ["active", "new", "archived","view"])){
+            if(!in_array($this->operation, array_keys($operation_map))){
                 create_warning_message(_t(67));
                 $this->operation = "active";
             }
@@ -47,6 +53,7 @@ class PropertiesController extends AdminPage {
         $this->add_css_files("pages/properties/css/properties.css");
         $this->add_js_files("pages/properties/js/properties.js");
         $this->add_frontend_translation(115);
+        $this->setTitle(_t(127).": ".$operation_map[$this->operation]);
     }
 
     protected function echoContent() {

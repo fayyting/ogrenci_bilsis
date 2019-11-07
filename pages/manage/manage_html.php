@@ -6,17 +6,20 @@ function echo_manage_page(ManageController $controller){ ?>
                   <div class="list-group">
                       <div class="list-group-item tablelist <?php echo $controller->operation == "user" ? "active" : ""; ?> ?>" align="left">
                           <a href="<?php echo SITE_ROOT."/manage/user"; ?>">
-                              <span class="glyphicon glyphicon-user"> <?php echo _t(5); ?></span>
+                              <span class="glyphicon glyphicon-user"> </span>
+                              <?php echo _t(5); ?>
                           </a>
                       </div>
                       <div class="list-group-item tablelist <?php echo $controller->operation == "role" ? "active" : ""; ?>" align="left">
                           <a href="<?php echo SITE_ROOT."/manage/role"; ?>">
-                              <span class="glyphicon glyphicon-tag"> <?php echo _t(6); ?></span>
+                              <span class="glyphicon glyphicon-tag"> </span>
+                              <?php echo _t(6); ?>
                           </a>
                       </div>
                       <div class="list-group-item tablelist <?php echo $controller->operation == "translation" ? "active" : ""; ?>" align="left">
                           <a href="<?php echo SITE_ROOT."/manage/translation"; ?>">
-                              <span class="glyphicon glyphicon-globe"> <?php echo _t(100); ?></span>
+                              <span class="glyphicon glyphicon-globe"> </span>
+                              <?php echo _t(100); ?>
                           </a>
                       </div>
                       <div  class="manage-controls" id="user-controls" <?php echo $controller->operation != "user" ? "hidden" : ""; ?>>
@@ -72,7 +75,7 @@ function echo_manage_page(ManageController $controller){ ?>
             <?php 
             if($controller->operation){
                 $controller->import_view("pagination");
-                echo_pagination_view(BASE_URL."/manage/{$controller->operation}?", $controller->page, count($controller->table_content));
+                echo_pagination_view(BASE_URL."/manage/{$controller->operation}?", $controller->page, $controller->entry_count);
             }
             ?>
         </div>

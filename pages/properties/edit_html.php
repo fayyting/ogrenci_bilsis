@@ -11,6 +11,9 @@ function echo_properties_edit_page(EditPropertiesController $controller){ ?>
                     <span class="glyphicon glyphicon-menu-left"></span> <?php echo _t(134);?>
                     </a>
                 </div>
+                <div class="col-xs-12 text-center">
+                <h1><?php echo $controller->property->ID ? _t(343) : _t(342); ?></h1>
+                </div>
                 <?php if($controller->property->created_date){ ?>
                 <div class="col-sm-12">
                     <label><?php echo _t(48);?>:</label>

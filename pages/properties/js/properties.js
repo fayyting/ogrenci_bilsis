@@ -30,6 +30,7 @@ $(document).ready(function(){
         e.preventDefault();
         var button = $(this);
         var fire_safety_items = $(this).parents("td").find("input").val();
+        var area_name = $(this).parents("tr").find(".area_type_selection").text();
         $.ajax({
             url : root+"/ajax/fireSafetyItemSelection",
             method: "post",
@@ -39,7 +40,7 @@ $(document).ready(function(){
             success: function(response){
                 BootstrapDialog.show({
                     type : BootstrapDialog.TYPE_INFO,
-                    title: "",
+                    title: _t(345) + ": " + area_name,
                     message: $(response),
                     buttons: [{
                         label: _t(77),
@@ -84,6 +85,7 @@ $(document).ready(function(){
     $(document).on("click",".facilities_edit", function(e){
         e.preventDefault();
         var edit_button = $(this);
+        var area_name = $(this).parents("tr").find(".area_type_selection").text();
         $.ajax({
             url : root+"/ajax/editFacilities",
             method: "post",
@@ -93,7 +95,7 @@ $(document).ready(function(){
             success: function(response){
                 BootstrapDialog.show({
                     type : BootstrapDialog.TYPE_INFO,
-                    title: "",
+                    title: _t(344)+ ": " +area_name,
                     message: $(response),
                     onshow: function(dialog){
                         let dialogContent = dialog.getModalContent();
@@ -339,6 +341,7 @@ $(document).ready(function(){
 
     $(".document_comment").click(function(){
         let document_id = $(this).data("document-id");
+        let document_name = $(this).parents("td").text();
         $.ajax({
             url: root +"/ajax/getDocumentComment",
             method: "post",
@@ -348,7 +351,7 @@ $(document).ready(function(){
                 var text_area = $(`<textarea class="form-control">`+response.document_comment+`</textarea>`);
                 alertMessage(
                     text_area,
-                    _t(115),
+                    _t(346)+": "+document_name,
                     BootstrapDialog.TYPE_INFO,
                     function(dialog){
                         $.ajax({

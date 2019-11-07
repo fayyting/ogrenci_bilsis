@@ -5,6 +5,12 @@ class Forget_passwordController extends Page{
     public function check_access():bool {
         return !get_current_core_user()->isLoggedIn();
     }
+    protected function preprocessPage()
+    {
+        $this->setTitle(_t(23));
+    }
+
+    protected function echoNavbar(){}
 
     protected function echoContent() {
         if(isset($_POST["username"]) && isset($_POST["email"]) ){

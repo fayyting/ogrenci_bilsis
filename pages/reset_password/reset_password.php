@@ -9,6 +9,13 @@ class Reset_passwordController extends Page{
         return !get_current_core_user()->isLoggedIn();
     }
 
+    protected function echoNavbar(){}
+
+    protected function preprocessPage()
+    {
+        $this->setTitle(_t(73));
+    }
+
     protected function echoContent() {
         if(isset($_GET["USER"]) && isset($_GET["KEY"]) ){
             $query = db_select(RESET_PASSWORD_QUEUE)

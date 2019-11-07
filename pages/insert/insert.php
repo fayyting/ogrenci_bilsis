@@ -36,6 +36,7 @@ class InsertController extends AdminPage{
                 $this->object = NULL;
             }
         }
+        $this->setTitle(_t(14).": ".$this->arguments[0]);
     }
     
     protected function echoContent() {
