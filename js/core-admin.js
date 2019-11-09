@@ -45,11 +45,6 @@ $(document).ready(function () {
                 truncatetable(tablename);
             });
    });
-   
-   $(".tableadd").click(function (){
-        var tablename = getTableNameFromList($(this));
-        window.location = root +"/table/new/"+tablename;
-    });
     
     $(".alter_table").click(function () {
        if($("div.field_definition .has-error").length !== 0){
@@ -128,11 +123,6 @@ $(document).ready(function () {
                      controlElement.parents("tr").remove();
              }
          });
-    });
-    
-    $(".rowadd").click(function (){
-        var tablename = getTableNameFromList($(this));
-        window.location = root+"/insert/"+tablename;
     });
     
     $(".recordelete").click(function (e){

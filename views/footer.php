@@ -1,6 +1,4 @@
 <div class="loader hidden"></div>
-<?php require __DIR__.'/authorization_modal.php'; ?>
-
 <div class="footer">
     <div class="container-fluid footer-bgcolor pb-1">
 

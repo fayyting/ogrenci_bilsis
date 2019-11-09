@@ -9,6 +9,13 @@ function echo_insert_page(InsertController $controller){
         <?php $controller->printMessages(); ?>
         <form class="container-fluid text-center" method="POST" enctype="multipart/form-data">
             <div class="row content">
+                <div class="col-xs-2 back_link">
+                    <a href="<?php echo BASE_URL."/table/$controller->table"; ?>" class="btn btn-info">
+                    <span class="glyphicon glyphicon-menu-left"></span> <?php echo _t(352);?>
+                    </a>
+                </div>
+            </div>
+            <div class="row content">
                 <div class="col-sm-3 text-left">
                     ID
                 </div>
