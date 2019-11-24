@@ -17,7 +17,7 @@ class User extends DBObject{
     }
 
 
-    public static function getUserById(int $id){
+    public static function getUserById(int $id) : User{
         $user = new self();
         $result = db_select(self::TABLE)->condition("ID = :id")->params(["id" => $id])->execute()->fetch(PDO::FETCH_ASSOC);
         if(!$result){

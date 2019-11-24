@@ -1,5 +1,7 @@
 <?php
 
+
+ini_set("error_reporting", E_ALL & ~E_NOTICE);
 define("DIRECT_OBJECT_REF_SHIELD", TRUE);
 
 require './kernel/router/Router.php';

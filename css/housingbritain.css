@@ -60,3 +60,29 @@ input.form-control[type="date"]{
         overflow-x: scroll;
     }
 }
+
+.yes_no_box_div{
+    padding: 0 0 10px 10px;
+}
+
+.yes_no_box + label{
+    font-weight: normal; 
+}
+
+.section{
+    border: 1px dotted;
+    border-radius: 20px;
+    padding: 20px 0px 20px 0px;
+    margin: 15px;
+}
+
+.finder-dialog .modal-dialog{
+    width: 80%;
+}
+
+.property_find_result{
+    max-width: 100%;
+    overflow: scroll;
+    max-height: 50vh;
+    min-height: 300px;
+}

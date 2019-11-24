@@ -276,11 +276,12 @@ class AjaxController extends ServicePage{
             $data = "%".$_POST["data"]."%";
             $query = db_select($table)
             ->select($table, ["ID", $column])
-            ->condition(" $column LIKE :data", [
+            ->condition(" $column LIKE :data AND $column != '' AND $column IS NOT NULL", [
                 ":data" => $data
             ])->limit(AUTOCOMPLETE_SELECT_BOX_LIMIT);
             if(isset($_POST["filter-column"]) && isset($_POST["filter-value"]) ){
-                $query->condition( preg_replace('/[^a-zA-Z1-9_]*/', '', $_POST["filter-column"])." = :value", 
+                $filter_column = preg_replace('/[^a-zA-Z1-9_]*/', '', $_POST["filter-column"]);
+                $query->condition( "$filter_column = :value AND $filter_column != '' AND $filter_column IS NOT NULL", 
                 [":value" => $_POST["filter-value"]]);
             }
             $filtered_result = $query->execute()->fetchAll(PDO::FETCH_NUM);
@@ -302,6 +303,7 @@ class AjaxController extends ServicePage{
         $this->import_view("table_view");
         $table_data = [];
         $available_variables = array_chunk(PropertyArea::getAvailableOptionsForAreaType(), 4, true);
+        array_walk($available_variables[0], function(&$el){ $el = "<b>$el</b>"; } );
         foreach($available_variables as $row_num => $row){
             $table_data[$row_num] = [];
             foreach($row as $key=> $data){
@@ -423,5 +425,76 @@ class AjaxController extends ServicePage{
             ],
             "classes" => ["autocomplete", "create_if_not_exist"]
         ])."<a href='' class='glyphicon glyphicon-remove remove_facility'></a></div>";
+    }
+
+    private function getPropertyFinder(){
+        $this->import_view("property_finder");
+    }
+
+    private function findProperty(){
+        $filters = array_filter($_POST["property"], function($el){
+            return $el && $el !== "NULL";
+        });
+        $properties_query = db_select(Property::TABLE, "p")
+        ->leftjoin("property_statuses","ps", "p.status = ps.ID")
+        ->leftjoin("property_type_a", "pta", "p.type = pta.ID")
+        ->leftjoin("property_scheme_a","psa","p.scheme_a = psa.ID")
+        ->leftjoin("property_scheme_b","psb","p.scheme_b = psb.ID")
+        ->select("p", ["ID AS select_link","category", "adress", "postcode"])
+        ->select("pta", ["explain AS pta_explain"])
+        ->select("ps", ["explain AS ps_explain"])
+        ->select("psa", ["explain AS psa_explain"])
+        ->select("psb", ["explain AS psb_explain"])
+        ->limit(PAGE_SIZE_LIMIT)
+        ->orderBy("p.ID");
+        foreach($filters as $column => $filter){
+            $column =  preg_replace("/[^a-z_]+/", "", $column);
+            if($column == "adress"){
+                $properties_query->condition("$column LIKE :$column",[":$column" => "%$filter%"]);
+            }else{
+                $properties_query->condition("$column = :$column AND $column IS NOT NULL AND $column != ''",[":$column" => $filter]);
+            }
+        }
+        $headers = [
+            "#",
+            _t(227),
+            _t(119),
+            _t(133),
+            _t(116),
+            _t(117),
+            _t(122)." A",
+            _t(122)." B"
+        ];
+        $results = $properties_query->execute()->fetchAll(PDO::FETCH_OBJ);
+        $property_category_map = Property::getAvailableCategoryOptions();
+        foreach($results as &$row){
+            $row->select_link = "<input type='button' class='btn btn-info property_finder_select' data-select-id='$row->select_link' value='"._t(347)."' />";
+            $row->category = $property_category_map[$row->category];
+        }
+
+        $this->import_view("table_view");
+        echo_table($headers, $results);
+    }
+
+    private function getPropertyInfoForPropertySection(){
+        $property = Property::get(["ID" => $_POST["property"]]);
+        if(!$property->ID){
+            throw_exception_as_json(_t(349));
+        }
+        $property_scheme_a = $property->scheme_a ? DBObject::get(["ID" => $property->scheme_a], "property_scheme_a") : NULL;
+        $property_scheme_b = DBObject::get(["ID" => $property->scheme_b], "property_scheme_b");
+
+        $property_type = DBObject::get(["ID" => $property->type], "property_type_a");
+        $result_data = [
+            "pf_id" => $property->ID,
+            "pf_council" => $property_scheme_a->explain,
+            "pf_adress" => $property->adress,
+            "pf_postcode" => $property->postcode,
+            "pf_scheme_a" => $property_scheme_a->shortcode,
+            "pf_scheme_b" => $property_scheme_b->shortcode,
+            "pf_type" => $property_type->shortcode,
+            "floor" => $property->floor
+        ];
+        echo json_encode($result_data);
     }
 }

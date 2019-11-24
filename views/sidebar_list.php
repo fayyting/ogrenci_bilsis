@@ -22,7 +22,19 @@ function echo_sidebar_items($items, $options){
                 <?php echo_sidebar_items($item["subitems"], []);
             ?> 
             </div>
-            <?php } ?>
+            <?php } 
+                if($item["options"]){ ?>
+                    <div class="dropdown pull-right">
+                        <a href="#" title="<?php echo _t(17); ?>" class="dropdown-toogle" data-toggle="dropdown"/>
+                            <span class="glyphicon glyphicon-option-vertical" ></span> </a>
+                        <div class="dropdown-menu">
+                            <?php foreach ($item["options"] as $option) {
+                                echo "<a href='".$option["url"]."'/><label class='form-control dropdown-item core-control'><span class='".$option["icon"]."'></span>".$option["label"]."</label></a>";
+                            } ?>
+                        </div>
+                    </div>
+                <?php }
+            ?>
         </div>
     <?php }
 }

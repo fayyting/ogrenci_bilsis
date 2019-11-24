@@ -137,7 +137,6 @@ abstract class Page {
     }
     protected function add_default_css_files(){
         $default_css_files = [
-            "css/core.css",
             "css/bootstrap.min.css",
             "css/bootstrap-select.min.css",
             "css/bootstrap-datetimepicker.min.css",
@@ -145,6 +144,7 @@ abstract class Page {
             "css/easy-numpad.min.css",
             "css/summernote.css",
             "css/animate.css",
+            "css/core.css",
             "css/footer.css",
             "css/housingbritain.css",
             "css/housingbritain_gallery.css"

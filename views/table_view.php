@@ -1,7 +1,7 @@
 <?php
 
 function echo_table(array $table_headers, array $table_content, string $prepend_element = "", string $appent_element = "", bool $print_line_number = false ) { ?>
-<table class="content" id="result_table">
+<table id="result_table">
     <thead>
         <tr class="head">
         <?php

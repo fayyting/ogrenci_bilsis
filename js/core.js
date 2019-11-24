@@ -6,7 +6,9 @@ $.expr[':'].textEquals = function(el, i, m) {
 $(document).ready(function () {
    $(document).on("keyup", ".uppercase_filter", uppercase_filter);
    $(document).on("keyup", ".lowercase_filter", lowercase_filter);
-   $(".datetimeinput").datetimepicker();
+   $(".datetimeinput").datetimepicker({
+       format: "YYYY-MM-DD HH:mm"
+   });
    $(".dateinput").datetimepicker({
        format: "YYYY-MM-DD"
    });
@@ -140,11 +142,18 @@ $(document).ready(function () {
     });
     $(document).on("keyup", ".bootstrap-select.autocomplete .bs-searchbox input", autocompleteFilter);
 
-    $(".list-group .list-group-item a span.glyphicon-plus").click(function(e){
+    $(".list-group > .list-group-item > a span.glyphicon").click(function(e){
         e.preventDefault();
         $(this).parents(".list-group-item").find(".subitems").slideToggle();
         $(this).toggleClass("glyphicon-plus glyphicon-minus");
     })
+
+    $(document).on("click", ".property_finder", function(){
+        console.log("find property");
+        let output = $($(this).parents(".property_finder_section"));
+        let finder = new PropertyFinder(output);
+        finder.openFinderModal();
+    });
     
 });
 

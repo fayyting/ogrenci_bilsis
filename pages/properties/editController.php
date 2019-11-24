@@ -56,6 +56,7 @@ class EditPropertiesController extends AdminPage{
         $this->add_frontend_translation(344);
         $this->add_frontend_translation(345);
         $this->add_frontend_translation(346);
+        $this->add_frontend_translation(351);
         $this->add_css_files("pages/properties/css/properties.css");
         $this->add_js_files("pages/properties/js/properties.js");
 
@@ -132,12 +133,7 @@ class EditPropertiesController extends AdminPage{
             _t(240)
         ];
 
-        $this->property_categories = [
-            Property::PROPERTY_CATEGORY_VIEWING => _t(136),
-            Property::PROPERTY_CATEGORY_ACTIVE => _t(124),
-            Property::PROPERTY_CATEGORY_NEW => _t(125),
-            Property::PROPERTY_CATEGORY_ARCHIVED => _t(126)
-        ];
+        $this->property_categories = Property::getAvailableCategoryOptions();
         
         $this->suitable_for_disabled_types = [
             "not_suitable" => _t(251),

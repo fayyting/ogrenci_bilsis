@@ -5,10 +5,10 @@ class Property extends DBObject{
     public $ID, $adress, $postcode, $bedrooms, $type, $floor, $status, $scheme_a, $scheme_b, $landlord,
     $category;
 
-    const PROPERTY_CATEGORY_VIEWING = 0;
-    const PROPERTY_CATEGORY_ACTIVE = 1;
-    const PROPERTY_CATEGORY_NEW = 2;
-    const PROPERTY_CATEGORY_ARCHIVED = 3;
+    const PROPERTY_CATEGORY_VIEWING = 1;
+    const PROPERTY_CATEGORY_ACTIVE = 2;
+    const PROPERTY_CATEGORY_NEW = 3;
+    const PROPERTY_CATEGORY_ARCHIVED = 4;
 
     public function __construct()
     {
@@ -39,6 +39,15 @@ class Property extends DBObject{
            $document->delete();
        }
        parent::delete();
+    }
+
+    public static function getAvailableCategoryOptions(){
+        return [
+            Property::PROPERTY_CATEGORY_VIEWING => _t(136),
+            Property::PROPERTY_CATEGORY_ACTIVE => _t(124),
+            Property::PROPERTY_CATEGORY_NEW => _t(125),
+            Property::PROPERTY_CATEGORY_ARCHIVED => _t(126)
+        ];
     }
 
     public static function getTableDataByFilter(string $list, int $page){

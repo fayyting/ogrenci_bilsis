@@ -149,7 +149,7 @@ $(document).ready(function(){
             success: function(response){
                 dialog = {
                     type : BootstrapDialog.TYPE_INFO,
-                    title: "",
+                    title: _t(351),
                     message: function(dialog){
                         let content = $(response);
                         content.find(".area_selection_button").click(function(){

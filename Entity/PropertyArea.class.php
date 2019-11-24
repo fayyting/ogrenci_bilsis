@@ -130,9 +130,11 @@ class PropertyArea extends DBObject{
     public static function getAvailableOptionsForAreaType(){
         return [
             "kitchen" => _t(169),
+            "living_room" => _t(170),
+            "bedroom" => _t(350),
+            "bathroom" => _t(221),
             "kitchen_dinner" => _t(213),
             "kitchen_living_area" => _t(214),
-            "living_room" => _t(170),
             "dining_room" => _t(215),
             "conservatory" => _t(216),
             "hallway" => _t(167),
@@ -140,7 +142,6 @@ class PropertyArea extends DBObject{
             "porch" => _t(218),
             "study" => _t(219),
             "utility_area" => _t(220),
-            "bathroom" => _t(221),
             "shower" => _t(222),
             "toilet" => _t(223),
             "garden" => _t(153),

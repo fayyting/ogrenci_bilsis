@@ -24,6 +24,11 @@
             <a href="<?php echo BASE_URL."/manage"; ?>"><span class="glyphicon glyphicon-cog"></span> <?php echo _t(2); ?></a>
           </li>
         <?php } ?>
+        <li>
+          <a href="/bloglar"><span class="glyphicon glyphicon-book"></span> Bloglar </a>
+          <a href="/ogrenciler"><span class="glyphicon glyphicon-book"></span> Ögrenciler </a>
+          <a href="/dersler"><span class="glyphicon glyphicon-book"></span> Dersler </a>
+        </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
           <li>
